@@ -43,6 +43,8 @@ contract UserProfileManager {
         _;
     }
 
+     // Migration to an actual address 
+    // Reveals Owner Address Logs
     event obtain_Owner_Address(address indexed oldOwner, address indexed newOwner);
 
 
@@ -97,6 +99,22 @@ userListings.push(userProfile({
 
 
 // End of contract
+}
+
+
+contract article_Dispensary {
+
+struct Articles {
+  uint256 articleID ;
+  string articleName ;
+  string author ;
+  string publisher ; 
+  string version ; 
+  string genre  ;
+  string serial ; 
+  // add or  re-arrange more fields here  
+}
 
 }
+
 
