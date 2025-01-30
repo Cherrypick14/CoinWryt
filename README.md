@@ -1,9 +1,7 @@
 
-# CreOwn - Marketplace for Ghostwriters ✍️🖋️
+# CoinWryt - Marketplace for Ghostwriters ✍️🖋️
 
-CreOwn is a decentralized platform that empowers ghostwriters by providing fair compensation and a trusted marketplace while offering clients access to skilled writers for their storytelling needs.
-
-
+CoinWryt is a decentralized platform that empowers ghostwriters by providing fair compensation and a trusted marketplace while offering clients access to skilled writers for their storytelling needs.
 
 
 ## Features
@@ -70,6 +68,7 @@ Contributions are always welcome!
 
 3. Code Style: Adhere to the Prettier configuration.
 
+
 ## 🚀 Roadmap
 
 1. Implement blockchain-based payments and smart contracts.
@@ -79,8 +78,6 @@ Contributions are always welcome!
 3. Build a sleek and user-friendly interface for clients and ghostwriters.
 
 4. Enable detailed writer profiles and project reviews.
-
-
 
 
 ## Authors
