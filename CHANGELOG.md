@@ -43,7 +43,14 @@
 ### Improvements
 - Design changes
 
-## [1.0.0] 2021-04-02
-### Original Release
+## [1.0.0] 2025-02-23
+### Platform Re-Invation 
+- Restructured the platform from Nodejs backend to python 
+-- Using web3py rather than web3js 
 
-#
+
+### [1.0.1] 2025-02-03 
+### Updated Blog Listings Page --- Route-Decorator  (Blog_Listings)
+- url -- Blog_Listings 
+- parameters --- AccountAddress 
+

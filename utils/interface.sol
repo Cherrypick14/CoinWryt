@@ -116,3 +116,98 @@ struct Articles {
 }
 
 
+contract Escrow {  
+    address public buyer;  
+    address public seller;  
+    address public arbiter; // Fallback for disputes  
+    uint256 public amount; // Total amount in escrow  
+    uint256 public releaseTime; // Time limit for payment  
+    bool public isComplete;  
+
+    enum State { AWAITING_PAYMENT, FUNDED, COMPLETE, DISPUTED }  
+    State public state;  
+
+    event PaymentReceived(address payer, uint256 amount);  
+    event PaymentReleased(address payee, uint256 amount);  
+    event DisputeOpened(address disputer);  
+    event DisputeResolved(address winner);  
+
+    modifier onlyBuyer() {  
+        require(msg.sender == buyer, "Only the buyer can call this function");  
+        _;  
+    }  
+
+    modifier onlySeller() {  
+        require(msg.sender == seller, "Only the seller can call this function");  
+        _;  
+    }  
+
+    modifier onlyArbiter() {  
+        require(msg.sender == arbiter, "Only the arbiter can call this function");  
+        _;  
+    }  
+
+    modifier inState(State _state) {  
+        require(state == _state, "Invalid contract state");  
+        _;  
+    }  
+
+    constructor(address _seller, address _arbiter) {  
+        buyer = msg.sender;  
+        seller = _seller;  
+        arbiter = _arbiter;  
+        state = State.AWAITING_PAYMENT;  
+        isComplete = false;  
+    }  
+
+    function fund() external payable onlyBuyer inState(State.AWAITING_PAYMENT) {  
+        require(msg.value > 0, "Must send some ether");  
+        amount += msg.value;  
+        state = State.FUNDED;  
+
+        emit PaymentReceived(msg.sender, msg.value);  
+    }  
+
+    function releasePayment() external onlyBuyer inState(State.FUNDED) {  
+        require(!isComplete, "Payment already released.");  
+        require(amount > 0, "No funds to release");  
+
+        (bool success, ) = seller.call{value: amount}("");  
+        require(success, "Failed to send Ether");  
+
+        isComplete = true;  
+        state = State.COMPLETE;  
+
+        emit PaymentReleased(seller, amount);  
+    }  
+
+    function openDispute() external inState(State.FUNDED) {  
+        require(msg.sender == buyer || msg.sender == seller, "Only buyer or seller can open a dispute");  
+        state = State.DISPUTED;  
+
+        emit DisputeOpened(msg.sender);  
+    }  
+
+    function resolveDispute(address winner) external onlyArbiter inState(State.DISPUTED) {  
+        require(winner == buyer || winner == seller, "Winner must be buyer or seller");  
+
+        uint256 finalAmount = amount;  
+        amount = 0; // Avoid re-entrancy  
+
+        (bool success, ) = winner.call{value: finalAmount}("");  
+        require(success, "Failed to send Ether");  
+
+        isComplete = true;  
+        state = State.COMPLETE;  
+
+        emit DisputeResolved(winner);  
+    }  
+
+    function getContractState() external view returns (State) {  
+        return state;  
+    }  
+
+    receive() external payable {  
+        fund();  
+    }  
+}  

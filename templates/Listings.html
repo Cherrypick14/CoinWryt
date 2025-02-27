@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CoinWryt</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.1/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/dash.css')}}">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/buzzfeed.css')}}">
+
+</head>
+<style>
+
+.col-12{ 
+  width:100%;
+}
+
+
+.col-lg-8{
+  width:80%;
+  float:inline-start;
+}
+
+.col-lg-4{
+  width:20%;
+  float:inline-start;
+}
+.post-img {
+  width: 500px;
+}
+
+.containerx {
+  background-color: black;
+  border-radius: 20px;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.post-img {
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+.author-img {
+  height: 40px;
+  width: 40px;
+  display: inline;
+  border-radius: 50%;
+  background-image: url("https://1000logos.net/wp-content/uploads/2017/05/NFL-Logo-1983.png");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.authors {
+  margin-left: 15px;
+}
+
+svg {
+  transition: fill 0.3s ease;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.heart:hover {
+  fill: red;
+}
+
+.interactions {
+  margin-top: 15px;
+}
+
+.like-count {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.description {
+  text-wrap: pretty;
+  max-width: 500px;
+}
+
+input {
+  width: 100%;
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
+  outline: none;
+
+  font-size: 16px;
+}
+
+#custom-comment {
+  color: lightgrey;
+  text-wrap: wrap;
+  max-width: 500px;
+}
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<body class="light-theme dark-theme">
+  <header>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="header-inner d-flex justify-content-between align-items-center">
+          <a class="navbar-brand flex-shrink-0" href="#"><img src="https://yudiz.com/codepen/nft-store/logo-icon.svg" alt="logo-image" class="img-fluid">
+           CoinWryt</a>
+          <div class="header-content d-flex align-items-center justify-content-end">
+            <form class="d-flex justify-content-end align-items-center">
+              <div class="search-icon">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              </div>
+              <label class="switch flex-shrink-0 mb-0">
+                <input id="checkbox" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </form>
+            <a herf="#" class="profile"><img src="https://yudiz.com/codepen/nft-store/user-pic1.svg" alt="user-image"> Cheryll Owalla </a>
+            <a href="#" class="notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
+
+          </div>
+        </div>
+        <button class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <div class="nft-store">
+    <div class="container-fluid">
+      <div class="nft-store-inner d-flex">
+        <div class="menu-links">
+          <ul>
+            <li class="nav-item active">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-home" aria-hidden="true"></i>
+                <span>Home</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                <span>Market</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                <span>Favourite</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>Collections</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-fire" aria-hidden="true"></i>
+                <span>Trending</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
+                <span>Featured</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span>Purchased</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-cog" aria-hidden="true"></i>
+                <span>Settings</span></a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="nft-store-content">
+          <div class="write-post-container">
+            <div class="user-profile">
+                <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/profile-pic.png?raw=true" alt="">
+                <div>
+                    <p>John singh</p>
+                    <small>
+                        Public
+                        <i class="fas fa-caret-down"></i>
+                    </small>
+                </div>
+            </div>
+            <div class="post-input-conatiner">
+                <textarea rows="3" placeholder="What's you mind, Jhon?"></textarea>
+                <div class="add-post-links">
+                    <a href="#"><img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/live-video.png?raw=true" alt="">Live Video</a>
+                    <a href="#"><img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/photo.png?raw=true" alt="">Phot/Video</a>
+                    <a href="#"><img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/feeling.png?raw=true" alt="">Feeling/Activity</a>
+                </div>
+            </div>
+        </div>
+         <Sector Analysis>
+            <!-- partial:index.partial.html -->
+<body class="bg-slate-100">
+
+        <div class="main-content">
+            <div class="story-gallery">
+                <div class="story story-1">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/video.png?raw=true" alt="post-story">
+                    <p>Post Story</p>
+                </div>
+                <div class="story story-2">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/member-4.png?raw=true" alt="post-story">
+                    <p>Ben Taylor</p>
+                </div>
+                <div class="story story-3">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/post-story-1%20(3).jpg?raw=true" alt="post-story">
+                    <p>Sam Jason</p>
+                </div>
+                <div class="story story-4">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/animated-1.png?raw=true" alt="post-story">
+                    <p>Ron Weasley</p>
+                </div>
+                <div class="story story-5">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/post-story-3.jpg?raw=true" alt="post-story">
+                    <p>steve So</p>
+                </div>
+            </div>
+
+           <div class="col-12">
+            <div class="col-lg-8">
+              <div class="container">
+                <div class="header">
+                  <img class="author-img" src="" />
+                  <p class="authors">
+                    <b>
+                      NFL, UW Huskies
+                    </b>
+                  </p>
+                </div>
+                <img class="post-img" src="https://images.seattletimes.com/wp-content/uploads/2023/10/10142023_impressions_195106.jpg?d=780x572" />
+              
+                <div class="interactions">
+                  <svg onclick="likeImage()" class="heart" aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                    <title>Like</title>
+                    <path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path>
+                  </svg>
+              
+                  <svg class="comment" aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                    <title>Comment</title>
+                    <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="like-count"><b><span id="like-number"></span> likes</b></p>
+                </div>
+                <div>
+                  <p class="description"><b>NFL</b> The Huskies won the game against the Texas Longhorns! Congrats to University of Washington!</p>
+                </div>
+              
+                <div class="header">
+                  <input id="user-comment" type="text" placeholder="Add comment..." />
+                  <div onclick="createUserComment()">
+                    <svg aria-label="Share Post" class="x1lliihq x1n2onr6 x1roi4f4" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                      <title>Share Post</title>
+                      <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line>
+                      <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
+                    </svg>
+                  </div>
+                </div>
+              
+                <div id="custom-comment">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              Sidebar 
+              <div class="right-sidebar">
+                <div class="sidebar-title">
+                    <h4>
+                        Events
+                    </h4>
+                    <a href="#">
+                        See All
+                    </a>
+                </div>
+                <div class="event">
+                    <div class="left-event">
+                        <h3>18</h3>
+                        <span>March</span>
+                    </div>
+                    <div class="right-event">
+                        <h4>Social Media</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Willson Teck Park</p>
+                        <a href="#">More Info</a>
+                    </div>
+                </div>
+                <div class="event">
+                    <div class="left-event">
+                        <h3>22</h3>
+                        <span>March</span>
+                    </div>
+                    <div class="right-event">
+                        <h4>Mobile Marketimg</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Willson Teck Park</p>
+                        <a href="#">More Info</a>
+                    </div>
+                </div>
+                <div class="sidebar-title">
+                    <h4>
+                        Advertisement
+                    </h4>
+                    <a href="#">
+                        Close
+                    </a>
+                </div>
+                <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/advertisement.png?raw=true" alt="advt" class="sidebar-ads">
+                <div class="sidebar-title">
+                    <h4>
+                        Conversation
+                    </h4>
+                    <a href="#">
+                        Hide Chat
+                    </a>
+                </div>
+                <div class="online-list">
+                    <div class="online">
+                        <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/member-2.png?raw=true" alt="">
+                    </div>
+                    <p>Roy Clark</p>
+                </div>
+                <div class="online-list">
+                    <div class="online">
+                        <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/member-3.png?raw=true" alt="">
+                    </div>
+                    <p>Sieena Watson</p>
+                </div>
+                <div class="online-list">
+                    <div class="online">
+                        <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/member-4.png?raw=true" alt="">
+                    </div>
+                    <p>Ben Taylor</p>
+                </div>
+            </div>
+            </div>
+           
+          </div>
+
+    <!-- End Of Block -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js'></script>
+<script src="{{url_for('static' , filename='assets/js/dashInterface.js')}}"></script>
+
+
+
+</body>
+</html>

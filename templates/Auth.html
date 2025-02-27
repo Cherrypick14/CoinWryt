@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Login Page With Frosted Glass Effect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&amp;display=swap'>
-  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/style.css')}}">
 
 </head>
 <body>
@@ -30,7 +30,7 @@
 		</svg>
 		<div class="login__cta">
 			<div class="login__cta-text">
-        <h1 style="text-align:center;"> CreOwn </h1>
+        <h1 style="text-align:center;"> CoinWryt </h1>
 				<h2>Your data is not for sale </h2>
 				<p> Decentralized Marketplace: Built on blockchain for transparency and security. </p>
 			</div>
@@ -77,7 +77,7 @@
 </form>
 <!-- partial -->
   <script  src="./script.js"></script>
-  <script src="javascripts/index.js"></script>
-  <script src="javascripts/helpers.js"></script>
+  <script src="{{url_for('static' , filename='Sources/assets/js/index.js')}}"></script>
+  <script src="{{url_for('static' , filename='Sources/assets/js/helpers.js')}}"></script>
 </body>
 </html>
