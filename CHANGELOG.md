@@ -54,3 +54,14 @@
 - url -- Blog_Listings 
 - parameters --- AccountAddress 
 
+
+### OFFICIAL BLOCK #######
+### [1.0.1] 2025-27-02 -- 14:18 PM 
+-- CWDT -- Offchain storage implementation as a TRD database 
+-- Has 2 Controllers  
+        ### COntrolllers ### 
+        -- CWDT_COntrolller -- Modifies , Manages data in/out of the database 
+        -- Offchain_Compass -- Initializer scriot for setting up the DB 
+                            -- Confirm by running check on folder '~/database/CWDTDB.db ? ' 
+                            -- Recreate on lost + fix on broken journals thru MIT intergration 
+
