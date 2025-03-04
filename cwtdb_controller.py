@@ -62,7 +62,66 @@ def Print_All_Stories():
     return DatabaseFeed
 
 
+# Dashboard Intrinsic Methods For Handling Common Dat  
 
+# Manually Retrieves Consumer ID from Db as doing it in a pool return discombubulated datav 
+def Render_Consumer_ID(Bindings):
+    """
+    Query all DataItem in the Clientelle_Pool ss table
+    :param conn: the Connection object
+    :return:
+    """
+    
+    conn = create_connection(DatabaseURL)
+    cur = conn.cursor()
+    cur.execute("SELECT CustomID FROM CommunityCharter  WHERE PAT = ? ", (Bindings,))
+
+    DataItem = cur.fetchall()
+
+    for bit in DataItem:
+        print(bit)
+    return str(DataItem).strip("[]()'',")
+
+
+
+
+# Returns Consumer Username from Db thrust 
+def Render_Consumer_Username(Bindings):
+    """
+    Query all DataItem in the Clientelle_Pool ss table
+    :param conn: the Connection object
+    :return:
+    """
+    
+    conn = create_connection(DatabaseURL)
+    cur = conn.cursor()
+    cur.execute("SELECT Username FROM CommunityCharter  WHERE PAT = ? ", (Bindings,))
+
+    DataItem = cur.fetchall()
+
+    for bit in DataItem:
+        print(bit)
+    return str(DataItem).strip("[]()'',")
+
+
+
+
+def Render_Profile_Avatar(Bindings):
+    """
+    Query all DataItem in the Clientelle_Pool ss table
+    :param conn: the Connection object
+    :return:
+    """
+    
+    conn = create_connection(DatabaseURL)
+    cur = conn.cursor()
+    cur.execute("SELECT Avatar FROM CommunityCharter  WHERE PAT = ? ", (Bindings,))
+
+    DataItem = cur.fetchall()
+
+    for bit in DataItem:
+        print(bit)
+    return str(DataItem).strip("[]()'',")
 
 
 ### Cummunity_CHarter Block 
@@ -91,6 +150,25 @@ def Create_Account(Property):
 
 
 ## Return Available User Profiles 
+
+
+
+def Confirm_Acc_Visibility(Bindings):
+    """
+    Query all DataItem in the Clientelle_Pool ss table
+    :param conn: the Connection object
+    :return:
+    """
+    
+    conn = create_connection(DatabaseURL)
+    cur = conn.cursor()
+    cur.execute("SELECT CustomID FROM CommunityCharter  WHERE PAT = ? ", (Bindings,))
+
+    DataItem = cur.fetchall()
+
+    for bit in DataItem:
+        print(bit)
+    return DataItem
 
 
 
@@ -167,5 +245,5 @@ def Render_Comments_Per_Article(Bindings ):
 #Test_Account  = ["#RITRRIIR" , "0xd48e84bda5351d516b9cd9361fea27b086a93188" , "ramp.png" ,  "DeathRawl"  , "2025/27/02" , "3:14:pm" ]
 #Create_Account(Test_Account)
 
-Print_All_Stories()
-Print_Aggragate_Profiles()
+#Print_All_Stories()
+#Print_Aggragate_Profiles()

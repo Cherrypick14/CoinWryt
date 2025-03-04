@@ -65,3 +65,36 @@
                             -- Confirm by running check on folder '~/database/CWDTDB.db ? ' 
                             -- Recreate on lost + fix on broken journals thru MIT intergration 
 
+
+### [ 1.0.1:1] 2025-02-03 
+### Solved Multiple File Upload by Utilitilising request.files.getlist() 
+-- Previously Accesssing our File Pointer ( File ) we only used request.file.get 
+-- This only returned a copy of one item to the System 
+-- Therefore other files were disposed off and only the primary selectio id filtered thru 
+
+        -- To combat this we later introduced request.files.getlist()
+        -- Which recevies a file pointer attr and return the file objects in list form 
+        -- Follow up url https://www.geeksforgeeks.org/upload-multiple-files-with-flask/ 
+        -- Currentlyour nation is asfollows 
+        
+        \ - Uploadmultiple Files & Receive them thru request.files.getlist(File)
+        \-  Save each file to disk using a for loop with the condstructs 
+                \- File.save(NotationSignature.filename) 
+                \- Notation Signature is the identifier for 1st the object in the for loop
+                \- The function takes the File attribute that was supplied at input 
+
+
+
+### Authentication System Setup 
+## Preventing Double Admission 
+## Verifying account details before throwing Dashboard
+
+
+### [1.0.1.2] 2025-04-03
+### Securing Rentrancy Guards  
+ - Confirming Account Existense ( Wallet Based) Before applying filtering sec teq
+ - If exists(accounts)  
+        Update Last Logon and centric sys details 
+        Grab customID's and fly  
+
+        

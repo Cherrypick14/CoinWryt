@@ -3,6 +3,7 @@ import time , string , random , asyncio
 from flask import *
 import uuid , os
 
+app=Flask(__name__)
 
 
 
@@ -58,9 +59,8 @@ def Construct_Int_Address(size, chars=string.digits) -> str:
 
 
 
-# A Function To Convert Data Into Serialised json 
-# Params :  Path -- System Storage Path , Filename -- Name Of File , Data  -- Data Block To Be Written Into The File
-# Returns A File object On Success 
+# A Function return profile avatars based on filepath   
+# Fetches collectives on the said path and returns the length index after passing it random.randrange 
 
 
 # A Color Visulaization Protocol 

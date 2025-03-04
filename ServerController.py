@@ -38,20 +38,66 @@ def not_found(error):
 
 class Authentication_Profile(View):
    methods = ['GET' , 'POST']  
+   def Create_Profile_Avatar(self) -> list :
+    FixedPath = os.path.join(app.static_folder , "Sources" , "assets" , "img" ,  "Avatars" ) 
+    if(FixedPath):
+        Collectives  = list(os.listdir(FixedPath))
+        #Remember to check for empty randrange here   as getting nill collectives 
+        #throws error :  empty rand range in executor ::   
+
+        RangeSlice = random.randrange(0,len(Collectives))  
+        return Collectives[RangeSlice]
+    else: 
+        return "Couldnt Generate Profile Image "
+
+
    def dispatch_request(self) -> str :
         CompanyID = "CoinWryt"
+        User_Account_Data =  []
         if request.method == 'GET':
             return render_template('Auth.html' , CompanyID = CompanyID  )
         elif request.method == 'POST': 
-            AccountAddress = request.form.get('Address')
+            Address = request.form.get('WalletAddress')
+            Username = request.form.get('CustomName')
+            # Minor ommissions 
+            if not Username: 
+                Username = "Unknown"
+            # We need to check if the said address erxists offchain 
+            # If so , then this a validly created account under Coinwryt 
+            # Else throw off a UNI error and enforce account abtstraction 
+            if(CWTInterface.Confirm_Acc_Visibility(Address)):
+                # Account Address Exists Offchain 
+                # Update minor details on chain 
+                return redirect(url_for('Blogs' ,  AccountAddress = Address ))
+            else:
+                # Register Wallet Account Activities  
+                # Creation Of accounts happen here   
+                print("Unknown Wallet Construct Found")
+
+                for Datafeed in base.Construct_String_Address(10) , Address , self.Create_Profile_Avatar() , Username , base.Space_Time_Generator("DateStr") , base.Space_Time_Generator("TimeInt") : 
+                    User_Account_Data.append(Datafeed) 
+                
+
+                if(len(User_Account_Data) == int(6)):
+                    # Safe to push data to the database   
+                    # Call to communitycharter thru createaccount() 
+                    CWTInterface.Create_Account(User_Account_Data)
+                else: 
+                    # You could either dump them to cookies or json 
+                    # Then upon page loads check for necessaryy storage cookies  
+
+                    print("Unable to save details to account ")
+                return redirect(url_for('Blogs' ,  AccountAddress = User_Account_Data[0]))
+
+
+
+                # EOF :  Data pump >> CommunityCharter 
             # Subtle check for Account Address 
             # Remove this once we go live : only for testnet 
-            if not AccountAddress : 
-                AccountAddress = "0xd48e84bda5351d516b9cd9361fea27b086a93188/"
+           
             # Return requested profile thru client connect 
-            return redirect(url_for('Blogs' , CompanyID = CompanyID  , AccountAddress = AccountAddress ))
-        else:
-            return render_template('Auth.html' , CompanyID = CompanyID  )
+            
+        return render_template('Auth.html' , CompanyID = CompanyID  )
         
 
 
@@ -67,7 +113,19 @@ class Company_Display_Profile(View):
         
 class Blog_List(View): 
     methods = ['GET'] 
+      
+
     def dispatch_request(self , AccountAddress ) -> str : 
+        # A universallly accessible time specifier 
+        System_Timestamp = base.Space_Time_Generator("Mutate")
+        # Retreiving Account Details for the said user 
+        # Compacted in List based form 
+    
+        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddress)
+        Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
+        Access_Username = CWTInterface.Render_Consumer_Username (AccountAddress)
+
+    
         # Retreiving All Available stories offchain 
         Article_Listings = CWTInterface.Print_All_Stories()
         # Retreiving All Available Users offchain  
@@ -78,12 +136,12 @@ class Blog_List(View):
         # laveraging the comments_per_article db-impl at the same time 
 
         def Render_Article_Commentary(ArticleID):
-            NoComments = " No comments exist relating to the content - " + str(ArticleID) 
+            
             if(CWTInterface.Render_Comments_Per_Article(ArticleID)):
                 Commentary = CWTInterface.Render_Comments_Per_Article(ArticleID) 
                 return Commentary
             else:
-                return NoComments
+                return None 
 
         # Reendering Article Related Pictures Available in the system 
         # This returns a list of items available in a set folder  
@@ -93,7 +151,7 @@ class Blog_List(View):
         def Return_StorySets(ArticleID): 
             if(ArticleID):
                 FixedPath =  os.path.join(app.static_folder , StorySets , ArticleID ) 
-            print(os.listdir(FixedPath))
+            #print(os.listdir(FixedPath))
             return os.listdir(FixedPath)
 
 
@@ -105,12 +163,12 @@ class Blog_List(View):
 
         def Render_Board_Adverts(): 
             FixedPath =  os.path.join(app.static_folder , "Sources" , "assets" , "img" ,  "Advertisements") 
-            print(os.listdir(FixedPath))
+            #print(os.listdir(FixedPath))
             return os.listdir(FixedPath)
 
 
 
-
+        Render_Adverts = Render_Board_Adverts()
 
         Article_Volume = int(0)
         if not (Article_Listings):
@@ -124,9 +182,13 @@ class Blog_List(View):
             Account_Volume = len(Account_Profiles)
         
 
-        return render_template('Listings.html' , AccountAddress = AccountAddress , Article_Listings = Article_Listings  , Article_Volume = Article_Volume , Account_Profiles = Account_Profiles  , Account_Volume = Account_Volume , Render_Article_Commentary = Render_Article_Commentary  , Return_StorySets = Return_StorySets , Render_Board_Adverts = Render_Board_Adverts)
+        return render_template('Listings.html' , AccountAddress = AccountAddress , Article_Listings = Article_Listings  , Article_Volume = Article_Volume , Account_Profiles = Account_Profiles  , Account_Volume = Account_Volume , Render_Article_Commentary = Render_Article_Commentary  , Return_StorySets = Return_StorySets , Render_Adverts = Render_Adverts , System_Timestamp = System_Timestamp , Custom_ID = Custom_ID , Access_Username  = Access_Username  , Profile_Avatar = Profile_Avatar  )
 
 
+@app.route("/")
+def LandingPage():
+    CompanyID = "CoinWryt"
+    return render_template("Home.html" , CompanyID = CompanyID)
 
 
 @app.route("/Comments/<string:AcctAddress>/<string:ArticleID>/" , methods=["POST" , "GET"])
@@ -151,8 +213,8 @@ def Create_Story_Mode(AccountAddr):
         Datapoint = []
         CategoryLine = request.form.get("Category")
         SubjectMatter = request.form.get("Subject")
-        file = request.files['MediaStories']
-        print(file.filename)
+        files = request.files.getlist('MediaStories')
+        #print(file.filename)
         # Test for SubjectMatter 
         #print("This is now called" , SubjectMatter)
         if(SubjectMatter):
@@ -175,8 +237,9 @@ def Create_Story_Mode(AccountAddr):
             # Critical Data obtn from Dpoint[0] 
 
                 os.mkdir(os.path.join(app.static_folder , "Sources" , "assets" , "img" , "Stories" , Datapoint[0]))
-                print("Physicall path" , os.path.join(app.static_folder , "Sources" , "assets" , "img" , "Stories" , Datapoint[0]))
-                file.save(os.path.join(app.config['StorySets'] , Datapoint[0] , file.filename ))
+                #print("Physicall path" , os.path.join(app.static_folder , "Sources" , "assets" , "img" , "Stories" , Datapoint[0]))
+                for file in files : 
+                    file.save(os.path.join(app.config['StorySets'] , Datapoint[0] , file.filename ))
 
             # This means that our story was created successfully notify the user 
                 return redirect(url_for('Blogs' , AccountAddress = AccountAddr))

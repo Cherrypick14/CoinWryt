@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title> {{CompanyID}}  For GhostWriters  </title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{{url_for('static' , filename='Sources/assets/img/logo-nb.png')}}" rel="icon">
+  <link href="{{url_for('static' , filename='Sources/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{url_for('static' , filename='Sources/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static' , filename='Sources/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{url_for('static' , filename='Sources/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{url_for('static' , filename='Sources/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static' , filename='Sources/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{url_for('static' , filename='Sources/assets/css/extended.css')}}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: {{CompanyID}} 
+  * Template URL: https://{{CompanyID}} .onrender.com/
+  * Updated: Jan 23 with Bootstrap v5.3.3
+  * Author: Denso-Labs.com
+  * License: https://Denso-Labs.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+         <img src="{{url_for('static' , filename='Sources/assets/img/logo-nb.png')}}" alt=""> 
+        <h1 class="sitename"> {{CompanyID}}  </h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li class="dropdown"><a href="#"><span> Services </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#"> Monetizations </a></li>
+              <li class="dropdown"><a href="#"><span> Investor Space </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#"> Invest in {{CompanyID}}  </a></li>
+                  <li><a href="#"> Request Appointment</a></li>
+                 
+                </ul>
+              </li>
+              <li><a href="#"> User Ownership </a></li>
+             
+              <li><a href="#"> Privacy and Security </a></li>
+             
+            </ul>
+          </li>
+          <li><a href="#contact">Contact Us </a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="{{url_for('Auth')}}">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+              <div class="company-badge mb-4">
+                <i class="bi bi-gear-fill me-2"></i>
+                Working for your success
+              </div>
+
+              <h1 class="mb-4">
+                {{CompanyID}}  <br>
+                Market Place <br>
+                <span class="accent-text"> For Ghost Writers </span>
+              </h1>
+
+              <p class="mb-4 mb-md-5">
+                 The decentralized platform that empowers ghostwriters by providing fair 
+                compensation and a trusted marketplace while offering clients access to skilled writers
+                 for their storytelling needs.
+
+              </p>
+
+              <div class="hero-buttons">
+                <a href="{{url_for('Auth')}}" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
+                  <i class="bi bi-play-circle me-1"></i>
+                  Play Video
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+              <img src="{{url_for('static' , filename='Sources/assets/img/illustration-1.jpg')}}" alt="Hero Image" class="img-fluid">
+
+              <div class="customers-badge">
+                <div class="customer-avatars">
+                  <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-1.png')}}" alt="Customer 1" class="avatar">
+                  <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-2.png')}}" alt="Customer 2" class="avatar">
+                  <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-3.png')}}" alt="Customer 3" class="avatar">
+                  <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-4.png')}}" alt="Customer 4" class="avatar">
+                  <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-5.png')}}" alt="Customer 5" class="avatar">
+                  <span class="avatar more">12+</span>
+                </div>
+                <p class="mb-0 mt-2 "> With over 30+ artists and creator in deck , what are you waiting for . Roll with {{CompanyID}}  .</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-4 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div class="stat-content">
+                <h4>1x Won Awards</h4>
+                <p class="mb-0"> 2<sup> nd </sup> runners up in the 2025 Webby Awards </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-briefcase"></i>
+              </div>
+              <div class="stat-content">
+                <h4> 33 Authors </h4>
+                <p class="mb-0"> On board with CoinWryt </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-graph-up"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Over 20,000 Ksh </h4>
+                <p class="mb-0"> Market Payment disposals</p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center justify-content-between">
+
+          <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
+            <span class="about-meta">WHAT WE OFFER</span>
+            <h2 class="about-title"> Our decentralized market place will lead you to the fore front  </h2>
+            <p class="about-description">In essence, these platforms empower creators and users by providing tools to engage without centralized control, enhancing censorship free  innovation in the content creation landscape.</p>
+
+            <div class="row feature-list-wrapper">
+              <!-- Features -->
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check-circle-fill"></i> User ownership </li>
+                  <li><i class="bi bi-check-circle-fill"></i> Monetization </li>
+                  <li><i class="bi bi-check-circle-fill"></i> Community based Governance</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check-circle-fill"></i> Interoperability </li>
+                  <li><i class="bi bi-check-circle-fill"></i> Transparency</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Privacy and Security </li>
+                </ul>
+              </div>
+              <!-- Featurea -->
+            </div>
+
+            <div class="info-wrapper">
+              <!-- Author's Deck -->
+              <div class="row gy-4">
+                    <!-- Author Lead -->
+                <div class="col-md-6 align-items-center">
+                  <div class="profile d-flex align-items-center gap-3">
+                    <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-3.png')}}" alt="CEO Profile" class="profile-image">
+                    <div>
+                      <h4 class="profile-name"> Cheryll Owall </h4>
+                      <p class="profile-position"> CTO &amp; DevOps</p>
+                    </div>
+                  </div>
+                </div>
+                    <!-- EOF : Author Lead -->
+                    <!-- Author 2 -->
+                <div class="col-md-6">
+                  <div class="profile d-flex align-items-center gap-3">
+                    <img src="{{url_for('static' , filename='Sources/assets/img/Avatar-1.png')}}" alt="CEO Profile" class="profile-image">
+                    <div>
+                      <h4 class="profile-name"> Clyde Javis </h4>
+                      <p class="profile-position"> Engineer &amp; DevOps </p>
+                    </div>
+                  </div>
+                </div>
+                    <!-- EOF :Author 2 -->
+               
+                <div class="col-lg-10">
+                  <div class="contact-info d-flex align-items-center gap-2">
+                    <i class="bi bi-telephone-fill"></i>
+                    <div>
+                      <p class="contact-label"> Reach us @ any time thru our office number</p>
+                      <p class="contact-number"> +254 750880802 | +254 741371429 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Author EOF -->
+            </div>
+          </div>
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="image-wrapper">
+              <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                <img src="{{url_for('static' , filename='Sources/assets/img/writes.jpg')}}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                <img src="{{url_for('static' , filename='Sources/assets/img/clip.jpg')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
+              </div>
+              <div class="experience-badge floating">
+                <h3> with 1+ <span>Years</span></h3>
+                <p>Of experience in decentralized finance .</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p> Get to know what makes us tick ? </p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="d-flex justify-content-center">
+
+          <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+
+            <li class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                <h4> Ownership </h4>
+              </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+                <h4> Monetization </h4>
+              </a><!-- End tab nav item -->
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                <h4> Censorship </h4>
+              </a>
+            </li><!-- End tab nav item -->
+
+          </ul>
+
+        </div>
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show" id="features-tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3> Ownership & Control </h3>
+                <p class="fst-italic">{{CompanyID}}  operates on a blockchain or peer-to-peer network of computers. Users engage in transactions directly with one another rather than relying on a central authority to facilitate them.
+                
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span> System Reliability : Decentralized networks are more resilient to outages since they operate on multiple nodes, making the platform less vulnerable to single points of failure..</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Data Control: Users control their data and its use, as opposed to centralized platforms that often exploit user data for profit.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>User Ownership:  Content creators retain full ownership of their work, which means they can profit from their content without intermediaries taking a large chunks of the income .</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{url_for('static' , filename='Sources/assets/img/features-illustration-1.webp')}}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+          <div class="tab-pane fade" id="features-tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3>Transparency & Monetization </h3>
+                <p class="fst-italic">
+                 The ability to transact without middlemen and at clear cost gives creators a chance to shape their profit margins through a publicly verifiable database.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span> Direct Payments: Creators can receive payments directly from fans through cryptocurrencies or tokens, avoiding traditional payment gateways that charge fees. </span></li>
+                  <li><i class="bi bi-check2-all"></i> <span> Token Economy: Many platforms use their own tokens for transactions, rewards, or incentivizing user engagement.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span> Transparency: All transactions and processes are recorded on a blockchain, making them publicly verifiable .</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span> Reduced Transaction Vulnerability: With no single point of failure, decentralized networks are less prone to cyberattacks.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{url_for('static' , filename='Sources/assets/img/features-illustration-2.webp')}}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+          <div class="tab-pane fade" id="features-tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                <h3> Censorship Resistance </h3>
+                <p class="fst-italic">
+                  Decentralized platforms are less susceptible to censorship, allowing diverse voices and viewpoints to be shared without fear of suppression
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span> Free Speech: Decentralized platforms are less susceptible to censorship, allowing diverse voices and viewpoints to be shared without fear of suppression. </span></li>
+                  <li><i class="bi bi-check2-all"></i> <span> Distributed Moderation: Content moderation is often community-driven or algorithmic, reducing the potential for biased censorship.</span></li>
+                 
+                </ul>
+               
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{url_for('static' , filename='Sources/assets/img/features-illustration-3.webp')}}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End tab content item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Features Cards Section -->
+    <section id="features-cards" class="features-cards section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="feature-box orange">
+              <i class="bi bi-award"></i>
+              <h4>Community Governance</h4>
+              <p> Users often have a say in platform decisions through decentralized governance models, allowing them to vote on changes or improvements. </p>
+            </div>
+          </div><!-- End Feature Borx-->
+
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="feature-box blue">
+              <i class="bi bi-patch-check"></i>
+              <h4>Privacy & Anonymity </h4>
+              <p> Many decentralized platforms prioritize user anonymity, allowing creators to operate without revealing personal information. </p>
+            </div>
+          </div><!-- End Feature Borx-->
+
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="feature-box green">
+              <i class="bi bi-sunrise"></i>
+              <h4> Content Discovery </h4>
+              <p> Content isn't solely dependent on views or likes, promoting a diverse range of creators. </p>
+            </div>
+          </div><!-- End Feature Borx-->
+
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="feature-box red">
+              <i class="bi bi-shield-check"></i>
+              <h4> NFT Intergration </h4>
+              <p> Non-fungible tokens (NFTs) can be used to represent ownership of specific content, enabling new forms of monetization. </p>
+            </div>
+          </div><!-- End Feature Borx-->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Cards Section -->
+
+    <!-- Features 2 Section -->
+    <section id="features-2" class="features-2 section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-4">
+
+            <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
+              <div class="d-flex align-items-center justify-content-end gap-4">
+                <div class="feature-content">
+                  <h3> Accessibility </h3>
+                  <p> DeFi platforms are generally open to anyone with an internet connection, removing barriers such as geographic restrictions, income requirements, or credit checks. </p>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-display"></i>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
+              <div class="d-flex align-items-center justify-content-end gap-4">
+                <div class="feature-content">
+                  <h3>Control Over Finance </h3>
+                  <p> Users retain full control of their funds, 
+                    using their wallets instead of relying on intermediaries like banks or exchanges.
+                   .</p>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-feather"></i>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
+              <div class="d-flex align-items-center justify-content-end gap-4">
+                <div class="feature-content">
+                  <h3> Transparency </h3>
+                  <p> All transactions are recorded on the blockchain, 
+                    providing a verifiable and transparent audit trail. </p>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-eye"></i>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+          </div>
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="phone-mockup text-center">
+              <img src="{{url_for('static' , filename='Sources/assets/img/Screen2.png')}}" alt="Phone Mockup" class="img-fluid">
+            </div>
+          </div><!-- End Phone Mockup -->
+
+          <div class="col-lg-4">
+
+            <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
+              <div class="d-flex align-items-center gap-4">
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-code-square"></i>
+                </div>
+                <div class="feature-content">
+                  <h3> Earning Opportunities </h3>
+                  <p>  Readers/Participants earn tokens for providing liquidity to decentralized exchanges (DEX)  </p>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
+              <div class="d-flex align-items-center gap-4">
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-phone"></i>
+                </div>
+                <div class="feature-content">
+                  <h3> Censorship Resistance </h3>
+                  <p> DeFi platforms are less susceptible to government 
+                    censorship or control, promoting financial sovereignty. </p>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
+              <div class="d-flex align-items-center gap-4">
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-browser-chrome"></i>
+                </div>
+                <div class="feature-content">
+                  <h3> Innovation </h3>
+                  <p>  DeFi drives innovation in financial services,
+                     with new products and services emerging rapidly, 
+                    often more adaptable to users’ needs</p>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Features 2 Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row content justify-content-center align-items-center position-relative">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="display-4 mb-4"> Join the Blockchain Revolution Today! </h2>
+            <p class="mb-4"> Unlock the future of finance and technology by embracing blockchain. Whether you're a developer, entrepreneur, or enthusiast, now is the time to get involved. </p>
+            <a href="#" class="btn btn-cta">Call To Action</a>
+          </div>
+
+          <!-- Abstract Background Elements -->
+          <div class="shape shape-1">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <path d="M47.1,-57.1C59.9,-45.6,68.5,-28.9,71.4,-10.9C74.2,7.1,71.3,26.3,61.5,41.1C51.7,55.9,35,66.2,16.9,69.2C-1.3,72.2,-21,67.8,-36.9,57.9C-52.8,48,-64.9,32.6,-69.1,15.1C-73.3,-2.4,-69.5,-22,-59.4,-37.1C-49.3,-52.2,-32.8,-62.9,-15.7,-64.9C1.5,-67,34.3,-68.5,47.1,-57.1Z" transform="translate(100 100)"></path>
+            </svg>
+          </div>
+
+          <div class="shape shape-2">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <path d="M41.3,-49.1C54.4,-39.3,66.6,-27.2,71.1,-12.1C75.6,3,72.4,20.9,63.3,34.4C54.2,47.9,39.2,56.9,23.2,62.3C7.1,67.7,-10,69.4,-24.8,64.1C-39.7,58.8,-52.3,46.5,-60.1,31.5C-67.9,16.4,-70.9,-1.4,-66.3,-16.6C-61.8,-31.8,-49.7,-44.3,-36.3,-54C-22.9,-63.7,-8.2,-70.6,3.6,-75.1C15.4,-79.6,28.2,-58.9,41.3,-49.1Z" transform="translate(100 100)"></path>
+            </svg>
+          </div>
+
+          <!-- Dot Pattern Groups -->
+          <div class="dots dots-1">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+              </pattern>
+              <rect width="100" height="100" fill="url(#dot-pattern)"></rect>
+            </svg>
+          </div>
+
+          <div class="dots dots-2">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <pattern id="dot-pattern-2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+              </pattern>
+              <rect width="100" height="100" fill="url(#dot-pattern-2)"></rect>
+            </svg>
+          </div>
+
+          <div class="shape shape-3">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <path d="M43.3,-57.1C57.4,-46.5,71.1,-32.6,75.3,-16.2C79.5,0.2,74.2,19.1,65.1,35.3C56,51.5,43.1,65,27.4,71.7C11.7,78.4,-6.8,78.3,-23.9,72.4C-41,66.5,-56.7,54.8,-65.4,39.2C-74.1,23.6,-75.8,4,-71.7,-13.2C-67.6,-30.4,-57.7,-45.2,-44.3,-56.1C-30.9,-67,-15.5,-74,0.7,-74.9C16.8,-75.8,33.7,-70.7,43.3,-57.1Z" transform="translate(100 100)"></path>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="{{url_for('static' , filename='Sources/assets/img/clients/eth.jpg')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{url_for('static' , filename='Sources/assets/img/clients/Lisk.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{url_for('static' , filename='Sources/assets/img/clients/google.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{url_for('static' , filename='Sources/assets/img/clients/storj.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{url_for('static' , filename='Sources/assets/img/clients/denso.png')}}" class="img-fluid" alt=""></div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p> Customer endorsements of experiences.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-5">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-item">
+              <img src="{{url_for('static' , filename='Sources/assets/img/testimonials/tst-2.png')}}" class="testimonial-img" alt="">
+              <h3> Cheryll Owalla </h3>
+              <h4>Ceo &amp; Founder</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span> Today, we stand at the forefront of a new era in content creation and dissemination. Our blockchain-based article system is poised to revolutionize how articles are published, verified, and monetized. Here’s why this is a game changer: </span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-item">
+              <img src="{{url_for('static' , filename='Sources/assets/img/testimonials/tst-1.png')}}" class="testimonial-img" alt="">
+              <h3> Sarah Okinda  </h3>
+              <h4> Author | Content Creator </h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>  As a writer, I've struggled for years with copyright issues and earning fair compensation for my work. Since I started using this blockchain article publishing system, I can finally control my content and earn what I deserve. The transparency in ownership is a game-changer  </span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-item">
+              <img src="{{url_for('static' , filename='Sources/assets/img/testimonials/tst-4.png')}}" class="testimonial-img" alt="">
+              <h3> Clyde Javis </h3>
+              <h4> Lead Engineer  | DevOps   </h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span> From a technical standpoint, building this blockchain article publishing system was a true challenge and an opportunity. The architecture promotes not only security and reliability but sets a new standard for how content can be managed and monetized. Proud to be part of this revolution!" </span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="testimonial-item">
+              <img src="{{url_for('static' , filename='Sources/assets/img/testimonials/tst-3.png')}}" class="testimonial-img" alt="">
+              <h3> Gerald Makini  </h3>
+              <h4> Author | Content Creator  </h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span> through this platform has transformed how we manage submissions. The immutable record-keeping ensures that every author's contributions are well-documented and protected. It’s incredibly reassuring to know that we can track ownership and edits with complete certainty. </span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Clients</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+         
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hours Of Support</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p> Workers  </p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+  
+    <!-- Pricing Section -->
+   
+
+    <!-- Faq Section
+    <section class="faq-9 faq section light-background" id="faq">
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5" data-aos="fade-up">
+            <h2 class="faq-title">Have a question? Check out the FAQ</h2>
+            <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum.</p>
+            <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+              <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z" fill="currentColor"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+            <div class="faq-container">
+
+              <div class="faq-item faq-active">
+                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                <div class="faq-content">
+                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+
+              <div class="faq-item">
+                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                <div class="faq-content">
+                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
+                <div class="faq-content">
+                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
+                <div class="faq-content">
+                  <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  -->
+
+    <!-- Call To Action 2 Section -->
+    <section id="call-to-action-2" class="call-to-action-2 section dark-background">
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3> Investor Vector Space</h3>
+              <p> Dive into our comprehensive investment options designed for forward-thinking investors like you. Learn about our unique blockchain projects and their potential for high returns. </p>
+              <a class="cta-btn" href="#investorVector">Call To Action</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action 2 Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p> Feel free share something with us ? </p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-5">
+            <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+              <h3>Contact Info</h3>
+              <p> Push your request to the contact form aside | below to our active AI customer care agent  . We'll relay feedback at the earliest time possible  .</p>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div class="content">
+                  <h4> Business Address </h4>
+                  <p> 148 Technology Road .</p>
+                  <p> Kisumu , Ksm  40100</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div class="content">
+                  <h4> Active Contact Details </h4>
+                  <p> <span> +254 </span> 741371429 </p>
+                  <p> <span> +254 </span> 750880802 </p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div class="content">
+                  <h4>Email Address</h4>
+                  <p>coinwryt@gmail.com</p>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300" id="investorVector">
+              <h3>Get In Touch</h3>
+              <p> We'll get to it at the quickest time possible .</p>
+
+              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4">
+
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  </div>
+
+                  <div class="col-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  </div>
+
+                  <div class="col-12">
+                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  </div>
+
+                  <div class="col-12 text-center">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                    <button type="submit" class="btn" >Send Message</button>
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">{{CompanyID}} </span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p> 143 Technology road </p>
+            <p> Kisumu Ksm 40100 </p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+254 750880802 </span></p>
+            <p><strong>Email:</strong> <span>info@{{CompanyID}}.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+       
+        <div class="col-lg-3 col-md-4 footer-links">
+          <h4> Platform </h4>
+          <ul>
+            <li><a href="#"> Invest in {{CompanyID}}   </a></li>
+            <li><a href="#"> Inquiries </a></li>
+            <li><a href="#"> Complaints </a></li>
+            <li><a href="#"> Considerations </a></li>
+            <li><a href="#"> Licenses </a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-4 footer-links">
+          <h4> Principals </h4>
+          <ul>
+            <li><a href="#"> Ownership & Control </a></li>
+            <li><a href="#"> Zero Censorship </a></li>
+            <li><a href="#"> Privacy & Anonymity </a></li>
+            <li><a href="#"> Transparency & Reliability</a></li>
+            <li><a href="#"> Community Governance </a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">{{CompanyID}} </strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://{{CompanyID}} .onrender.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://denso.onrender.com/">Denso Labs</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{url_for('static' , filename='Sources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <script src="{{url_for('static' , filename='Sources/assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{url_for('static' , filename='Sources/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{url_for('static' , filename='Sources/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{url_for('static' , filename='Sources/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+
+  <!-- Main JS File -->
+  <script src="{{url_for('static' , filename='Sources/assets/js/Extended.js')}}"></script>
+  <script>
+    function sendEmail() {
+        Email.send({
+            Host: "ahoyaclyde@gmail.com",
+            Username: "ahoyaclyde@gmail.com",
+            Password: "blackathlon254",
+            To: 'densojavis@gmail.com',
+            From: "ahoyaclyde",
+            Subject: "Hello ",
+            Body: "This is a test email sent using SMTP.js"
+        })
+        .then(function (message) {
+            alert("Mail sent successfully") // Alert message on successful email delivery
+        });
+    }
+</script>
+</body>
+
+</html>

@@ -1,37 +1,67 @@
-// Initialise the page objects to interact with
-const ethereumButton = document.querySelector('.enableEthereumButton');
-const showAccount = document.querySelector('.showAccount');
-const showChainId = document.querySelector('.showChainId');
+window.userWalletAddress = null
+const connectWallet = document.getElementById('connectWallet')
+const walletAddress = document.getElementById('walletAddress')
+const walletBalance = document.getElementById('walletBalance')
 
-// Initialise the active account and chain id
-let activeAccount;
-let activeChainId;
 
-// Update the account and chain id when user clicks on button
-ethereumButton.addEventListener('click', () => {
-  getAccount();
-  getChainId();
-});
 
-// Get the account in the window object
-async function getAccount() {
-  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-  if (accounts.length === 0) {
-    // MetaMask is locked or the user has not connected any accounts
-    console.log('Please connect to MetaMask.');
-  } else if (accounts[0] !== activeAccount) {
-    activeAccount = accounts[0];
-    console.log(accounts[0]);
+function checkInstalled() {
+  if (typeof window.ethereum == 'undefined') {
+    connectWallet.innerText = 'MetaMask isnt installed, please install it'
+    connectWallet.classList.remove()
+    connectWallet.classList.add()
+    return false
   }
-  showAccount.innerHTML = activeAccount;
+  connectWallet.addEventListener('click', connectWalletwithMetaMask)
 }
 
-// Get the connected network chainId
-async function getChainId() {
-    activeChainId = await ethereum.request({ method: 'eth_chainId' });
-    showChainId.innerHTML = activeChainId;
+async function connectWalletwithMetaMask() {
+  const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+  .catch((e) => {
+  console.error(e.message)
+  return
+  })
+
+  if (!accounts) { return }
+
+  window.userWalletAddress = accounts[0]
+  walletAddress.value = window.userWalletAddress
+
+  connectWallet.innerText = 'Sign Out'
+  connectWallet.removeEventListener('click', connectWalletwithMetaMask)
+  setTimeout(() => {
+    connectWallet.addEventListener('click', signOutOfMetaMask)
+  }, 200)
+
 }
 
-// Update the selected account and chain id on change
-ethereum.on('accountsChanged', getAccount);
-ethereum.on('chainChanged', getChainId);
+
+function signOutOfMetaMask() {
+  window.userwalletAddress = null
+  walletAddress.value = ''
+  connectWallet.innerText = 'Connect Wallet'
+
+  connectWallet.removeEventListener('click', signOutOfMetaMask)
+  setTimeout(() => {
+    connectWallet.addEventListener('click', connectWalletwithMetaMask)
+  }, 200  )
+}
+
+async function checkBalance() {
+  let balance = await window.ethereum.request({ method: "eth_getBalance",
+  params: [
+    window.userWalletAddress,
+    'latest'
+  ]
+}).catch((err)=> {
+    console.log(err)
+})
+
+console.log(parseFloat((balance) / Math.pow(10,18)))
+
+walletBalance.innerText = parseFloat((balance) / Math.pow(10,18))
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  checkInstalled()
+})
