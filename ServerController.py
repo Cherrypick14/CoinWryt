@@ -68,7 +68,7 @@ class Authentication_Profile(View):
             if(CWTInterface.Confirm_Acc_Visibility(Address)):
                 # Account Address Exists Offchain 
                 # Update minor details on chain 
-                return redirect(url_for('Blogs' ,  AccountAddress = Address ))
+                return redirect(url_for('Stories' ,  AccountAddress = Address ))
             else:
                 # Register Wallet Account Activities  
                 # Creation Of accounts happen here   
@@ -87,7 +87,7 @@ class Authentication_Profile(View):
                     # Then upon page loads check for necessaryy storage cookies  
 
                     print("Unable to save details to account ")
-                return redirect(url_for('Blogs' ,  AccountAddress = User_Account_Data[0]))
+                return redirect(url_for('Stories' ,  AccountAddress = User_Account_Data[0]))
 
 
 
@@ -111,7 +111,7 @@ class Company_Display_Profile(View):
             # Return requested profile thru client connect 
             return render_template('Display' , CompanyID = CompanyID  )
         
-class Blog_List(View): 
+class Story_Mode_Portal(View): 
     methods = ['GET'] 
       
 
@@ -182,7 +182,7 @@ class Blog_List(View):
             Account_Volume = len(Account_Profiles)
         
 
-        return render_template('Listings.html' , AccountAddress = AccountAddress , Article_Listings = Article_Listings  , Article_Volume = Article_Volume , Account_Profiles = Account_Profiles  , Account_Volume = Account_Volume , Render_Article_Commentary = Render_Article_Commentary  , Return_StorySets = Return_StorySets , Render_Adverts = Render_Adverts , System_Timestamp = System_Timestamp , Custom_ID = Custom_ID , Access_Username  = Access_Username  , Profile_Avatar = Profile_Avatar  )
+        return render_template('StoryMode_Concept.html' , AccountAddress = AccountAddress , Article_Listings = Article_Listings  , Article_Volume = Article_Volume , Account_Profiles = Account_Profiles  , Account_Volume = Account_Volume , Render_Article_Commentary = Render_Article_Commentary  , Return_StorySets = Return_StorySets , Render_Adverts = Render_Adverts , System_Timestamp = System_Timestamp , Custom_ID = Custom_ID , Access_Username  = Access_Username  , Profile_Avatar = Profile_Avatar  )
 
 
 @app.route("/")
@@ -201,11 +201,11 @@ def Commentative_Post_Sections(AcctAddress , ArticleID ):
     # Appending Data to the DB 
     if(CWTInterface.Create_Comment(Comment_Post)):
     # Here manage this route by returning alerts if Comment Post was successfull 
-        return redirect(url_for('Blogs' , AccountAddress = AcctAddress ))
+        return redirect(url_for('Stories' , AccountAddress = AcctAddress ))
     else:
-        return redirect(url_for('Blogs' , AccountAddress = AcctAddress ))
+        return redirect(url_for('Stories' , AccountAddress = AcctAddress ))
     # Generally Returning the Tempplate 
-    return redirect(url_for('Blogs' , AccountAddress = AcctAddress ))
+    return redirect(url_for('Stories' , AccountAddress = AcctAddress ))
 
 
 @app.route("/Create/Story/<string:AccountAddr>/" , methods=['POST'])
@@ -242,25 +242,76 @@ def Create_Story_Mode(AccountAddr):
                     file.save(os.path.join(app.config['StorySets'] , Datapoint[0] , file.filename ))
 
             # This means that our story was created successfully notify the user 
-                return redirect(url_for('Blogs' , AccountAddress = AccountAddr))
+                return redirect(url_for('Stories' , AccountAddress = AccountAddr))
             else: 
             # THis means that our stiry wasnt creaeted  
             # Convince the user to try again 
-                return redirect(url_for('Blogs' , AccountAddress = AccountAddr))
+                return redirect(url_for('Stories' , AccountAddress = AccountAddr))
         
-        return redirect(url_for('Blogs' , AccountAddress = AccountAddr))
+        return redirect(url_for('Stories' , AccountAddress = AccountAddr))
 
-class Dashboard_Display_Profile(View): 
+class MyAccount_Display_Dashboard(View): 
     methods = ['GET'] 
+
+    def Compose_Dateline_Sys(self): 
+        Max_Limit = int(31) 
+        return Max_Limit
+
     def dispatch_request(self , AccountAddr) -> str : 
-        AccountAddress = "023948304282"
-        return render_template('Dashboard.html' , AccountAddress = AccountAddress)
+        # Dateline System Setup  
+        Max_Date_Limit = self.Compose_Dateline_Sys()
+        # Date - Time -Calendar  Indexer   
+        # Implementatio nfrom  base 
+
+        # Date String 
+        Date_String_Fmt = base.Space_Time_Generator("DateStr")
+        Time_Numeric_Fmt  = base.Space_Time_Generator("TimeInt")
+        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddr)
+        Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddr)
+        Access_Username = CWTInterface.Render_Consumer_Username (AccountAddr)
+
+        # Day Date Assumption  
+        Current_Date = int(12) 
+
+        return render_template('Dashboard.html' , AccountAddr = AccountAddr , Custom_ID = Custom_ID ,  Access_Username = Access_Username , Profile_Avatar = Profile_Avatar ,  Date_String_Fmt = Date_String_Fmt , Time_Numeric_Fmt = Time_Numeric_Fmt , Max_Date_Limit = Max_Date_Limit , Current_Date  = Current_Date  )
 
 
+
+
+class Account_Transactions_Concept(View):
+   methods = ['GET']  
+
+   def Compose_Dateline_Sys(self): 
+        Max_Limit = int(31) 
+        return Max_Limit
+
+   def dispatch_request(self , AccountAddress) -> str :
+        CompanyID = "CoinWryt"
+
+        Max_Date_Limit = self.Compose_Dateline_Sys()
+        # Date String 
+        Date_String_Fmt = base.Space_Time_Generator("DateStr")
+        Time_Numeric_Fmt  = base.Space_Time_Generator("TimeInt")
+        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddress)
+        Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
+        Access_Username = CWTInterface.Render_Consumer_Username (AccountAddress)
+
+        if request.method == 'GET':
+            return render_template('Transactions_Concept.html' , CompanyID = CompanyID  , Date_String_Fmt = Date_String_Fmt , Time_Numeric_Fmt = Time_Numeric_Fmt , Custom_ID = Custom_ID , Profile_Avatar = Profile_Avatar , Access_Username = Access_Username , Max_Date_Limit  = Max_Date_Limit , AccountAddress = AccountAddress )
+        else: 
+            # Return requested profile thru client connect 
+            return render_template('Transactions_Concept.html' , CompanyID = CompanyID  )
+        
+        return render_template("Account_Transcaction_Logd.html" , )
 app.add_url_rule('/', view_func=Company_Display_Profile.as_view('Home'))
-app.add_url_rule('/Dashboard/<string:AccountAddr>/', view_func=Dashboard_Display_Profile.as_view('Dash'))
+app.add_url_rule('/MyAccount/Dashboard/<string:AccountAddr>/', view_func=MyAccount_Display_Dashboard.as_view('Dash'))
 app.add_url_rule('/Login/' , view_func = Authentication_Profile.as_view('Auth'))
-app.add_url_rule('/Dashboard/Blog/Listings/<string:AccountAddress>/' , view_func = Blog_List.as_view('Blogs'))
+app.add_url_rule('/Dashboard/StoryMode/<string:AccountAddress>/' , view_func = Story_Mode_Portal.as_view('Stories'))
+app.add_url_rule('/MyAccount/Dashboard/Transactions/<string:AccountAddress>/' , view_func = Account_Transactions_Concept.as_view('Transactions'))
+# Returns the listings of stories that the user has created summarised in a table with a unique textarea below each \
+# Row to show message content of the story mode in question  
+
+#app.add_url_rule('/Dashboard/StoryMode/Listings/<string:AccountAddress>/' , view_func = StoryMode_Log_List.as_view('StoryLogs'))
 
 
 
