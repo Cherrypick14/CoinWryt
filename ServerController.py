@@ -266,7 +266,7 @@ class MyAccount_Display_Dashboard(View):
         # Date String 
         Date_String_Fmt = base.Space_Time_Generator("DateStr")
         Time_Numeric_Fmt  = base.Space_Time_Generator("TimeInt")
-        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddr)
+        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddrxx)
         Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddr)
         Access_Username = CWTInterface.Render_Consumer_Username (AccountAddr)
 
@@ -275,6 +275,48 @@ class MyAccount_Display_Dashboard(View):
 
         return render_template('Dashboard.html' , AccountAddr = AccountAddr , Custom_ID = Custom_ID ,  Access_Username = Access_Username , Profile_Avatar = Profile_Avatar ,  Date_String_Fmt = Date_String_Fmt , Time_Numeric_Fmt = Time_Numeric_Fmt , Max_Date_Limit = Max_Date_Limit , Current_Date  = Current_Date  )
 
+
+class Content_Collections_Concept(View):
+   methods = ['GET']  
+   def dispatch_request(self , AccountAddress ) -> str :
+        CompanyID = "CoinWryt"
+        if request.method == 'GET':
+            Current_Dateline = base.Space_Time_Generator("DateStr")
+            Current_Timeline  = base.Space_Time_Generator("TimeInt")
+            UserToken = CWTInterface.Render_Consumer_ID(AccountAddress)
+            Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
+            Access_Username = CWTInterface.Render_Consumer_Username (AccountAddress)
+            return render_template('Collections.html'   , AccountAddress = AccountAddress  , Current_Dateline = Current_Dateline , Current_Timeline =  Current_Timeline , UserToken = UserToken , Access_Username = Access_Username , Profile_Avatar =  Profile_Avatar )
+        
+        return render_template('Collections.html' ,  AccountAddress = AccountAddress  )
+
+
+
+class Market_Place_Nft(View):
+   methods = ['GET']  
+   def dispatch_request(self , AccountAddress ) -> str :
+        CompanyID = "CoinWryt"
+        if request.method == 'GET':
+            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress )
+        
+        return render_template('MarketPlace-Nft.html' ,  AccountAddress = AccountAddress  )
+
+
+
+
+class Creators_Content_Paradox(View):
+   methods = ['GET']  
+   def dispatch_request(self , AccountAddress ) -> str :
+        CompanyID = "CoinWryt"
+        if request.method == 'GET':
+            # Operational Zone  
+            # Exporting All Accounts  ->  Creator_Records   <- Render_All_Consumers()  
+            Creator_Records =  CWTInterface.Render_All_Consumers() 
+            Profile_Avatar =  CWTInterface.Render_Profile_Avatar(AccountAddress) 
+
+            return render_template('Creators-Paradox-Concept.html'   , AccountAddress = AccountAddress  , Creator_Records  = Creator_Records , Profile_Avatar = Profile_Avatar  )
+        
+        return render_template('Creators-Paradox-Concept.html' ,  AccountAddress = AccountAddress  )
 
 
 
@@ -308,6 +350,9 @@ app.add_url_rule('/MyAccount/Dashboard/<string:AccountAddr>/', view_func=MyAccou
 app.add_url_rule('/Login/' , view_func = Authentication_Profile.as_view('Auth'))
 app.add_url_rule('/Dashboard/StoryMode/<string:AccountAddress>/' , view_func = Story_Mode_Portal.as_view('Stories'))
 app.add_url_rule('/MyAccount/Dashboard/Transactions/<string:AccountAddress>/' , view_func = Account_Transactions_Concept.as_view('Transactions'))
+app.add_url_rule('/Dashboard/Collections/<string:AccountAddress>/' , view_func = Content_Collections_Concept.as_view('Collections'))
+app.add_url_rule('/Dashboard/Nft/MarketPlace/<string:AccountAddress>/' , view_func = Market_Place_Nft.as_view('NftMarket'))
+app.add_url_rule('/Dashboard/Creators/<string:AccountAddress>/Listings/' , view_func = Creators_Content_Paradox.as_view('Creators'))
 # Returns the listings of stories that the user has created summarised in a table with a unique textarea below each \
 # Row to show message content of the story mode in question  
 

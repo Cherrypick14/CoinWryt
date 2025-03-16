@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CoinWryt</title>
+
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/dash.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/buzzfeed.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/tailwind.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Nft-Helpers.css')}}">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+
+<!-- partial -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.1/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css'>
+
+</head>
+<style>
+
+.col-12{ 
+  width:100%;
+}
+
+
+.col-lg-8{
+  width:80%;
+  float:inline-start;
+}
+
+.col-lg-4{
+  width:20%;
+  float:inline-start;
+}
+.post-img {
+  width: 500px;
+}
+
+.containerx {
+  background-color: black;
+  border-radius: 20px;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.post-img {
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+.author-img {
+  height: 40px;
+  width: 40px;
+  display: inline;
+  border-radius: 50%;
+  background-image: url("https://1000logos.net/wp-content/uploads/2017/05/NFL-Logo-1983.png");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.authors {
+  margin-left: 15px;
+}
+
+svg {
+  transition: fill 0.3s ease;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.heart:hover {
+  fill: red;
+}
+
+.interactions {
+  margin-top: 15px;
+}
+
+.like-count {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.description {
+  text-wrap: pretty;
+  max-width: 500px;
+}
+
+input {
+  width: 100%;
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
+  outline: none;
+
+  font-size: 16px;
+}
+
+#custom-comment {
+  color: lightgrey;
+  text-wrap: wrap;
+  max-width: 500px;
+}
+
+
+
+@media (min-width: 600px) {  
+    #col-lg-8 , #col-lg-4 {  
+        flex-direction: row; /* Change to row layout for larger screens */  
+        width:100%;
+    }  
+
+  
+}  
+
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<body class="light-theme dark-theme">
+  <header>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="header-inner d-flex justify-content-between align-items-center">
+          <a class="navbar-brand flex-shrink-0" href="#"><img src="https://yudiz.com/codepen/nft-store/logo-icon.svg" alt="logo-image" class="img-fluid">
+           CoinWryt</a>
+          <div class="header-content d-flex align-items-center justify-content-end">
+            <form class="d-flex justify-content-end align-items-center">
+              <div class="search-icon">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              </div>
+              <label class="switch flex-shrink-0 mb-0">
+                <input id="checkbox" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </form>
+            <a herf="#" class="profile"><img src="https://yudiz.com/codepen/nft-store/user-pic1.svg" alt="user-image"> {{ Custom_ID }} </a>
+            <a href="#" class="notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
+
+          </div>
+        </div>
+        <button class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <div class="nft-store">
+    <div class="container-fluid">
+      <div class="nft-store-inner d-flex">
+        <div class="menu-links">
+          <ul>
+            <li class="nav-item active">
+              <a href="{{url_for('Stories' , AccountAddress = AccountAddress)}}" class="d-flex align-items-center nav-link"><i class="fa fa-home" aria-hidden="true"></i>
+                <span>Home</span></a>
+            </li>
+           
+            <li class="nav-item">
+              <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                <span>Market Place </span></a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{url_for('Collections' ,  AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>My Collections</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                <span> Gigs </span></a>
+            </li>
+           
+            
+            <li class="nav-item">
+              <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
+                <span> Creators </span></a>
+            </li>
+
+            
+            
+            <li class="nav-item">
+              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span> My Escrows </span></a>
+            </li>
+            <li class="nav-item">
+              <a href="{{url_for('Dash' , AccountAddr = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
+                <span> My Account </span></a>
+            </li>
+            <li class="nav-item">
+              <a href="{{url_for('Dash' , AccountAddr = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-cog" aria-hidden="true"></i>
+                <span>Settings</span></a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="nft-store-content">
+         
+            <div class="dashboard-content">
+                <!-- ======Topbar======= -->
+                <div class="topbar flex flex-sb">
+                  <div class="search flex">
+                    <div class="icon">
+                      <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <input type="text" placeholder=" Search any collection">
+                  </div>
+        
+                  <div class="theme flex">
+                    <div class="dark flex active">
+                      <ion-icon name="moon-outline"></ion-icon>
+                    </div>
+                    <div class="light flex">
+                      <ion-icon name="sunny-outline"></ion-icon>
+                    </div>
+                  </div>
+        
+                  <div class="notification icon">
+                    <ion-icon name="notifications-outline"></ion-icon>
+                  </div>
+        
+                  <div class="user flex flex-sb">
+                    <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                    <p>Hassnain</p>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </div>
+                </div>
+                <!-- ======End Topbar======= -->
+        
+                <!-- ======Section======= -->
+                <div class="section flex flex-sb">
+                  <!-- Section Left -->
+                  <div class="section-left">
+                    <!-- ======Banner======= -->
+                    <div class="banner flex flex-sb">
+                      <div class="text">
+                        <h2>
+                          Dicover and sell <br>
+                          your own NFTs
+                        </h2>
+        
+                        <a href="#" class="btn">Discover Now</a>
+                      </div>
+        
+                      <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/banner.svg" alt="">
+                    </div>
+        
+                    <div class="nfts">
+                      <div class="trending heading flex flex-sb">
+                        <h2>Trending NFTs</h2>
+                        <p>See all</p>
+                      </div>
+        
+                      <!-- ======Categories======= -->
+        
+                      <div class="categories flex flex-sb">
+                        <div class="category flex">
+                          <div class="icon">🔥</div>
+                          <p>Trending</p>
+                        </div>
+        
+                        <div class="category flex">
+                          <div class="icon">🎨</div>
+                          <p>Art</p>
+                        </div>
+        
+                        <div class="category flex">
+                          <div class="icon">🕹️</div>
+                          <p>Game</p>
+                        </div>
+        
+                        <div class="category flex">
+                          <div class="icon">👗</div>
+                          <p>Fashion</p>
+                        </div>
+        
+                        <div class="category flex">
+                          <div class="icon">🎵</div>
+                          <p>Music</p>
+                        </div>
+                      </div>
+        
+                      <!-- =====Browse NFT===== -->
+                      <div class="browse">
+                        <div class="nft">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/nft-1.jpg" alt="">
+                          <div class="title">Weary Artwork</div>
+                          <div class="details flex flex-sb">
+                            <div class="author flex">
+                              <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                              <p>Hassnain Haider</p>
+                            </div>
+                            <div class="price">4.5 ETH</div>
+                          </div>
+                        </div>
+        
+                        <div class="nft">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/nft-2.jpg" alt="">
+                          <div class="title">Spectrum of Color</div>
+                          <div class="details flex flex-sb">
+                            <div class="author flex">
+                              <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                              <p>Hassnain Haider</p>
+                            </div>
+                            <div class="price">4 ETH</div>
+                          </div>
+                        </div>
+        
+                        <div class="nft">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/nft-3.jpg" alt="">
+                          <div class="title">Vivid Artwork</div>
+                          <div class="details flex flex-sb">
+                            <div class="author flex">
+                              <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                              <p>Hassnain Haider</p>
+                            </div>
+                            <div class="price">3.5 ETH</div>
+                          </div>
+                        </div>
+        
+                        <div class="nft">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/nft-4.jpg" alt="">
+                          <div class="title">Nature's Love</div>
+                          <div class="details flex flex-sb">
+                            <div class="author flex">
+                              <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                              <p>Hassnain Haider</p>
+                            </div>
+                            <div class="price">5 ETH</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <!-- Section Right -->
+                  <div class="section-right">
+                    <div class="graph flex-c">
+                      <p>Balance</p>
+                      <h2>93,565.00</h2>
+        
+                      <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/graph.svg" alt="">
+                    </div>
+        
+                    <div class="top-creators">
+                      <div class="heading flex flex-sb">
+                        <h2>Top Creators</h2>
+                        <p>See all</p>
+                      </div>
+        
+                      <div class="creator flex flex-sb">
+                        <div class="follow-creator flex">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                          <div class="creator-details">
+                            <h3>Hassnain Haider</h3>
+                            <p>@hassnain</p>
+                          </div>
+                        </div>
+        
+                        <a href="#" class="btn following">Following</a>
+                      </div>
+        
+                      <div class="creator flex flex-sb">
+                        <div class="follow-creator flex">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                          <div class="creator-details">
+                            <h3>Hassnain Haider</h3>
+                            <p>@hassnain</p>
+                          </div>
+                        </div>
+        
+                        <a href="#" class="btn follow following">Follow</a>
+                      </div>
+        
+                      <div class="creator flex flex-sb">
+                        <div class="follow-creator flex">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                          <div class="creator-details">
+                            <h3>Hassnain Haider</h3>
+                            <p>@hassnain</p>
+                          </div>
+                        </div>
+        
+                        <a href="#" class="btn follow following">Follow</a>
+                      </div>
+        
+                      <div class="creator flex flex-sb">
+                        <div class="follow-creator flex">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                          <div class="creator-details">
+                            <h3>Hassnain Haider</h3>
+                            <p>@hassnain</p>
+                          </div>
+                        </div>
+        
+                        <a href="#" class="btn follow following">Follow</a>
+                      </div>
+        
+                      <div class="creator flex flex-sb">
+                        <div class="follow-creator flex">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                          <div class="creator-details">
+                            <h3>Hassnain Haider</h3>
+                            <p>@hassnain</p>
+                          </div>
+                        </div>
+        
+                        <a href="#" class="btn follow following">Follow</a>
+                      </div>
+        
+                      <div class="creator flex flex-sb">
+                        <div class="follow-creator flex">
+                          <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="">
+                          <div class="creator-details">
+                            <h3>Hassnain Haider</h3>
+                            <p>@hassnain</p>
+                          </div>
+                        </div>
+        
+                        <a href="#" class="btn follow following">Follow</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ======End Section======= -->
+              </div>
+
+        </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+  </script>
+<!-- partial -->
+<script src="{{url_for('static' , filename='Sources/assets/js/jquery.min.js')}}"></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js'></script>
+<script src="{{url_for('static' , filename='Sources/assets/js/dashInterface.js')}}"></script>
+<script src="{{url_for('static' , filename='Sources/assets/js/twind.js')}}"></script>
+<script src="{{url_for('static' , filename='Sources/assets/js/NftConfig.js')}}"></script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+<!-- partial -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js'> </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Send Ether</title>  
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>  
+</head>  
+<body>  
+    <h1>Send Ether</h1>  
+    <button id="sendButton">Send 0.01 Ether</button>  
+
+    <script>  
+        async function sendEther() {  
+            if (typeof window.ethereum !== 'undefined') {  
+                const web3 = new Web3(window.ethereum);  
+
+                // Request account access  
+                await window.ethereum.request({ method: 'eth_requestAccounts' });  
+
+                const accounts = await web3.eth.getAccounts();  
+                const senderAddress = accounts[0]; // Use the first account  
+                const receiverAddress = '0xReceiverAddress'; // Replace with actual receiver address  
+                const value = web3.utils.toWei('0.01', 'ether'); // Amount to send in Wei  
+
+                const transactionParameters = {  
+                    to: receiverAddress,  
+                    from: senderAddress,  
+                    value: value,  
+                    gas: '2000000',  
+                };  
+
+                try {  
+                    // Send transaction  
+                    const txnHash = await web3.eth.sendTransaction(transactionParameters);  
+                    console.log('Transaction successful with hash:', txnHash.transactionHash);  
+                } catch (error) {  
+                    console.error('Transaction failed:', error);  
+                }  
+            } else {  
+                console.log('Please install MetaMask!');  
+            }  
+        }  
+
+        document.getElementById('sendButton').onclick = sendEther;  
+    </script>  
+</body>  
+</html>  

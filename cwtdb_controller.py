@@ -124,6 +124,27 @@ def Render_Profile_Avatar(Bindings):
     return str(DataItem).strip("[]()'',")
 
 
+## Retrieving All Records In Community Charter 
+## Employ : 
+
+def Render_All_Consumers():
+    """
+    Query all DataItem in the Clientelle_Pool ss table
+    :param conn: the Connection object
+    :return:
+    """
+    
+    conn = create_connection(DatabaseURL)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM CommunityCharter ")
+
+    DataItem = cur.fetchall()
+
+    for bit in DataItem:
+        print(bit)
+    return DataItem
+
+
 ### Cummunity_CHarter Block 
 ### COntrollers 
 

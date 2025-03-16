@@ -240,7 +240,7 @@ img {vertical-align: middle;}
                 <span class="slider round"></span>
               </label>
             </form>
-            <a herf="#" class="profile"><img src="https://yudiz.com/codepen/nft-store/user-pic1.svg" alt="user-image"> {{ Custom_ID }} </a>
+            <a herf="#" class="profile"><img src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="user-image"> {{ Custom_ID }} </a>
             <a href="#" class="notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
 
           </div>
@@ -259,29 +259,33 @@ img {vertical-align: middle;}
         <div class="menu-links">
           <ul>
             <li class="nav-item active">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-home" aria-hidden="true"></i>
+              <a href="{{url_for('Stories' , AccountAddress = AccountAddress)}}" class="d-flex align-items-center nav-link"><i class="fa fa-home" aria-hidden="true"></i>
                 <span>Home</span></a>
             </li>
            
             <li class="nav-item">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-square-o" aria-hidden="true"></i>
-                <span>Collections</span></a>
+              <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                <span>Market Place </span></a>
             </li>
-            
+
+            <li class="nav-item">
+              <a href="{{url_for('Collections' ,  AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>My Collections</span></a>
+            </li>
+
             <li class="nav-item">
               <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-heart-o" aria-hidden="true"></i>
                 <span> Gigs </span></a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>
-                <span>Market Place </span></a>
-            </li>
+           
             
             <li class="nav-item">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
-                <span>Featured</span></a>
+              <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
+                <span> Creators </span></a>
             </li>
 
+            
+            
             <li class="nav-item">
               <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span> My Escrows </span></a>
@@ -291,7 +295,7 @@ img {vertical-align: middle;}
                 <span> My Account </span></a>
             </li>
             <li class="nav-item">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-cog" aria-hidden="true"></i>
+              <a href="{{url_for('Dash' , AccountAddr = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-cog" aria-hidden="true"></i>
                 <span>Settings</span></a>
             </li>
           </ul>
