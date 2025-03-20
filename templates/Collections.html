@@ -4,451 +4,421 @@
   <meta charset="UTF-8">
   <title>CoinWryt</title>
 
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/dash.css')}}">
-<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/buzzfeed.css')}}">
-<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/tailwind.css')}}">
+
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/nft-card.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-
-
-<!-- partial -->
-
-
 </head>
-<style>
-
-.col-12{ 
-  width:100%;
+<style> 
+#StoriesDeck{
+  display:block; 
 }
 
 
-.col-lg-8{
-  width:80%;
-  float:inline-start;
-}
-
-.col-lg-4{
-  width:20%;
-  float:inline-start;
-}
-.post-img {
-  width: 500px;
-}
-
-.containerx {
-  background-color: black;
-  border-radius: 20px;
-  padding: 20px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.post-img {
-  border-radius: 10px;
-  cursor: zoom-in;
-}
-
-.author-img {
-  height: 40px;
-  width: 40px;
-  display: inline;
-  border-radius: 50%;
-  background-image: url("https://1000logos.net/wp-content/uploads/2017/05/NFL-Logo-1983.png");
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.authors {
-  margin-left: 15px;
-}
-
-svg {
-  transition: fill 0.3s ease;
-  cursor: pointer;
-  margin-right: 20px;
-}
-
-.heart:hover {
-  fill: red;
-}
-
-.interactions {
-  margin-top: 15px;
-}
-
-.like-count {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.description {
-  text-wrap: pretty;
-  max-width: 500px;
-}
-
-input {
-  width: 100%;
-  background-color: transparent;
-  color: whitesmoke;
-  border: none;
-  outline: none;
-
-  font-size: 16px;
-}
-
-#custom-comment {
-  color: lightgrey;
-  text-wrap: wrap;
-  max-width: 500px;
+#ArticleDeck{ 
+  display:none;
 }
 
 
-
-@media (min-width: 600px) {  
-    #col-lg-8 , #col-lg-4 {  
-        flex-direction: row; /* Change to row layout for larger screens */  
-        width:100%;
-    }  
-
-  
-}  
-
-<style>
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+.bare{ 
+  border:none;
+  background-color:none;
 }
 </style>
-<body>
-<!-- partial:index.partial.html -->
 <body class="light-theme dark-theme">
-  <header>
-    <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="header-inner d-flex justify-content-between align-items-center">
-          <a class="navbar-brand flex-shrink-0" href="#"><img src="https://yudiz.com/codepen/nft-store/logo-icon.svg" alt="logo-image" class="img-fluid">
-           CoinWryt</a>
-          <div class="header-content d-flex align-items-center justify-content-end">
-            <form class="d-flex justify-content-end align-items-center">
-              <div class="search-icon">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-              </div>
-              <label class="switch flex-shrink-0 mb-0">
-                <input id="checkbox" type="checkbox">
-                <span class="slider round"></span>
-              </label>
-            </form>
-            <a herf="#" class="profile"><img src="https://yudiz.com/codepen/nft-store/user-pic1.svg" alt="user-image"> {{ Custom_ID }} </a>
-            <a href="#" class="notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
 
+  <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+   
+    <div class="flex-grow overflow-hidden h-full flex flex-col">
+      <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
+        <div class="flex h-full text-gray-600 dark:text-gray-400">
+          <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 text-white"> {{ CompanyID }} </a>
+          <a href="{{url_for('Stories' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Storyboard </a>
+          <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"> Collections </a>
+          <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Market Place </a>
+          <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Creators </a>
+          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Rankings </a>
+          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> My Profile </a>
+  
+        </div>
+        <div class="ml-auto flex items-center space-x-7">
+          <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">Home</button>
+  
+          <button class="flex items-center">
+            <span class="relative flex-shrink-0">
+              <img class="w-7 h-7 rounded-full" src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="profile" />
+              <span class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
+            </span>
+            <span class="ml-2"> {{ Access_Username }} </span>
+            <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex-grow flex overflow-x-hidden">
+        <div class="xl:w-72 w-48 flex-shrink-0 border-r border-gray-200 dark:border-gray-800 h-full overflow-y-auto lg:block hidden p-5">
+          <div class="text-xs text-gray-400 tracking-wider"> Coin-Writers </div>
+          <div class="relative mt-2">
+            <input type="text" class="pl-8 h-9 bg-transparent border border-gray-300 dark:border-gray-700 dark:text-white w-full rounded-md text-sm" placeholder="Search" />
+            <svg viewBox="0 0 24 24" class="w-4 absolute text-gray-400 top-1/2 transform translate-x-0.5 -translate-y-1/2 left-2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
           </div>
-        </div>
-        <button class="hamburger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
-    </div>
-  </header>
-  <div class="nft-store">
-    <div class="container-fluid">
-      <div class="nft-store-inner d-flex">
-        <div class="menu-links">
-          <ul>
-            <li class="nav-item active">
-              <a href="{{url_for('Stories' , AccountAddress = AccountAddress)}}" class="d-flex align-items-center nav-link"><i class="fa fa-home" aria-hidden="true"></i>
-                <span>Home</span></a>
-            </li>
-           
-            <li class="nav-item">
-              <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-briefcase" aria-hidden="true"></i>
-                <span>Market Place </span></a>
-            </li>
-
-            <li class="nav-item">
-              <a href="{{url_for('Collections' ,  AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-square-o" aria-hidden="true"></i>
-                <span>My Collections</span></a>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                <span> Gigs </span></a>
-            </li>
-           
+          <div class="space-y-4 mt-3">
+            {% if Creator_Listings %}
+            <button class="bg-white p-3 w-full flex flex-col rounded-md dark:bg-gray-800 shadow-lg relative ring-2 ring-blue-500 focus:outline-none">
+              <a href="{{url_for('Collections' , AccountAddress = AccountAddress  , Type = 'All')}}">
+              <div class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-white pb-2 mb-2 xl:border-b border-gray-200 border-opacity-75 dark:border-gray-700 w-full">
+                <img src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}"  class="w-7 h-7 mr-2 rounded-full" alt="profile" />
+               All Collections
+              </div>
+              </a>
+      
+              <div class="flex items-center w-full">
+                <div class="text-xs py-1 px-2 leading-none dark:bg-gray-900 bg-green-100 text-green-600 rounded-md"> Available </div>
+                <div class="ml-auto text-xs text-gray-500">  {{ Nft_Tag_Index }} </div>
+              </div>
+            </button>
+            {% for Record in Creator_Listings %}
             
-            <li class="nav-item">
-              <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
-                <span> Creators </span></a>
-            </li>
-
-            
-            
-            <li class="nav-item">
-              <a href="#" class="d-flex align-items-center nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                <span> My Escrows </span></a>
-            </li>
-            <li class="nav-item">
-              <a href="{{url_for('Dash' , AccountAddr = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-star" aria-hidden="true"></i>
-                <span> My Account </span></a>
-            </li>
-            <li class="nav-item">
-              <a href="{{url_for('Dash' , AccountAddr = AccountAddress )}}" class="d-flex align-items-center nav-link"><i class="fa fa-cog" aria-hidden="true"></i>
-                <span>Settings</span></a>
-            </li>
-          </ul>
-        </div>
+            <button class="bg-white p-3 w-full flex flex-col rounded-md dark:bg-gray-800 shadow-lg relative ring-2 ring-blue-500 focus:outline-none">
+              <a href="{{url_for('Collections' , AccountAddress = AccountAddress  , Type = Record[1])}}">
+              <div class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-white pb-2 mb-2 xl:border-b border-gray-200 border-opacity-75 dark:border-gray-700 w-full">
+                <img src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Record[2] )}}"  class="w-7 h-7 mr-2 rounded-full" alt="profile" />
+                {{ Record[0]}}
+              </div>
+      
+              <div class="flex items-center w-full">
+                <div class="text-xs py-1 px-2 leading-none dark:bg-gray-900 bg-green-100 text-green-600 rounded-md"> Assets </div>
+                <div class="ml-auto text-xs text-gray-500"> {{Creator_Index }} </div>
+              </div>
+            </a>
+            </button>
+         
+            {% endfor %}
+            {% endif %}
         
-        <div class="nft-store-content">
-          <div class="nft-up-content">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="fire-bubble-art d-flex justify-content-between  align-items-center">
-                  <img src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="fire-bubble-image" class="img-fluid fire-image fire-width">
-                  <div class="fire-content fire-width">
-                    <h3 class="mb-0"> {{Access_Username}} TLV </h3>
-                    <div class="fire-time d-flex justify-content-between">
-                      <div class="current-bid">
-                        <h4>Asset Track Index - Value  </h4>
-                        <span>0.7 | 0.7 ETH </span>
-                      </div>
-                      <div class="auction">
-                        <h4> Dated </h4>
-                        <span> {{ Current_Timeline}} </span>
-                      </div>
-                      <span class="middle-line"></span>
-                    </div>
-                    <span class="fire-user"><img src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="user-image">  {{Access_Username}} </span>
-                    <div class="d-flex fire-links">
-                      <a href="#" class="heart flex-shrink-0"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                      <a href="#" class="theme-btn">Publish  NFT </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-             
-            </div>
-          </div>
-          <div class="trending">
-            <div class="trending-title">
-              <div class="row justify-content-between align-items-center">
-                <div class="col-6">
-                  <h2> Your Collections </h2>
-                </div>
-                <div class="col-6 text-right">
-                  <a href="#" class="theme-btn"> View More </a>
-                </div>
-              </div>
-            </div>
-            <div class="trending-grid">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="trending-content">
-                    <img src="https://yudiz.com/codepen/nft-store/card-1.svg" alt="card-images" class="img-fluid">
-                    <div class="trending-desc">
-                      <h4 class="user-title">Wayne Garner</h4>
-                      <h3 class="user-position">Flui oriental art</h3>
-                      <div class="bid d-flex justify-content-between align-items-center">
-                        <div>
-                          <h5>current Bid</h5>
-                          <span>0.70 ETH</span>
-                        </div>
-                        <div>
-                          <h5>Auctin Ending in</h5>
-                          <span>07h:25m:46s</span>
-                        </div>
-                      </div>
-                      <img src="https://yudiz.com/codepen/nft-store/user-pic3.svg" alt="img-fluid" class="user-image">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="trending-content">
-                    <img src="https://yudiz.com/codepen/nft-store/card-2.svg" alt="card-images" class="img-fluid">
-                    <div class="trending-desc">
-                      <h4 class="user-title">cody valdez</h4>
-                      <h3 class="user-position">Human Areology</h3>
-                      <div class="bid d-flex justify-content-between align-items-center">
-                        <div>
-                          <h5>current Bid</h5>
-                          <span>100.02 ETH</span>
-                        </div>
-                        <div>
-                          <h5>Auctin Ending in</h5>
-                          <span>09h:25m:46s</span>
-                        </div>
-                      </div>
-                      <img src="https://yudiz.com/codepen/nft-store/user-pic4.svg" alt="img-fluid" class="user-image">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="trending-content">
-                    <img src="https://yudiz.com/codepen/nft-store/card-3.svg" alt="card-images" class="img-fluid">
-                    <div class="trending-desc">
-                      <h4 class="user-title">Jayden Daniel</h4>
-                      <h3 class="user-position">Inko's Art</h3>
-                      <div class="bid d-flex justify-content-between align-items-center">
-                        <div>
-                          <h5>current Bid</h5>
-                          <span>0.70 ETH</span>
-                        </div>
-                        <div>
-                          <h5>Auctin Ending in</h5>
-                          <span>05h:25m:46s</span>
-                        </div>
-                      </div>
-                      <img src="https://yudiz.com/codepen/nft-store/user-pic5.svg" alt="img-fluid" class="user-image">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
+        <div class="flex-grow bg-white dark:bg-gray-900 overflow-y-auto">
+          <div class="sm:px-7 sm:pt-7 px-4 pt-4 flex flex-col w-full border-b border-gray-200 bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 sticky top-0">
+            <div class="flex w-full items-center">
+              <div class="flex items-center text-3xl text-gray-900 dark:text-white">
+                <img src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}"  class="w-12 mr-4 rounded-full" alt="profile" />
+                {{ Access_Username }}
+              </div>
+              <div class="ml-auto sm:flex hidden items-center justify-end">
+                <div class="text-right">
+                  <div class="text-xs text-gray-400 dark:text-gray-400">Account Address :</div>
+                  <div class="text-gray-900 text-lg dark:text-white"> {{ AccountAddress }} </div>
+                </div>
+                <button class="w-8 h-8 ml-4 text-gray-400 shadow dark:text-gray-400 rounded-full flex items-center justify-center border border-gray-200 dark:border-gray-700">
+                  <svg viewBox="0 0 24 24" class="w-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 sm:mt-7 mt-4">
+              <button onclick="unloadArticles()" class="px-3 border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white pb-1.5 bare"> Stories </button>
+              <button  onclick="unloadArticles()" class="px-3 border-b-2 border-transparent text-gray-600 dark:text-gray-400 pb-1.5 bare"> Articles / Nft's </button>
+         
+
+              <a href="#" class="px-3 border-b-2 border-transparent text-gray-600 dark:text-gray-400 pb-1.5 sm:block hidden"> Profile </a>
+              <a href="#" class="px-3 border-b-2 border-transparent text-gray-600 dark:text-gray-400 pb-1.5 sm:block hidden"> Stats </a>
+              
+            </div>
+          </div>
+          <div class="sm:p-7 p-4" id="StoriesDeck">
+            <div class="flex w-full items-center mb-7">
+              <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
+                <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                Create New
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
+                Last 30 Days 
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
+                By Creator 
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
+                <span class="mr-3">Page 2 of 4</span>
+                <button class="inline-flex mr-2 items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
+                  <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
+                  <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            {% if not Storyline_Concept %}
+            <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
+           
+             <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
+            
+           
+           <p style="text-align:center;"> Sorry No Collections Available At This Time . </p>
+           </div>
+           {% else %}
+            <table class="w-full text-left">
+              <thead>
+                <tr class="text-gray-400">
+                  <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Token</th>
+                  <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Category</th>
+                  <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 hidden md:table-cell">Subject</th>
+                  <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Views </th>
+                  <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 sm:text-gray-400 text-white">Date</th>
+                  <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 sm:text-gray-400 text-white"> Commentary </th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 dark:text-gray-100">
+           
+             {% for Record in Storyline_Concept %}
+                <tr>
+                  <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                    <div class="flex items-center">
+                      <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                      </svg>
+                      {{Record[0]}}
+                    </div>
+                  </td>
+                  <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                    <div class="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="2.17 0.44 251.04 259.97" class="w-7 h-7 p-1.5 mr-2.5 rounded-lg border border-gray-200 dark:border-gray-800">
+                        <g fill="none" fill-rule="evenodd">
+                          <path fill="#f90" fill-rule="nonzero" d="M221.5 210.32C116.27 260.41 50.96 218.5 9.15 193.05c-2.59-1.6-6.98.38-3.17 4.76 13.93 16.89 59.57 57.6 119.15 57.6 59.63 0 95.1-32.54 99.53-38.21 4.4-5.63 1.3-8.73-3.16-6.88zM251.06 194c-2.83-3.68-17.19-4.36-26.22-3.25-9.05 1.07-22.64 6.6-21.46 9.93.61 1.24 1.85.68 8.06.12 6.24-.62 23.7-2.82 27.34 1.93 3.66 4.8-5.57 27.61-7.25 31.3-1.63 3.67.62 4.62 3.68 2.17 3.01-2.45 8.47-8.8 12.14-17.77 3.64-9.03 5.85-21.63 3.7-24.43z" />
+                          <path fill="#000" d="M150.74 108.13c0 13.14.34 24.1-6.3 35.77-5.37 9.49-13.86 15.32-23.35 15.32-12.95 0-20.5-9.86-20.5-24.43 0-28.75 25.77-33.97 50.15-33.97zm34.02 82.22a7.04 7.04 0 01-7.97.8c-11.2-9.3-13.19-13.61-19.36-22.48-18.5 18.88-31.6 24.52-55.6 24.52-28.37 0-50.48-17.5-50.48-52.56 0-27.38 14.85-46.02 35.96-55.13 18.32-8.06 43.89-9.49 63.43-11.72v-4.36c0-8.02.62-17.5-4.08-24.43-4.12-6.22-12-8.78-18.93-8.78-12.85 0-24.33 6.6-27.13 20.26-.57 3.03-2.8 6.02-5.84 6.16l-32.73-3.5c-2.75-.62-5.79-2.85-5.03-7.08C64.54 12.4 100.36.44 132.43.44c16.42 0 37.86 4.36 50.81 16.8 16.42 15.32 14.85 35.76 14.85 58.01v52.57c0 15.8 6.55 22.72 12.71 31.26 2.19 3.04 2.66 6.7-.1 8.97a1425.8 1425.8 0 00-25.85 22.4l-.1-.1" />
+                          <path fill="#f90" fill-rule="nonzero" d="M221.5 210.32C116.27 260.41 50.96 218.5 9.15 193.05c-2.59-1.6-6.98.38-3.17 4.76 13.93 16.89 59.57 57.6 119.15 57.6 59.63 0 95.1-32.54 99.53-38.21 4.4-5.63 1.3-8.73-3.16-6.88zM251.06 194c-2.83-3.68-17.19-4.36-26.22-3.25-9.05 1.07-22.64 6.6-21.46 9.93.61 1.24 1.85.68 8.06.12 6.24-.62 23.7-2.82 27.34 1.93 3.66 4.8-5.57 27.61-7.25 31.3-1.63 3.67.62 4.62 3.68 2.17 3.01-2.45 8.47-8.8 12.14-17.77 3.64-9.03 5.85-21.63 3.7-24.43z" />
+                          <path fill="#000" d="M150.74 108.13c0 13.14.34 24.1-6.3 35.77-5.37 9.49-13.86 15.32-23.35 15.32-12.95 0-20.5-9.86-20.5-24.43 0-28.75 25.77-33.97 50.15-33.97zm34.02 82.22a7.04 7.04 0 01-7.97.8c-11.2-9.3-13.19-13.61-19.36-22.48-18.5 18.88-31.6 24.52-55.6 24.52-28.37 0-50.48-17.5-50.48-52.56 0-27.38 14.85-46.02 35.96-55.13 18.32-8.06 43.89-9.49 63.43-11.72v-4.36c0-8.02.62-17.5-4.08-24.43-4.12-6.22-12-8.78-18.93-8.78-12.85 0-24.33 6.6-27.13 20.26-.57 3.03-2.8 6.02-5.84 6.16l-32.73-3.5c-2.75-.62-5.79-2.85-5.03-7.08C64.54 12.4 100.36.44 132.43.44c16.42 0 37.86 4.36 50.81 16.8 16.42 15.32 14.85 35.76 14.85 58.01v52.57c0 15.8 6.55 22.72 12.71 31.26 2.19 3.04 2.66 6.7-.1 8.97a1425.8 1425.8 0 00-25.85 22.4l-.1-.1" />
+                        </g>
+                      </svg>
+                      {{Record[2]}}
+                    </div>
+                  </td>
+                  <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">{{Record[4]}} </td>
+                  <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-red-500"> {{Record[5]}}</td>
+                  <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                    <div class="flex items-center">
+                      <div class="sm:flex hidden flex-col">
+                        {{Record[6]}} 
+                        <div class="text-gray-400 text-xs"> {{Record[7]}} </div>
+                      </div>
+                     
+                    </div>
+                  </td>
+                  <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                    <div class="flex items-center">
+                      <div class="sm:flex hidden flex-col">
+                        {{Record[8]}} 
+                        <div class="text-gray-400 text-xs"> {{Record[9]}} </div>
+                      </div>
+                      <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
+                        <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="1"></circle>
+                          <circle cx="19" cy="12" r="1"></circle>
+                          <circle cx="5" cy="12" r="1"></circle>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+               
+              {% endfor %}
+            {% endif %}
+
+              </tbody>
+            </table>
+            {% if Storyline_Concept %}
+            <div class="flex w-full mt-5 space-x-2 justify-end">
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">
+                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">1</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white leading-none">2</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">3</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">4</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">
+                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="sm:p-7 p-4" id="ArticleDeck">
+            <div class="flex w-full items-center mb-7">
+              <a href="{{url_for('Create-Nft' , AccountAddress = AccountAddress )}}">
+              <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
+                <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                Create Nft
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              </a>
+              <select class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0 " style="background-color:inherit;">
+          
+                <option default selected> By Price </option>
+                <option value="Free"> Free </option>
+                <option value="Paid"> Paid </option>
+              </select>
+              <button class="inline-flex items-center h-8 pl-2.5   rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0 mr-4" style="margin-left:1.25%;">
+                By Creator  
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
+                <span class="mr-3">Page 2 of 4</span>
+                <button class="inline-flex mr-2 items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
+                  <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
+                  <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>  
+
+            <!-- Card Replication -->
+            {% if Nft_Tags %}
+            {% for Traction in Nft_Tags %}
+            {% if Traction[8] != 0 %}
+            <!-- Intended For Premium Nfts-->
+            <div class="nft-card nft-card--locked nft-card--compact">
+              <div class="nft-card--header">
+                
+              </div>
+              <div class="nft-card--content">
+                <div class="nft-action">
+                  <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
+                  <span> {{Traction[-5]}} <i class="far fa-heart"></i></span>
+                </div>
+                <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
+                <div class="nft-description">
+                  <p> {{ Traction[2]}} </p>
+                </div>
+                <div class="nft-badge">
+                  <span class="badge">Fanbase</span>
+                </div>
+              
+              </div>
+              <div class="nft-card--footer">
+                <div class="nft-price">
+                  <span>($803.39)</span>
+                  <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                </div>
+                <br>
+                <div class="nft-unlock">
+                  <input type="button" class="btn btn--primary" value="Unlock">
+                </div>
+              </div>
+            </div>
+            {% else %}
+            <!-- Intended For Freemium Nfts-->
+            <div class="nft-card nft-card--compact">
+              <div class="nft-card--header">
+                <div class="nft-user">
+                  <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
+                  {{Traction[0]}}
+                  <span> {{ Traction[3][10:]}} </span>
+                </div>
+              </div>
+              <div class="nft-card--content">
+                <div class="nft-action">
+                  <span> {{Traction[8]}} <i class="far fa-heart"></i></span>
+                </div>
+                <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
+                <div class="nft-qrcode">
+                  <span class="badge"> View </span>
+                </div>
+              </div>
+              <div class="nft-card--footer">
+                <div class="nft-price">
+                  <span>($803.39)</span>
+                  <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                </div>
+                <div class="nft-time">
+                  <span><i class="far fa-clock"></i> {{Traction[5]}}</span>
+                </div>
+              </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
+           
+              <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
+             
+            
+            <p style="text-align:center;"> Sorry No Articles/Nft's Available At This Time . </p>
+            </div>
+            {% endif %}
+
+
+            <!--- ODF -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</body>
 
-<script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
-  
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-  
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-  
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+  <script> 
+
+
+function unloadArticles(){
+     
+     columnView = document.getElementById('StoriesDeck')
+     tableView = document.getElementById('ArticleDeck')
+    
+    
+     if(tableView.style.display === 'none'){
+      tableView.style.display = 'block';
+      columnView.style.display = 'none';
+     }else{ 
+      tableView.style.display = 'none'
+     columnView.style.display = 'block' ; 
+      
+     }
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
+    
+
   </script>
-<!-- partial -->
-<script src="{{url_for('static' , filename='Sources/assets/js/jquery.min.js')}}"></script>
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js'></script>
-<script src="{{url_for('static' , filename='Sources/assets/js/dashInterface.js')}}"></script>
-<script src="{{url_for('static' , filename='Sources/assets/js/twind.js')}}"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-</body>
-<!-- partial -->
-
-
-
 </body>
 </html>

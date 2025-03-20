@@ -58,10 +58,10 @@ class Authentication_Profile(View):
             return render_template('Auth.html' , CompanyID = CompanyID  )
         elif request.method == 'POST': 
             Address = request.form.get('WalletAddress')
-            Username = request.form.get('CustomName')
+            Username = base.Construct_String_Address(10)
             # Minor ommissions 
             if not Username: 
-                Username = "Unknown"
+                Username = base.Construct_String_Address(10)
             # We need to check if the said address erxists offchain 
             # If so , then this a validly created account under Coinwryt 
             # Else throw off a UNI error and enforce account abtstraction 
@@ -87,7 +87,7 @@ class Authentication_Profile(View):
                     # Then upon page loads check for necessaryy storage cookies  
 
                     print("Unable to save details to account ")
-                return redirect(url_for('Stories' ,  AccountAddress = User_Account_Data[0]))
+                return redirect(url_for('Stories' ,  AccountAddress = User_Account_Data[1]))
 
 
 
@@ -266,7 +266,7 @@ class MyAccount_Display_Dashboard(View):
         # Date String 
         Date_String_Fmt = base.Space_Time_Generator("DateStr")
         Time_Numeric_Fmt  = base.Space_Time_Generator("TimeInt")
-        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddrxx)
+        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddr)
         Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddr)
         Access_Username = CWTInterface.Render_Consumer_Username (AccountAddr)
 
@@ -278,15 +278,54 @@ class MyAccount_Display_Dashboard(View):
 
 class Content_Collections_Concept(View):
    methods = ['GET']  
-   def dispatch_request(self , AccountAddress ) -> str :
+   def dispatch_request(self , AccountAddress , Type  ) -> str :
+        # ----------------------------------------------------------------------
+        # We need to assert context based on  route redirection for All / Specific
+        # Meaning we need to address one var in particular -- Type &  Storyline_Concept - Render proper db code as expx: 
         CompanyID = "CoinWryt"
         if request.method == 'GET':
+            Creator_Listings =  CWTInterface.Render_All_Consumers() 
             Current_Dateline = base.Space_Time_Generator("DateStr")
             Current_Timeline  = base.Space_Time_Generator("TimeInt")
             UserToken = CWTInterface.Render_Consumer_ID(AccountAddress)
             Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
+            # Retreive Context Wallet Address Username 
             Access_Username = CWTInterface.Render_Consumer_Username (AccountAddress)
-            return render_template('Collections.html'   , AccountAddress = AccountAddress  , Current_Dateline = Current_Dateline , Current_Timeline =  Current_Timeline , UserToken = UserToken , Access_Username = Access_Username , Profile_Avatar =  Profile_Avatar )
+            # Retreive All Available NFT's in Base_Nft's
+            Nft_Tags = CWTInterface.Render_Nft_Base_Assets()
+            # Handling Type Scpefication here -- control for route specification  
+            if(Type == 'All'): 
+                Storyline_Concept =  CWTInterface.Print_All_Stories()  
+            else:
+                Storyline_Concept = CWTInterface.Render_Storyline_Accounts(Type)
+                
+
+            # Check Scnearios For Dry Runs  , 
+
+            # Check For Creator_Listings  
+            if(Creator_Listings): 
+                Creator_Index = len(Creator_Listings)
+            else: 
+                Creator_Index = int(0) 
+
+            # Check For Storyline Concept 
+            if (Storyline_Concept): 
+                Storyline_Index  =  len(Storyline_Concept)
+            else:
+                Storyline_Index = int(0)
+
+
+            # Check For NFt Tags  
+            if(Nft_Tags):
+                Nft_Tag_Index = len(Nft_Tags)
+            else:
+                Nft_Tag_Index = int(0)
+
+                
+            
+
+
+            return render_template('Collections.html'   , AccountAddress = AccountAddress  , Current_Dateline = Current_Dateline , Current_Timeline =  Current_Timeline , UserToken = UserToken , Access_Username = Access_Username , Profile_Avatar =  Profile_Avatar , Creator_Listings = Creator_Listings , Creator_Index = Creator_Index ,  Storyline_Concept = Storyline_Concept ,  Storyline_Index = Storyline_Index ,  Nft_Tags = Nft_Tags , Nft_Tag_Index = Nft_Tag_Index ,  CompanyID = CompanyID)
         
         return render_template('Collections.html' ,  AccountAddress = AccountAddress  )
 
@@ -297,7 +336,30 @@ class Market_Place_Nft(View):
    def dispatch_request(self , AccountAddress ) -> str :
         CompanyID = "CoinWryt"
         if request.method == 'GET':
-            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress )
+            # Controlling Functions 
+            Profile_Avatar =  CWTInterface.Render_Profile_Avatar(AccountAddress)
+            # Retreiving All Available Nft's To Ship To Market Place 
+            Base_Nft_Assets = CWTInterface.Render_Nft_Base_Assets()  
+            # Retreiving Market Place Based Transactions And Their Index 
+            Base_Transaction_Logs = CWTInterface.Render_Full_Transaction_Logs()
+
+
+
+            # Data Check For Exported Functions 
+            # Base_Nft_Assets 
+            if(Base_Nft_Assets):
+                Base_Nft_Index = len(Base_Nft_Assets)
+            else:
+                Base_Nft_Index = int(0)
+            # Check -2
+            # Base_Transaction-Logs Check
+            if(Base_Transaction_Logs):
+                Base_Trans_Index = len(Base_Transaction_Logs)
+            else: 
+                Base_Trans_Index = int(0) 
+
+
+            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar , Base_Nft_Assets = Base_Nft_Assets , Base_Nft_Index = Base_Nft_Index , Base_Transaction_Logs = Base_Transaction_Logs , Base_Trans_Index = Base_Trans_Index )
         
         return render_template('MarketPlace-Nft.html' ,  AccountAddress = AccountAddress  )
 
@@ -310,6 +372,7 @@ class Creators_Content_Paradox(View):
         CompanyID = "CoinWryt"
         if request.method == 'GET':
             # Operational Zone  
+            
             # Exporting All Accounts  ->  Creator_Records   <- Render_All_Consumers()  
             Creator_Records =  CWTInterface.Render_All_Consumers() 
             Profile_Avatar =  CWTInterface.Render_Profile_Avatar(AccountAddress) 
@@ -344,15 +407,54 @@ class Account_Transactions_Concept(View):
             # Return requested profile thru client connect 
             return render_template('Transactions_Concept.html' , CompanyID = CompanyID  )
         
-        return render_template("Account_Transcaction_Logd.html" , )
+        return render_template("Account_Transcaction_Log.html" , )
+
+
+### NFT Creation MEthod 
+ ### With Paired GET |  SET  methods Access protocols  
+ ### Takes the form , completes the form then switches the data 
+ ### One instance  - The data from the form apart from the article content does not go to the Dbase 
+
+class Create_Nft_Technology(View): 
+    methods = ['GET' , 'POST']
+    # Special In - Class Function Run Here  
+    #   Block Sync available  
+    def dispatch_request(self , AccountAddress ) -> list : 
+        Nft_Piped_Content =  [] 
+        Date_String_Fmt = base.Space_Time_Generator("DateStr")
+        Creation_Time  = base.Space_Time_Generator("TimeInt")
+        Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddress)
+        Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
+        Generate_Token = base.Construct_String_Address  
+        if request.method == 'GET': 
+            return render_template("Nft_Creator_Concept.html"  , AccountAddress = AccountAddress  ,   Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , Generate_Token  = Generate_Token )  
+        elif request.method == 'POST': 
+            # Handle Form Submission Here 
+            # Also handle IPFS Exporting of Obj.Contect() --
+            Nft_Form_Data = request.form 
+            for slot in Nft_Form_Data.values() : 
+                Nft_Piped_Content.append(slot)
+
+            # Appending Changes & Content To Db 
+            # Creating New NFT Technology  
+            CWTInterface.Craft_Nft_Technology(Nft_Piped_Content)
+            return render_template("Nft_Creator_Concept.html"  , AccountAddress = AccountAddress  ,   Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , Generate_Token = Generate_Token ) 
+        else:
+            return render_template("Nft_Creator_Concept.html" , AccountAddress  =AccountAddress , Date_String_Fmt = Date_String_Fmt  , Creation_Time = Creation_Time , Generate_Token  = Generate_Token)
+
+
+
+
+
 app.add_url_rule('/', view_func=Company_Display_Profile.as_view('Home'))
 app.add_url_rule('/MyAccount/Dashboard/<string:AccountAddr>/', view_func=MyAccount_Display_Dashboard.as_view('Dash'))
 app.add_url_rule('/Login/' , view_func = Authentication_Profile.as_view('Auth'))
 app.add_url_rule('/Dashboard/StoryMode/<string:AccountAddress>/' , view_func = Story_Mode_Portal.as_view('Stories'))
 app.add_url_rule('/MyAccount/Dashboard/Transactions/<string:AccountAddress>/' , view_func = Account_Transactions_Concept.as_view('Transactions'))
-app.add_url_rule('/Dashboard/Collections/<string:AccountAddress>/' , view_func = Content_Collections_Concept.as_view('Collections'))
+app.add_url_rule('/Dashboard/Collections/<string:AccountAddress>/Target/<string:Type>/' , view_func = Content_Collections_Concept.as_view('Collections'))
 app.add_url_rule('/Dashboard/Nft/MarketPlace/<string:AccountAddress>/' , view_func = Market_Place_Nft.as_view('NftMarket'))
 app.add_url_rule('/Dashboard/Creators/<string:AccountAddress>/Listings/' , view_func = Creators_Content_Paradox.as_view('Creators'))
+app.add_url_rule('/Dashboard/NFT/<string:AccountAddress>/Create/' , view_func = Create_Nft_Technology.as_view('Create-Nft'))
 # Returns the listings of stories that the user has created summarised in a table with a unique textarea below each \
 # Row to show message content of the story mode in question  
 

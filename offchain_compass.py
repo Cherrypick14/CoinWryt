@@ -38,7 +38,6 @@ def Unbox_Database_Scheme(DatabaseURL):
     Storymode_Schema = """CREATE TABLE IF NOT EXISTS Storymode(
                                     ArtToken text UNIQUE  NOT NULL,
                                     OwnerID text NOT NULL,
-                                    Category text NOT NULL,
                                     Comments integer NOT NULL ,
                                     Subject text NOT NULL ,
                                     Views integer NOT NULL ,
@@ -68,16 +67,39 @@ def Unbox_Database_Scheme(DatabaseURL):
                                 );"""
 
 
+
+
+
+    Nft_Schema = """CREATE TABLE IF NOT EXISTS NftCharter(
+                                    NftID text NOT NULL ,
+                                    Title text NOT NULL , 
+                                    Description text NOT NULL ,
+                                    Creator text NOT NULL ,
+                                    CreationTime text NOT NULL ,
+                                    CreationDate text NOT  NULL , 
+                                    MediaUrl text NOT NULL , 
+                                    MediaType text NOT NULL ,
+                                    Price interger NOT NULL ,
+                                    Positive interger NOT NULL ,
+                                    Negative integer NOT NULL , 
+                                    Royalties text NOT NULL , 
+                                    RoyaltyBag text NOT NULL ,
+                                    State text NOT NULL 
+                                  
+                                );"""
+
+
     Transactional_Schema = """CREATE TABLE IF NOT EXISTS TransactionsCharter(
                                     TransID text NOT NULL ,
                                     Sender text NOT NULL , 
                                     Receiver text NOT NULL ,
                                     Reference text NOT NULL ,
-                                    BlockID text NOT NULL , 
-                                    ScanURL text NOT NULL , 
                                     PricedAmount interger NOT NULL ,
+                                    BlockID text NOT NULL ,
+                                    TransHash text NOT  NULL , 
+                                    ScanURL text NOT NULL , 
                                     Timeline text NOT NULL , 
-                                    Date text NOT NULL , 
+                                    Dateline text NOT NULL , 
                                     Status text NOT NULL 
                                     
 
@@ -90,11 +112,12 @@ def Unbox_Database_Scheme(DatabaseURL):
 
     Feedback_Schema = """CREATE TABLE IF NOT EXISTS FeedbackCharter(
                                     FeedID text NOT NULL ,
+                                    FeedType text NOT NULL ,
                                     Reference text NOT NULL , 
                                     OwnerID text NOT NULL ,
                                     Timeline text NOT NULL , 
-                                    Date text NOT NULL , 
-                                    FeedType text NOT NULL 
+                                    Date text NOT NULL 
+                                    
 
                                     
                                     
@@ -129,6 +152,8 @@ def Unbox_Database_Scheme(DatabaseURL):
         create_table(conn,  Community_Schema)
 
         create_table(conn , Transactional_Schema)
+
+        create_table(conn , Nft_Schema)
 
         create_table(conn , Feedback_Schema)
 
