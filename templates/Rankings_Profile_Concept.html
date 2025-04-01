@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CoinWryt</title>
+
+
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Leaderboard.css')}}">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+<body class="light-theme dark-theme">
+  <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+   
+    <div class="flex-grow overflow-hidden h-full flex flex-col">
+      <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
+        <div class="flex h-full text-gray-600 dark:text-gray-400">
+          <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 text-white"> {{ CompanyID }} </a>
+          <a href="{{url_for('Stories' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Storyboard </a>
+          <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Collections </a>
+          <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Market Place </a>
+          <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Creators </a>
+          <a href="{{url_for('Rankings',  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"> Rankings </a>
+          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> My Profile </a>
+  
+        </div>
+        <div class="ml-auto flex items-center space-x-7">
+          <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">Home</button>
+  
+          <button class="flex items-center">
+            <span class="relative flex-shrink-0">
+              <img class="w-7 h-7 rounded-full" src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="profile" />
+              <span class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
+            </span>
+            <span class="ml-2"> {{ Access_Username }} </span>
+            <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div>
+     
+    
+        <div class="sm:p-7 p-4">
+          <div class="flex w-full items-center mb-7">
+            <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
+              <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Last 30 days
+              <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
+              Filter by
+              <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
+              <span class="mr-3">Page 2 of 4</span>
+              <button class="inline-flex mr-2 items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
+                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
+                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+         <!-- Split Deck -->
+         <!-- partial:index.partial.html -->
+<div class="" style="height:auto; overflow:none;">
+  <div class="c-header"><img class="c-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/813538/km-logo-color.svg" draggable="false"/>
+    <button class="c-button c-button--primary">Send Kudos</button>
+  </div>
+  <div class="l-grid">
+    <div class="l-grid__item l-grid__item--sticky">
+      <div class="c-card u-bg--light-gradient u-text--dark">
+        <div class="c-card__body">
+          <div class="u-display--flex u-justify--space-between">
+            <div class="u-text--left">
+              <div class="u-text--small">My Rank</div>
+              <h2>3rd Place</h2>
+            </div>
+            <div class="u-text--right">
+              <div class="u-text--small">My Score</div>
+              <h2>24</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-card__body">
+          <div class="u-text--center" id="winner">
+	<div class="u-text-small u-text--medium u-mb--16">Top Sender Last Week</div>
+	<img class="c-avatar c-avatar--lg" src="https://www.formula1.com/content/dam/fom-website/drivers/D/DANRIC01_Daniel_Ricciardo/danric01.png.transform/2col-retina/image.png">
+	<h3 class="u-mt--16">Daniel Ricciardo</h3>
+	<span class="u-text--teal u-text--small">Daniel Ricciardo</span>
+</div>
+        </div>
+      </div>
+    </div>
+    <div class="l-grid__item" style="height:fit; overflow:scroll;">
+      <div class="c-card">
+        <div class="c-card__header">
+          <h3>Received Kudos</h3>
+          <select class="c-select">
+            <option selected="selected">Sunday, Feb. 23 - Sunday, Feb. 30</option>
+          </select>
+        </div>
+        <div class="c-card__body">
+          <ul class="c-list" id="list">
+            <li class="c-list__item">
+              <div class="c-list__grid">
+                <div class="u-text--left u-text--small u-text--medium">Rank</div>
+                <div class="u-text--left u-text--small u-text--medium">Team Member</div>
+                <div class="u-text--right u-text--small u-text--medium"># of Kudos</div>
+              </div>
+            </li>
+          
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-list__item">
+                <div class="c-list__grid">
+                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
+                  <div class="c-media">
+                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
+                    <div class="c-media__content">
+                      <div class="c-media__title">Lewis Hamilton</div>
+                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
+                    </div>
+                  </div>
+                  <div class="u-text--right c-kudos u-text--yellow">
+                    <div class="u-mt--8">
+                      <strong>36</strong> 👏
+                    </div>
+                  </div>
+                </div>
+              </li>
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+        </div>
+ 
+   
+  </div>
+</body>
+<script src="{{url_for('static' , filename='Sources/assets/js/Leaderboard.js')}}"></script>
+
+</html>

@@ -225,7 +225,7 @@ def Create_Story_Mode(AccountAddr):
             # Secondly lets add the story to the database 
             # Reflect with image files presented which will be sent to universal id | location 
 
-            for dataclip in base.Construct_String_Address(8) , AccountAddr , CategoryLine , int(0) , SubjectMatter , int(0) , base.Space_Time_Generator("DateStr") , base.Space_Time_Generator("TimeInt") :
+            for dataclip in base.Construct_String_Address(8) , AccountAddr , int(0) , SubjectMatter , int(0) , base.Space_Time_Generator("DateStr") , base.Space_Time_Generator("TimeInt") :
                 Datapoint.append(dataclip)
 
             # Handle FOrm Submission
@@ -343,7 +343,11 @@ class Market_Place_Nft(View):
             # Retreiving Market Place Based Transactions And Their Index 
             Base_Transaction_Logs = CWTInterface.Render_Full_Transaction_Logs()
 
+            # Retrieve A list of Artist available on our platform  
+            Artist_Deck = CWTInterface.Print_Aggragate_Profiles()
 
+            # Retrieve A list of all Nft's on the platform 
+            Nft_Properties = CWTInterface.Render_Nft_Base_Assets()
 
             # Data Check For Exported Functions 
             # Base_Nft_Assets 
@@ -358,8 +362,8 @@ class Market_Place_Nft(View):
             else: 
                 Base_Trans_Index = int(0) 
 
-
-            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar , Base_Nft_Assets = Base_Nft_Assets , Base_Nft_Index = Base_Nft_Index , Base_Transaction_Logs = Base_Transaction_Logs , Base_Trans_Index = Base_Trans_Index )
+ 
+            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar , Base_Nft_Assets = Base_Nft_Assets , Base_Nft_Index = Base_Nft_Index , Base_Transaction_Logs = Base_Transaction_Logs , Base_Trans_Index = Base_Trans_Index , Artist_Deck = Artist_Deck , Nft_Properties = Nft_Properties  )
         
         return render_template('MarketPlace-Nft.html' ,  AccountAddress = AccountAddress  )
 
@@ -443,6 +447,22 @@ class Create_Nft_Technology(View):
             return render_template("Nft_Creator_Concept.html" , AccountAddress  =AccountAddress , Date_String_Fmt = Date_String_Fmt  , Creation_Time = Creation_Time , Generate_Token  = Generate_Token)
 
 
+class Print_Billboard_Projections(View):
+    # Avoiding the use of Account Address as this will hinder people who arent logged in from accessing the billboard 
+    # We need a scenario thst works for everyone hence going pless 
+    def dispatch_request(self , AccountAddress ) ->  list  :  
+        if request.method == 'GET': 
+            Date_String_Fmt = base.Space_Time_Generator('DateStr')
+            Creation_Time = base.Space_Time_Generator("TimeInt")
+            Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddress)
+            Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
+            return render_template("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , AccountAddress = AccountAddress , Profile_Avatar = Profile_Avatar )
+        else: 
+            return render_template("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar ) 
+        return render_template ("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time  , AccountAddress = AccountAddress , Profile_Avatar = Profile_Avatar ) 
+
+          
+
 
 
 
@@ -455,6 +475,7 @@ app.add_url_rule('/Dashboard/Collections/<string:AccountAddress>/Target/<string:
 app.add_url_rule('/Dashboard/Nft/MarketPlace/<string:AccountAddress>/' , view_func = Market_Place_Nft.as_view('NftMarket'))
 app.add_url_rule('/Dashboard/Creators/<string:AccountAddress>/Listings/' , view_func = Creators_Content_Paradox.as_view('Creators'))
 app.add_url_rule('/Dashboard/NFT/<string:AccountAddress>/Create/' , view_func = Create_Nft_Technology.as_view('Create-Nft'))
+app.add_url_rule('/Dashboard/Rankings//<string:AccountAddress>/Billboard/' , view_func = Print_Billboard_Projections.as_view('Rankings'))
 # Returns the listings of stories that the user has created summarised in a table with a unique textarea below each \
 # Row to show message content of the story mode in question  
 

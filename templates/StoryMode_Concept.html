@@ -198,24 +198,26 @@
                         </div>
                       </div>
                     </div>
-                    <h2 class="text-sm font-extrabold dark:text-white">
-                     {{ Attribute[4] }}
-                    </h2>
+                   
                     <div class="py-4 w-100" >
                   {% if Return_StorySets(Attribute[0]) %}
                       <div class="flex justify-between gap-1">
                       
                       {% for Picture in Return_StorySets(Attribute[0]) %}
                         <a class="flex" href="#">
-                          <img class="max-w-full rounded-bl-lg"
+                          <img class="max-w-full rounded-bl-lg" 
                             src="{{url_for('static' , filename='/Sources/assets/img/Stories/' + Attribute[0] + '/' + Picture )}}"/>
                         </a>
                        {% endfor %}
                       </div>
                   {% endif %}
+
                     </div>
+                    <p class="text-sm font-extrabold dark:text-white">
+                    {{ Attribute[3] }} 
+                     </p>
                     <p class="dark:text-slate-200">
-                      Category | Type  : {{ Attribute[2] }}
+                        {{ Attribute[5] }} | {{ Attribute[6]}}
                     </p>
                    
                     <div class="py-4">

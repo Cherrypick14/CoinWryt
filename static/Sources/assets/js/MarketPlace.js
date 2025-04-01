@@ -1,141 +1,196 @@
-//! Active Navbar Item
-
 const navItems = document.querySelectorAll(".nav-item");
 
-navItems.forEach((navItem, i) => {
-  navItem.addEventListener("click", () => {
-    navItems.forEach((item, j) => {
-      item.className = "nav-item";
-    });
-    navItem.className = "nav-item active";
+navItems.forEach((navItem) => {
+  navItem.addEventListener("click", (e) => {
+    e.preventDefault(); 
+
+    const activeItem = document.querySelector(".nav-item.active");
+    if (activeItem) {
+      activeItem.classList.remove("active");
+    }
+    
+    navItem.classList.add("active");
   });
 });
 
-//! Light/Dark Mode
+const containers = document.querySelectorAll(".containers");
 
-const moonIcon = document.querySelector(".moon");
-const sunIcon = document.querySelector(".sun");
-const nightImage = document.querySelector(".night-img");
-const morningImage = document.querySelector(".morning-img");
-const toggle = document.querySelector(".toggle");
+containers.forEach((container) => {
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
 
-function switchTheme() {
-  document.body.classList.toggle("darkmode");
-  if (document.body.classList.contains("darkmode")) {
-    sunIcon.classList.remove("hidden");
-    moonIcon.classList.add("hidden");
-    morningImage.classList.add("hidden");
-    nightImage.classList.remove("hidden");
-  } else {
-    sunIcon.classList.add("hidden");
-    moonIcon.classList.remove("hidden");
-    morningImage.classList.remove("hidden");
-    nightImage.classList.add("hidden");
+  container.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const x = e.pageX - container.offsetLeft;
+    const step = (x - startX) * 0.6;
+    container.scrollLeft = scrollLeft - step;
+  });
+
+  container.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  container.addEventListener("mouseleave", () => {
+    isDragging = false;
+  });
+});
+
+const progress = document.getElementById("progress");
+const song = document.getElementById("song");
+const controlIcon = document.getElementById("controlIcon");
+const playPauseButton = document.querySelector(".play-pause-btn");
+const forwardButton = document.querySelector(".controls button.forward");
+const backwardButton = document.querySelector(".controls button.backward");
+const rotatingImage = document.getElementById("rotatingImage");
+const songName = document.querySelector(".music-player h2");
+const artistName = document.querySelector(".music-player p");
+
+let rotating = false;
+let currentRotation = 0;
+let rotationInterval;
+
+const songs = [
+  {
+    title: "Redemption",
+    name: "Besomorph & Coopex",
+    source:
+      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Besomorph-Coopex-Redemption.mp3",
+    cover:
+      "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/398875d0-9b9e-494a-8906-210aa3f777e0",
+  },
+  {
+    title: "What's The Problem?",
+    name: "OSKI",
+    source:
+      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/OSKI-Whats-The-Problem.mp3",
+    cover:
+      "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/810d1ddc-1168-4990-8d43-a0ffee21fb8c",
+  },
+  {
+    title: "Control",
+    name: "Unknown Brain x Rival",
+    source:
+      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Unknown-BrainxRival-Control.mp3",
+    cover:
+      "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/7bd23b84-d9b0-4604-a7e3-872157a37b61",
+  },
+];
+
+let currentSongIndex = 0;
+
+function startRotation() {
+  if (!rotating) {
+    rotating = true;
+    rotationInterval = setInterval(rotateImage, 50);
   }
 }
 
-//! Share Button Popup
-
-const sharebtns = document.querySelectorAll(".share-btn");
-
-sharebtns.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    const popup = btn.closest(".event-footer").querySelector(".popup");
-
-    btn.classList.toggle("active");
-    popup.classList.toggle("active");
-
-    event.stopPropagation();
-  });
-});
-
-document.addEventListener("click", (event) => {
-  const popups = document.querySelectorAll(".popup");
-
-  popups.forEach((popup) => {
-    if (popup.classList.contains("active") && !popup.contains(event.target)) {
-      popup.classList.remove("active");
-
-      const shareBtn = popup
-        .closest(".event-footer")
-        .querySelector(".share-btn");
-      shareBtn.classList.remove("active");
-    }
-  });
-});
-
-//! Like Buttons
-
-const likeBtns = document.querySelectorAll(".like-btn");
-
-likeBtns.forEach((likeBtn) => {
-  likeBtn.addEventListener("click", () => {
-    if (likeBtn.classList.contains("bxs-heart")) {
-      likeBtn.classList.remove("bxs-heart");
-      likeBtn.classList.add("bx-heart");
-      likeBtn.classList.remove("bounce-in");
-    } else {
-      likeBtn.classList.add("bxs-heart");
-      likeBtn.classList.remove("bx-heart");
-      likeBtn.classList.add("bounce-in");
-    }
-  });
-});
-
-//! Chart JS
-
-const chartData = {
-  labels: ["Workshop", "Theater", "Concert", "Sport"],
-  data: [40, 15, 25, 20],
-};
-
-const chart = document.getElementById("doughnut");
-const eventList = document.querySelector(".chart ul");
-
-new Chart(chart, {
-  type: "doughnut",
-  data: {
-    labels: ["Workshop", "Theater", "Concert", "Sport"],
-    datasets: [
-      {
-        label: "# of Events",
-        data: [8, 3, 5, 4],
-        backgroundColor: ["#582bac", "#b31a4d", "#e48e2c", "#4a920f"],
-        offset: 10,
-        hoverOffset: 8,
-        hoverBorderColor: "#9a999b",
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        labels: {
-          color: "#8b8a96",
-          font: {
-            size: 12,
-            weight: 600,
-          },
-        },
-      },
-    },
-    layout: {
-      padding: {
-        bottom: 10,
-      },
-    },
-  },
-});
-
-function population() {
-  chartData.labels.forEach((label, i) => {
-    let eachEvent = document.createElement("li");
-    eachEvent.innerHTML = `${label}: <span class="percentage">${chartData.data[i]}%</span> `;
-    eventList.appendChild(eachEvent);
-  });
+function pauseRotation() {
+  clearInterval(rotationInterval);
+  rotating = false;
 }
 
-population();
+function rotateImage() {
+  currentRotation += 1;
+  rotatingImage.style.transform = `rotate(${currentRotation}deg)`;
+}
+
+function updateSongInfo() {
+  songName.textContent = songs[currentSongIndex].title;
+  artistName.textContent = songs[currentSongIndex].name;
+  song.src = songs[currentSongIndex].source;
+  rotatingImage.src = songs[currentSongIndex].cover;
+
+  song.addEventListener("loadeddata", function () {});
+}
+
+song.addEventListener("loadedmetadata", function () {
+  progress.max = song.duration;
+  progress.value = song.currentTime;
+});
+
+song.addEventListener("ended", function () {
+  currentSongIndex = (currentSongIndex + 1) % songs.length;
+  updateSongInfo();
+  playPause();
+});
+
+song.addEventListener("timeupdate", function () {
+  if (!song.paused) {
+    progress.value = song.currentTime;
+  }
+});
+
+function playPause() {
+  if (song.paused) {
+    song.play();
+    controlIcon.classList.add("fa-pause");
+    controlIcon.classList.remove("fa-play");
+    startRotation();
+  } else {
+    song.pause();
+    controlIcon.classList.remove("fa-pause");
+    controlIcon.classList.add("fa-play");
+    pauseRotation();
+  }
+}
+
+playPauseButton.addEventListener("click", playPause);
+
+progress.addEventListener("input", function () {
+  song.currentTime = progress.value;
+});
+
+progress.addEventListener("change", function () {
+  song.play();
+  controlIcon.classList.add("fa-pause");
+  controlIcon.classList.remove("fa-play");
+  startRotation();
+});
+
+forwardButton.addEventListener("click", function () {
+  currentSongIndex = (currentSongIndex + 1) % songs.length;
+  updateSongInfo();
+  playPause();
+});
+
+backwardButton.addEventListener("click", function () {
+  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+  updateSongInfo();
+  playPause();
+});
+
+updateSongInfo();
+
+var swiper = new Swiper(".swiper", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  loop: true,
+  speed: 600,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 10,
+    stretch: 120,
+    depth: 200,
+    modifier: 1,
+    slideShadows: false,
+  },
+   on: {
+    click(event) {
+      swiper.slideTo(this.clickedIndex);
+    },
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
+});

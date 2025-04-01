@@ -3,278 +3,370 @@
 <head>
   <meta charset="UTF-8">
   <title>CoinWryt</title>
-
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/swiper-bundle.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/all.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/MarketPlace.css')}}">
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/nft-card.min.css')}}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 </head>
 <body class="light-theme dark-theme">
-  <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
-   
-    <div class="flex-grow overflow-hidden h-full flex flex-col">
-      <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
-        <div class="flex h-full text-gray-600 dark:text-gray-400">
-          <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 text-white"> {{ CompanyID }} </a>
-          <a href="{{url_for('Stories' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Storyboard </a>
-          <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"> Collections </a>
-          <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Market Place </a>
-          <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Creators </a>
-          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Rankings </a>
-          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> My Profile </a>
-  
-        </div>
-        <div class="ml-auto flex items-center space-x-7">
-          <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">Home</button>
-  
-          <button class="flex items-center">
-            <span class="relative flex-shrink-0">
-              <img class="w-7 h-7 rounded-full" src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="profile" />
-              <span class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
-            </span>
-            <span class="ml-2"> {{ Access_Username }} </span>
-            <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div>
-     
-    
-        <div class="sm:p-7 p-4">
-          <div class="flex w-full items-center mb-7">
-            <div class="search-and-check" style="width:75%;">
-              <form class="search-box">
-                <input type="text" placeholder="Search nft ..." style="width:75%;"/>
-                <i class="bx bx-search"></i>
-              </form>
-              
+
+
+      <main>
+        <nav class="main-menu">
+          <div>
+            <div class="user-info">
+              <img
+                src="{{url_for('static' , filename='Sources/assets/img/Avatars/' +  Profile_Avatar )}}"
+                alt="user" />
+              <p> **** **** **** {{ AccountAddress[-4:] }} </p>
             </div>
-            <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
-              <span class="mr-3"> Account : {{ AccountAddress }} </span>
-              
-            </div>
+            <ul>
+              <li class="nav-item active">
+                <a href="#">
+                  <i class="fa fa-map nav-icon"></i>
+                  <span class="nav-text"> Trending </span>
+                </a>
+              </li>
+  
+              <li class="nav-item">
+                <a href="#">
+                  <i class="fa fa-arrow-trend-up nav-icon"></i>
+                  <span class="nav-text"> Premium </span>
+                </a>
+              </li>
+  
+              <li class="nav-item">
+                <a href="#">
+                  <i class="fa fa-compact-disc nav-icon"></i>
+                  <span class="nav-text"> Cart </span>
+                </a>
+              </li>
+  
+              <li class="nav-item">
+                <a href="#">
+                  <i class="fa fa-circle-play nav-icon"></i>
+                  <span class="nav-text"> History </span>
+                </a>
+              </li>
+  
+              <li class="nav-item">
+                <a href="#">
+                  <i class="fa fa-heart nav-icon"></i>
+                  <span class="nav-text"> Statistics </span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}">
+                  <i class="fa fa-heart nav-icon"></i>
+                  <span class="nav-text"> Dashboard </span>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="#">
+                  <i class="fa fa-heart nav-icon"></i>
+                  <span class="nav-text"> Collections </span>
+                </a>
+              </li>
+            </ul>
           </div>
-          <div class="content">
-         <div class="left-content">
-        
-        <div>
-          <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
-            <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            Last 30 days
-            <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0 mr-3">
-            Filter by
-            <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0 mr-3">
-            Trending
-            <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0 mr-3">
-            Best Of 
-            <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-        </div>
+  
+          <ul>
+            <li class="nav-item">
+              <a href="#">
+                <i class="fa fa-user nav-icon"></i>
+                <span class="nav-text">Profile</span>
+              </a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="#">
+                <i class="fa fa-gear nav-icon"></i>
+                <span class="nav-text">Settings</span>
+              </a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="#">
+                <i class="fa fa-right-from-bracket nav-icon"></i>
+                <span class="nav-text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+  
+        <section class="content">
+          <div class="left-content">
+         
+  
+            <div class="artists">
+              <h1>Featured Artists</h1>
+              <div class="artist-container containers">
+                {% for Record in Artist_Deck %}
+                <div class="artist">
+                  <div class="artist-img-container"><img
+                    src="{{url_for('static', filename='Sources/assets/img/Avatars/' + Record[2  ])}}"
+                    alt="" /></div>
+                  <p> {{Record[0]}} </p>
+                </div>
 
-        <div class="header">
-          <picture class="morning-img hidden">
-            <img
-              class="header-mobile"
-              src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/b4f4845f-4dc7-4470-b81a-677f46f211c2"
-              alt="" />
-            <img
-              class="header-tablet"
-              src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/8add6e87-577d-44cb-a7bb-18f0e4bd2163"
-              alt="" />
-            <img
-              class="header-desktop"
-              src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/cce4084a-01a4-428d-961f-935bafe7a6e3"
-              alt="" />
-          </picture>
-
-          <picture class="night-img">
-            <img
-              class="header-mobile"
-              src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e349d3c2-ee2c-4982-866e-776236508fc9"
-              alt="" />
-            <img
-              class="header-tablet"
-              src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1266c923-a1d3-441a-bbb6-2dc6663b1f8b"
-              alt="" />
-            <img
-              class="header-desktop"
-              src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/91011799-2b47-457d-9e11-65fe38a105d0"
-              alt="" />
-          </picture>
-        </div>
-
-        <div class="upcoming-events">
-          <h1> Nft Market Place</h1>
-          {% if not Base_Nft_Assets %}
-          <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;" >
-           
-            <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
-           
+              {% endfor %}
+  
+              
           
-          <p style="text-align:center; color:white"> Sorry {{ Base_Nft_Index}} Assets Published To Market Place  </p>
-          </div>
-            
-          <div class="event-container">
-            <!-- Replication Zone -->
-            {% else%}
-            {% for Nft in Base_Nft_Assets %}
-            <div class="card event-card">
-              <div class="event-header">
-                <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/697ef286-1104-4c6c-91d6-0b2a1e04009b"
-                  alt="" />
-                <p>March 19, 8:00 PM</p>
-                <i class="bx bx-heart like-btn"></i>
               </div>
-              <div class="event-content">
-                <h2>Acoustic Serenade Under the Stars</h2>
-                <p>Skyline Amphitheater</p>
+            </div>
+  
+            <div class="albums">
+              <h1> Premium Content </h1>
+              <div class="album-container containers">
+                <!-- This is a property replication zone  for -->
+                   <!-- Card Replication -->
+                   {% if Nft_Properties %}
+                   {% for Traction in Nft_Properties %}
+                   {% if Traction[8] != 0 %}
+                   <!-- Intended For Premium Nfts-->
+                   <div class="nft-card nft-card--locked nft-card--compact">
+                     <div class="nft-card--header">
+                       
+                     </div>
+                     <div class="nft-card--content">
+                       <div class="nft-action">
+                         <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
+                         <span> {{Traction[-5]}} <i class="far fa-heart"></i></span>
+                       </div>
+                       <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
+                       <div class="nft-description">
+                         <p> {{ Traction[2]}} </p>
+                       </div>
+                       <div class="nft-badge">
+                         <span class="badge">Fanbase</span>
+                       </div>
+                     
+                     </div>
+                     <div class="nft-card--footer">
+                       <div class="nft-price">
+                         <span>($803.39)</span>
+                         <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                       </div>
+                       <br>
+                       <div class="nft-unlock">
+                         <input type="button" class="btn btn--primary" value="Unlock">
+                       </div>
+                     </div>
+                   </div>
+                   {% else %}
+                   <!-- Intended For Freemium Nfts-->
+                   <div class="nft-card nft-card--compact">
+                     <div class="nft-card--header">
+                       <div class="nft-user">
+                         <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
+                         {{Traction[0]}}
+                         <span> {{ Traction[3][10:]}} </span>
+                       </div>
+                     </div>
+                     <div class="nft-card--content">
+                       <div class="nft-action">
+                         <span> {{Traction[8]}} <i class="far fa-heart"></i></span>
+                       </div>
+                       <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
+                       <div class="nft-qrcode">
+                         <span class="badge"> View </span>
+                       </div>
+                     </div>
+                     <div class="nft-card--footer">
+                       <div class="nft-price">
+                         <span>($803.39)</span>
+                         <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                       </div>
+                       <div class="nft-time">
+                         <span><i class="far fa-clock"></i> {{Traction[5]}}</span>
+                       </div>
+                     </div>
+                   </div>
+       
+                   {% endif %}
+                   {% endfor %}
+                   {% else %}
+                   <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
+                  
+                     <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
+                    
+                   
+                   <p style="text-align:center;"> Sorry No Articles/Nft's Available At This Time . </p>
+                   </div>
+                   {% endif %}
+       
+       
+                   <!--- ODF -->
+  
+          
               </div>
-              <div class="event-footer">
-                <p style="background-color: #e48e2c">Concert</p>
-                <div class="btn-group">
-                  <button>Buy Ticket</button>
-                  <div class="share">
-                    <button class="share-btn">
-                      <i class="fa-solid fa-share"></i>
-                    </button>
-                    <ul class="popup">
-                      <li>
-                        <a href="#" style="color: rgb(79, 153, 213)"
-                          ><i class="bx bxl-twitter"></i
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#" style="color: rgb(34, 173, 34)"
-                          ><i class="bx bxl-whatsapp"></i
-                        ></a>
-                      </li>
-                    </ul>
-                  </div>
+            </div>
+
+            <div class="albums">
+              <h1> Top Trending </h1>
+              <div class="album-container containers">
+                   <!-- Card Replication -->
+            {% if Nft_Properties %}
+            {% for Traction in Nft_Properties %}
+            {% if Traction[8] != 0 %}
+            <!-- Intended For Premium Nfts-->
+            <div class="nft-card nft-card--locked nft-card--compact">
+              <div class="nft-card--header">
+                
+              </div>
+              <div class="nft-card--content">
+                <div class="nft-action">
+                  <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
+                  <span> {{Traction[-5]}} <i class="far fa-heart"></i></span>
+                </div>
+                <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
+                <div class="nft-description">
+                  <p> {{ Traction[2]}} </p>
+                </div>
+                <div class="nft-badge">
+                  <span class="badge">Fanbase</span>
+                </div>
+              
+              </div>
+              <div class="nft-card--footer">
+                <div class="nft-price">
+                  <span>($803.39)</span>
+                  <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                </div>
+                <br>
+                <div class="nft-unlock">
+                  <input type="button" class="btn btn--primary" value="Unlock">
                 </div>
               </div>
             </div>
-            {% endfor %}
+            {% else %}
+            <!-- Intended For Freemium Nfts-->
+            <div class="nft-card nft-card--compact">
+              <div class="nft-card--header">
+                <div class="nft-user">
+                  <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
+                  {{Traction[0]}}
+                  <span> {{ Traction[3][10:]}} </span>
+                </div>
+              </div>
+              <div class="nft-card--content">
+                <div class="nft-action">
+                  <span> {{Traction[8]}} <i class="far fa-heart"></i></span>
+                </div>
+                <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
+                <div class="nft-qrcode">
+                  <span class="badge"> View </span>
+                </div>
+              </div>
+              <div class="nft-card--footer">
+                <div class="nft-price">
+                  <span>($803.39)</span>
+                  <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                </div>
+                <div class="nft-time">
+                  <span><i class="far fa-clock"></i> {{Traction[5]}}</span>
+                </div>
+              </div>
+            </div>
+
             {% endif %}
-
-            <!-- EOF -->
-      
-            
-
-          </div>
-        </div>
-
-      
-      </div>
-
-      <div class="right-content" >
-        <div class="interaction-control interactions">
-          <i class="fa-regular fa-envelope notified"></i>
-          <i class="fa-regular fa-bell notified"></i>
-          <div class="toggle" onclick="switchTheme()">
-            <div class="mode-icon moon">
-              <i class="bx bxs-moon"></i>
-            </div>
-            <div class="mode-icon sun hidden">
-              <i class="bx bxs-sun"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="analytics">
-          <h1>Analytics</h1>
-          <div class="analytics-container">
-            <div class="total-events">
-              <div class="event-number card">
-                <h2> All Assets </h2>
-                <p> {{ Base_Nft_Index }} </p>
-                <i class="bx bx-check-circle"></i>
-              </div>
-              <div class="event-number card">
-                <h2> All Transactions </h2>
-                <p> {{ Base_Trans_Index }}  </p>
-                <i class="bx bx-timer"></i>
-              </div>
-            </div>
-
-            <div class="chart" id="doughnut-chart">
-              <h2> Monthly Stock Sales </h2>
-              <canvas id="doughnut"></canvas>
-              <ul></ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="contacts">
-          <h1> Transaction Chart </h1>
-          <div class="contacts-container">
-            {% if Base_Transaction_Logs %}
-            {% for Record in Base_Transaction_Logs %}
-            <div class="contact-status">
-              <div class="contact-activity">
-                <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e56800db-687d-4d0e-a470-51e37a4431c7"
-                  alt="" />
-                <p>Matt favored <span>Jazz Fusion Night</span></p>
-              </div>
-              <small>1 hour ago</small>
-            </div>
             {% endfor %}
             {% else %}
-            <p> Currently , There are <span>  {{Base_Trans_Index}} </span> Transactions recorded </p>
+            <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
+           
+              <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
+             
+            
+            <p style="text-align:center;"> Sorry No Articles/Nft's Available At This Time . </p>
+            </div>
             {% endif %}
 
-       
-          </div>
-        </div>
-      </div>
-      </div>
-          <div class="flex w-full mt-5 space-x-2 justify-end">
 
-            <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">
-              <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">1</button>
-            <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white leading-none">2</button>
-            <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">3</button>
-            <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">4</button>
-            <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">
-              <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
+            <!--- ODF -->
+  
+             
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="albums">
+              <h1> Freemium  </h1>
+              <div class="album-container containers">
+
+                {% for Nft in Nft_Properties %}
+                <div class="album">
+                  <div class="album-frame">
+                    <img
+                      src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif""
+                      alt="" />
+                  </div>
+                  <div>
+                    <h2> {{Nft[1][:15]}} </h2>
+                    <p> **** **** {{Nft[3][-4:]}} </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+  
+              
+              </div>
+            </div>
+
+
+
+            
           </div>
-        </div>
- 
+  
+          <div class="right-content">
+            <div class="recommended-songs">
+              <h1> Gallery  </h1>
+              <div class="song-container">
+
+                {% for Nft in Nft_Properties %}
+                <div class="song">
+                  <div class="song-img">
+                    <img
+                      src="{{url_for('static' , filename='Sources/assets/img/Avatars/view-futuristic-music-robot-droid_23-2151072897.avif')}}"
+                      alt="" />
+                    <div class="overlay">
+                      <i class="fa-solid fa-play"></i>
+                    </div>
+                  </div>
+                  <div class="song-title">
+                    <h2>{{ Nft[1]}} </h2>
+                    <p> **** **** **** {{ Nft[3][-4:]}} </p>
+                  </div>
+                  <button class="btn--primary"> > </button> 
+                </div>
+                {% endfor %}
+  
+             
+              </div>
+            </div>
+  
+            
+          </div>
+        </section>
+     
+  <!-- partial -->
+
+  
     
   </div>
 </body>
-<script src='https://unpkg.com/boxicons@2.1.4/dist/boxicons.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js'></script>
+
 <script src="{{url_for('static' , filename='Sources/assets/js/MarketPlace.js')}}"></script>
 
 </html>
