@@ -2,8 +2,8 @@
 .nft-card {
   position: relative;
   display: inline-block;
-  width: 345px;
-  margin: 20px;
+  width:100%;
+  
   color: #232323;
   /* when stop */
   /* when stop */
@@ -220,7 +220,7 @@
   background: transparent;
 }
 .nft-card.nft-card--category .nft-card--content {
-  height: 210px;
+  height: 150px;
   background: #000000;
 }
 .nft-card.nft-card--category .nft-card--content:before {
@@ -268,7 +268,7 @@
 }
 .nft-card.nft-card--category .nft-card--content img {
   float: left;
-  width: 50%;
+  width: 25%;
   height: 50%;
   opacity: 75%;
 }

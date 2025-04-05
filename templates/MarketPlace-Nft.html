@@ -1,372 +1,349 @@
+
+<!-- partial:index.partial.html -->
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CoinWryt</title>
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/swiper-bundle.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/all.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/MarketPlace.css')}}">
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/nft-card.min.css')}}">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFT Dashboard 👾 | Programmer Cloud</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{url_for('static' ,filename='Sources/assets/css/77c11d2d6d.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' ,filename='Sources/assets/css/55c11d2d6d.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' ,filename='Sources/assets/css/nft-card.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-</head>
-<body class="light-theme dark-theme">
+  </head>
+  <style>
 
+.parent{ 
+  background:radial-gradient(circle, #1a2049 0%, #13162f 100%);
 
-      <main>
-        <nav class="main-menu">
-          <div>
-            <div class="user-info">
+}
+.account-profile {
+  margin: auto;
+  position: relative;
+  text-align: center;
+  position: relative;
+}
+.account-profile img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+  border: 3px solid #4255d3;
+  padding: 5px;
+}
+.account-profile .blob {
+  position: absolute;
+  border-radius: 50%;
+  -webkit-animation: fly 5.8s linear infinite alternate;
+          animation: fly 5.8s linear infinite alternate;
+}
+.account-profile .blob:nth-child(1) {
+  width: 14px;
+  height: 14px;
+  top: 25px;
+  left: -20px;
+  background: #28327a;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+.account-profile .blob:nth-child(2) {
+  width: 18px;
+  height: 18px;
+  background: #87344c;
+  right: -20px;
+  top: -20px;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.account-profile .blob:nth-child(3) {
+  width: 12px;
+  height: 12px;
+  background: #13645b;
+  right: -35px;
+  top: 50%;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+.account-name {
+  margin: 20px 0 10px;
+  color:#fefefe;
+}
+.account-title {
+  font-size: 14px;
+  color:#fefefe;
+}
+</style>
+
+  <body>
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <!-- Sidebar -->
+    
+      <!-- End Sidebar -->
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-content">
+        <!-- ======Topbar======= -->
+       
+        <!-- ======End Topbar======= -->
+
+        <!-- ======Section======= -->
+        <div class="section flex flex-sb">
+          <!-- Section Left -->
+          <div class="section-left">
+            <!-- ======Banner======= -->
+            <div class="banner flex flex-sb">
+              <div class="text">
+                <h2>
+                  Dicover and sell <br />
+                  your own NFTs
+                </h2>
+
+                <a href="#" class="btn">Discover Now</a>
+              </div>
+
               <img
-                src="{{url_for('static' , filename='Sources/assets/img/Avatars/' +  Profile_Avatar )}}"
-                alt="user" />
-              <p> **** **** **** {{ AccountAddress[-4:] }} </p>
-            </div>
-            <ul>
-              <li class="nav-item active">
-                <a href="#">
-                  <i class="fa fa-map nav-icon"></i>
-                  <span class="nav-text"> Trending </span>
-                </a>
-              </li>
-  
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fa fa-arrow-trend-up nav-icon"></i>
-                  <span class="nav-text"> Premium </span>
-                </a>
-              </li>
-  
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fa fa-compact-disc nav-icon"></i>
-                  <span class="nav-text"> Cart </span>
-                </a>
-              </li>
-  
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fa fa-circle-play nav-icon"></i>
-                  <span class="nav-text"> History </span>
-                </a>
-              </li>
-  
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fa fa-heart nav-icon"></i>
-                  <span class="nav-text"> Statistics </span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}">
-                  <i class="fa fa-heart nav-icon"></i>
-                  <span class="nav-text"> Dashboard </span>
-                </a>
-              </li>
-
-
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fa fa-heart nav-icon"></i>
-                  <span class="nav-text"> Collections </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-  
-          <ul>
-            <li class="nav-item">
-              <a href="#">
-                <i class="fa fa-user nav-icon"></i>
-                <span class="nav-text">Profile</span>
-              </a>
-            </li>
-  
-            <li class="nav-item">
-              <a href="#">
-                <i class="fa fa-gear nav-icon"></i>
-                <span class="nav-text">Settings</span>
-              </a>
-            </li>
-  
-            <li class="nav-item">
-              <a href="#">
-                <i class="fa fa-right-from-bracket nav-icon"></i>
-                <span class="nav-text">Logout</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-  
-        <section class="content">
-          <div class="left-content">
-         
-  
-            <div class="artists">
-              <h1>Featured Artists</h1>
-              <div class="artist-container containers">
-                {% for Record in Artist_Deck %}
-                <div class="artist">
-                  <div class="artist-img-container"><img
-                    src="{{url_for('static', filename='Sources/assets/img/Avatars/' + Record[2  ])}}"
-                    alt="" /></div>
-                  <p> {{Record[0]}} </p>
-                </div>
-
-              {% endfor %}
-  
-              
-          
-              </div>
-            </div>
-  
-            <div class="albums">
-              <h1> Premium Content </h1>
-              <div class="album-container containers">
-                <!-- This is a property replication zone  for -->
-                   <!-- Card Replication -->
-                   {% if Nft_Properties %}
-                   {% for Traction in Nft_Properties %}
-                   {% if Traction[8] != 0 %}
-                   <!-- Intended For Premium Nfts-->
-                   <div class="nft-card nft-card--locked nft-card--compact">
-                     <div class="nft-card--header">
-                       
-                     </div>
-                     <div class="nft-card--content">
-                       <div class="nft-action">
-                         <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
-                         <span> {{Traction[-5]}} <i class="far fa-heart"></i></span>
-                       </div>
-                       <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
-                       <div class="nft-description">
-                         <p> {{ Traction[2]}} </p>
-                       </div>
-                       <div class="nft-badge">
-                         <span class="badge">Fanbase</span>
-                       </div>
-                     
-                     </div>
-                     <div class="nft-card--footer">
-                       <div class="nft-price">
-                         <span>($803.39)</span>
-                         <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
-                       </div>
-                       <br>
-                       <div class="nft-unlock">
-                         <input type="button" class="btn btn--primary" value="Unlock">
-                       </div>
-                     </div>
-                   </div>
-                   {% else %}
-                   <!-- Intended For Freemium Nfts-->
-                   <div class="nft-card nft-card--compact">
-                     <div class="nft-card--header">
-                       <div class="nft-user">
-                         <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
-                         {{Traction[0]}}
-                         <span> {{ Traction[3][10:]}} </span>
-                       </div>
-                     </div>
-                     <div class="nft-card--content">
-                       <div class="nft-action">
-                         <span> {{Traction[8]}} <i class="far fa-heart"></i></span>
-                       </div>
-                       <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
-                       <div class="nft-qrcode">
-                         <span class="badge"> View </span>
-                       </div>
-                     </div>
-                     <div class="nft-card--footer">
-                       <div class="nft-price">
-                         <span>($803.39)</span>
-                         <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
-                       </div>
-                       <div class="nft-time">
-                         <span><i class="far fa-clock"></i> {{Traction[5]}}</span>
-                       </div>
-                     </div>
-                   </div>
-       
-                   {% endif %}
-                   {% endfor %}
-                   {% else %}
-                   <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
-                  
-                     <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
-                    
-                   
-                   <p style="text-align:center;"> Sorry No Articles/Nft's Available At This Time . </p>
-                   </div>
-                   {% endif %}
-       
-       
-                   <!--- ODF -->
-  
-          
-              </div>
+                src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/banner.svg"
+                alt=""
+              />
             </div>
 
-            <div class="albums">
-              <h1> Top Trending </h1>
-              <div class="album-container containers">
-                   <!-- Card Replication -->
-            {% if Nft_Properties %}
-            {% for Traction in Nft_Properties %}
-            {% if Traction[8] != 0 %}
-            <!-- Intended For Premium Nfts-->
-            <div class="nft-card nft-card--locked nft-card--compact">
-              <div class="nft-card--header">
+            <div class="nfts">
+              <div class="trending heading flex flex-sb text-center">
+                <h2 style="text-align: center;">Categories </h2>
+                <p>See all</p>
+
                 
               </div>
-              <div class="nft-card--content">
-                <div class="nft-action">
-                  <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
-                  <span> {{Traction[-5]}} <i class="far fa-heart"></i></span>
+
+              <div class="">
+                <ul class="explorer-scroll-cards">
+                  <li class="explorer-scroll-card">
+                <div class="category flex">
+                  <div class="icon">🔥</div>
+                  <p>Trending</p>
                 </div>
-                <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
-                <div class="nft-description">
-                  <p> {{ Traction[2]}} </p>
+                
+                <li class="explorer-scroll-card">
+                <div class="category flex">
+                  <div class="icon">🎨</div>
+                  <p>Art</p>
                 </div>
-                <div class="nft-badge">
-                  <span class="badge">Fanbase</span>
+                </li>
+
+                <li class="explorer-scroll-card">
+                <div class="category flex">
+                  <div class="icon">🎨</div>
+                  <p> Dance</p>
                 </div>
+                </li>
+
               
+                <li class="explorer-scroll-card">
+                <div class="category flex">
+                  <div class="icon">🕹️</div>
+                  <p>Game</p>
+                </div>
+                </li>
+                <li class="explorer-scroll-card">
+                <div class="category flex">
+                  <div class="icon">👗</div>
+                  <p>Fashion</p>
+                </div>
+                </li>
+                <li class="explorer-scroll-card">
+                <div class="category flex">
+                  <div class="icon">🎵</div>
+                  <p>Music</p>
+                </div>
+                </li>
+                </ul>
               </div>
-              <div class="nft-card--footer">
-                <div class="nft-price">
-                  <span>($803.39)</span>
-                  <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
-                </div>
-                <br>
-                <div class="nft-unlock">
-                  <input type="button" class="btn btn--primary" value="Unlock">
-                </div>
-              </div>
-            </div>
-            {% else %}
-            <!-- Intended For Freemium Nfts-->
-            <div class="nft-card nft-card--compact">
-              <div class="nft-card--header">
-                <div class="nft-user">
-                  <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
-                  {{Traction[0]}}
-                  <span> {{ Traction[3][10:]}} </span>
-                </div>
-              </div>
-              <div class="nft-card--content">
-                <div class="nft-action">
-                  <span> {{Traction[8]}} <i class="far fa-heart"></i></span>
-                </div>
-                <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif">
-                <div class="nft-qrcode">
-                  <span class="badge"> View </span>
-                </div>
-              </div>
-              <div class="nft-card--footer">
-                <div class="nft-price">
-                  <span>($803.39)</span>
-                  <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
-                </div>
-                <div class="nft-time">
-                  <span><i class="far fa-clock"></i> {{Traction[5]}}</span>
-                </div>
-              </div>
-            </div>
-
-            {% endif %}
-            {% endfor %}
-            {% else %}
-            <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
-           
-              <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
-             
-            
-            <p style="text-align:center;"> Sorry No Articles/Nft's Available At This Time . </p>
-            </div>
-            {% endif %}
 
 
-            <!--- ODF -->
-  
-             
-              </div>
-            </div>
+              <!-- ======Categories======= -->
 
-
-
-
-
-
-
-
-            <div class="albums">
-              <h1> Freemium  </h1>
-              <div class="album-container containers">
-
-                {% for Nft in Nft_Properties %}
-                <div class="album">
-                  <div class="album-frame">
-                    <img
-                      src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif""
-                      alt="" />
-                  </div>
-                  <div>
-                    <h2> {{Nft[1][:15]}} </h2>
-                    <p> **** **** {{Nft[3][-4:]}} </p>
-                  </div>
-                </div>
-
-                {% endfor %}
-  
               
-              </div>
-            </div>
 
-
-
+              <!-- =====Browse NFT===== -->
             
-          </div>
-  
-          <div class="right-content">
-            <div class="recommended-songs">
-              <h1> Gallery  </h1>
-              <div class="song-container">
+          
+              <div class="trending heading flex flex-sb mb-2 mt-3">
+                <h2>Popular Artists </h2>
+                <p>See all</p>
 
-                {% for Nft in Nft_Properties %}
-                <div class="song">
-                  <div class="song-img">
-                    <img
-                      src="{{url_for('static' , filename='Sources/assets/img/Avatars/view-futuristic-music-robot-droid_23-2151072897.avif')}}"
-                      alt="" />
-                    <div class="overlay">
-                      <i class="fa-solid fa-play"></i>
+                
+              </div>
+              <ul class="explorer-scroll-cards mt-2 mb-2 " style="scrollbar-3dlight-color: inherit;">
+               
+                {% for Traction in Nft_Properties *2 %}
+                <li class="explorer-scroll-card">
+                  <div class="account-profile ">
+                    <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100142.avif" alt="">
+                    <div class="blob-wrap">
+                     <div class="blob"></div>
+                     <div class="blob"></div>
+                     <div class="blob"></div>
+                    </div>
+                    <div class="account-name"> 7WBMACAID4 </div>
+                    <div class="account-title"> GJCRQL7O3Q </div>
+                   </div>
+
+                    </li>
+              {% endfor %}
+              </ul>
+
+
+
+              <div class="trending heading flex flex-sb mb-2 mt-3">
+                <h2>Trending Collectives </h2>
+                <p>See all</p>
+
+                
+              </div>
+              <ul class="explorer-scroll-cards">
+                
+                {% for Traction in Nft_Properties *2 %}
+                <li class="explorer-scroll-card">
+                  <div class="nft-card nft-card--locked nft-card--compact">
+                    <div class="nft-card--header">
+                      
+                    </div>
+                    <div class="nft-card--content">
+                      <div class="nft-action">
+                        <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
+                        <span> {{Traction[-5]}} <i class="far fa-heart"></i></span>
+                      </div>
+                      <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
+                      <div class="nft-description">
+                        <p> {{ Traction[2]}} </p>
+                      </div>
+                      <div class="nft-badge">
+                        <span class="badge">Fanbase</span>
+                      </div>
+                    
+                    </div>
+                    <div class="nft-card--footer">
+                      <div class="nft-price">
+                        <span>($803.39)</span>
+                        <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                      </div>
+                      <br>
+                      <div class="nft-unlock">
+                        <input type="button" class="btn btn--primary" value="Unlock">
+                      </div>
                     </div>
                   </div>
-                  <div class="song-title">
-                    <h2>{{ Nft[1]}} </h2>
-                    <p> **** **** **** {{ Nft[3][-4:]}} </p>
-                  </div>
-                  <button class="btn--primary"> > </button> 
-                </div>
-                {% endfor %}
-  
-             
+                    </li>
+              {% endfor %}
+              </ul>
+                
+
+              <div class="trending heading flex flex-sb mb-2 mt-3">
+                <h2> Recently Published </h2>
+                <p>See all</p>
+
+                
               </div>
-            </div>
-  
+              <ul class="explorer-scroll-cards">
+                
+                {% for Traction in Nft_Properties *2 %}
+                <li class="explorer-scroll-card">
+                  <div class="nft-card nft-card--locked nft-card--compact">
+                    <div class="nft-card--header">
+                      <div class="nft-user">
+                        <img src="https://m.media-amazon.com/images/I/51KUrVgVH-L._SL1000_.jpg">
+                       {{ Traction[0] }}
+                        <span> {{ Traction[1][:20]}}... </span>
+                      </div>
+                    </div>
+                    <div class="nft-card--content">
+                      <div class="nft-action">
+                        <span> {{Traction[7]}} <i class="far fa-comment"></i></span>
+                       
+                      </div>
+                      <img src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" class="w-12 mr-4 rounded-full" alt="profile">
+                      <div class="nft-description">
+                        <p> {{ Traction[2]}} </p>
+                      </div>
+                      <div class="nft-badge">
+                        <span class="badge">Fanbase</span>
+                      </div>
+                    
+                    </div>
+                    <div class="nft-card--footer">
+                      <div class="nft-price">
+                        <span>($803.39)</span>
+                        <i class="fab fa-ethereum"></i> {{Traction[-6]}} ETH
+                      </div>
+                      <br>
+                      <div class="nft-unlock">
+                        <input type="button" class="btn btn--primary" value="Unlock">
+                      </div>
+                    </div>
+                  </div>
+                    </li>
+              {% endfor %}
+              </ul>
+              
+
+
             
+                
+               
+                    
+            
+           
+          
+            
+              
+
+
+            
+            </div>
+           
           </div>
-        </section>
-     
-  <!-- partial -->
 
-  
+          <!-- Section Right -->
+         
+        </div>
+        <!-- ======End Section======= -->
+      </div>
+      <!-- End Dashboard Content -->
+    </div>
+    <!-- End Dashboard -->
     
-  </div>
+    
+             <!--   Youtube Turorial Link   -->
+    <a href="https://www.youtube.com/watch?v=j-ebBPa9z1A" class="youtube" target="__blank">
+  <p>Watch Tutorial 🔥</p>
+</a>
+
+
+<script
+      type="module"
+      src="{{url_for('static' ,filename='Sources/assets/js/55c11d2d6d.js')}}"
+    ></script>
+    <!-- Ion Icons Js -->
+    <script
+      type="module"
+      src="{{url_for('static' ,filename='Sources/assets/js/ionicons.esm.js')}}"
+    ></script>
+    <script
+      nomodule
+      src="{{url_for('static' ,filename='Sources/assets/js/ionicons.js')}}"
+    ></script>
+
+    <!-- JS -->
+ 
+<!-- partial -->
+  <script  src=""></script>
+
 </body>
-
-<script src="{{url_for('static' , filename='Sources/assets/js/MarketPlace.js')}}"></script>
-
 </html>

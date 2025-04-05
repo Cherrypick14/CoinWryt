@@ -1,0 +1,171 @@
+/* General Styles */
+
+/* Scrollable Card List */
+.explorer-scroll-cards {
+  display: flex;
+  padding: 25px 0px;
+  list-style: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.explorer-scroll-card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  padding: 0px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+}
+
+.explorer-scroll-card:not(:last-child) {
+  margin-right: 10px;
+}
+
+/* Scrollbar */
+.explorer-scroll-cards::-webkit-scrollbar {
+  height: 12px;
+}
+
+.explorer-scroll-cards::-webkit-scrollbar-thumb,
+.explorer-scroll-cards::-webkit-scrollbar-track {
+  border-radius: 5em;
+}
+
+.explorer-scroll-cards::-webkit-scrollbar-thumb {
+  background: #23a982;
+}
+
+.explorer-scroll-cards::-webkit-scrollbar-track {
+  background: #333333;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* Responsive Layout */
+@media (min-width: 500px) {
+  .explorer-scroll-card {
+    flex-basis: calc(50% - 10px);
+  }
+
+  .explorer-scroll-card:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 700px) {
+  .explorer-scroll-card {
+    flex-basis: calc(calc(100% / 3) - 20px);
+  }
+
+  .explorer-scroll-card:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .explorer-scroll-card {
+    flex-basis: calc(25% - 30px);
+  }
+
+  .explorer-scroll-card:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.spotzi-explorer-card {
+  flex: 0 0 calc(33.33% - 16px); /* Adjust based on gap */
+  margin-right: 16px; /* Adjust based on your gap */
+  /* Other styling for cards */
+}
+
+/* Image Container */
+.image-container-explorer {
+  position: relative;
+}
+
+/* Image Styling */
+.thumb-image-explorer {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 3px #FFFFFF solid;
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.thumb-image-explorer.lazy-loaded {
+  opacity: 1;
+}
+
+/* Overlay Styling */
+.overlay-explorer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 105%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container-explorer:hover .overlay-explorer {
+  opacity: 1;
+}
+
+/* Overlay Content Styling */
+.overlay-content-explorer {
+  display: flex;
+  gap: 20px; /* Adjust the gap between buttons */
+}
+
+.overlay-content-explorer svg {
+  border: #FFFFFF 1px solid;
+  padding: 10px;
+  border-radius: 50%; /* Make the button round */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #FFFFFF40;
+  fill: #FFFFFF;
+}
+
+.overlay-content-explorer svg:hover {
+  border: #FFFFFF 1px solid;
+  background: rgb(54,103,142);
+  background: -moz-linear-gradient(225deg, rgba(54,103,142,1) 31%, rgba(37,165,132,1) 67%);
+  background: -webkit-linear-gradient(225deg, rgba(54,103,142,1) 31%, rgba(37,165,132,1) 67%);
+  background: linear-gradient(225deg, rgba(54,103,142,1) 31%, rgba(37,165,132,1) 67%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#36678e",endColorstr="#25a584",GradientType=1);
+}
+
+.overlay-content-explorer .icon {
+  width: 24px; /* Adjust icon size */
+  height: 24px;
+}
+
+.icon-explorer-td {
+  vertical-align: top;
+}
+
+.icon-border-round {
+  border: 1px #FFFFFF solid;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+/* Typography */
+.thumb_title_dash {
+  font-weight: bold;
+}
+
+.thumb_small_desc_dash {
+  font-size: 0.8em;
+}

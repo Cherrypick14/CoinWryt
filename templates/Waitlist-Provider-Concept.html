@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> {{ CompanyID }} For Ghost Writers & Whistle Blowers </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='Sources/assets/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='Sources/assets/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='Sources/assets/css/animate.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='Sources/assets/css/select2')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='Sources/assets/css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='Sources/assets/css/main.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<!--  -->
+	<div class="simpleslide100">
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg01.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg02.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg03.jpg');"></div>
+	</div>
+
+	<div class="size1 overlay1">
+		<!--  -->
+		<div class="w-full flex-w flex-sb-m p-l-65 p-r-80 p-t-22 p-b-185 p-lr-15-sm respon8">
+			<div class="wrappic1 m-r-30 m-t-10 m-b-10">
+				<a href="#" ><img style="height:40px; width:40px;" src="{{url_for('static' , filename='Sources/assets/img/logo.png')}}" alt="LOGO"></a>
+			</div>
+
+			<div class="flex-w m-t-10 m-b-10">
+				<a href="{{url_for('Auth')}}" >
+					<button class="Get-Started">  Get Started </button>
+					
+				</a>
+			</div>
+		</div>
+
+		<!--  -->
+		<div class="flex-sb flex-row-rev where3-parent p-l-58 p-r-46 respon2 ">
+			<!--  -->
+			<div class="where3 wsize2 respon1 ">
+				<h3 class="l1-txt2 p-b-30 respon6 respon7">
+					{{CompanyID}} Coming Soon
+				</h3>
+
+				<p class="m2-txt1 respon6 mb-4">
+					Cant wait to get onboarded ? Get a slot on our waitlist programme !
+				</p>
+
+				<form class="contact100-form validate-form p-t-55 w-full spawned ">
+					
+						<input class="s2-txt1 placeholder0 input100  mb-2" type="text" name="Mail" placeholder="Example : clydenso@gmail.com ">
+						
+						<textarea class="textarea placeholder0 input100  mb-2" type="text" name="UseCase" >  e.g : Im planning to use coinwryt for financial fraud reporting    </textarea>
+						
+							<select class="input100 mb-4" > 
+								<option default selected>  Where Did You Get To Know About Us ? </option>
+								<option value="Facebook"> Facebook </option>
+								<option value="Twitter"> Twitter </option>
+							</select>
+					
+							<div>
+								<button class="submitt" type="submit"> Submit </button>
+								</div>
+                  
+						
+							
+				</form>		
+			</div>
+
+			<!--  -->
+			<div class="flex-w flex-col cd100 p-t-34 respon3">
+				<div class="flex-col wsize1 m-b-40 respon4">
+					<span class="l1-txt1 p-b-30 days">35</span>
+					<span class="s1-txt2">Days</span>
+				</div>
+
+				<div class="flex-col wsize1 m-b-40 respon4">
+					<span class="l1-txt1 p-b-30 hours">17</span>
+					<span class="s1-txt2">Hours</span>
+				</div>
+
+				<div class="flex-col wsize1 m-b-40 respon4">
+					<span class="l1-txt1 p-b-30 minutes">50</span>
+					<span class="s1-txt2">Minutes</span>
+				</div>
+
+				<div class="flex-col wsize1 m-b-40 respon4">
+					<span class="l1-txt1 p-b-30 seconds">39</span>
+					<span class="s1-txt2">Seconds</span>
+				</div>
+			</div>
+
+			<!--  -->
+			<div class="flex-w flex-col where2 respon5">
+				<a href="#" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+					<i class="fa fa-facebook-official"></i>
+				</a>
+
+				<a href="#" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+					<i class="fa fa-twitter-square"></i>
+				</a>
+
+				<a href="#" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+					<i class="fa fa-pinterest-square"></i>
+				</a>
+			</div>
+
+		</div>
+
+			
+	</div>
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{{url_for('static' , filename='Sources/assets/js/jquery.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static' , filename='Sources/assets/js/popper.min.js')}}"></script>
+	<script src="{{url_for('static' , filename='Sources/assets/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static' , filename='Sources/assets/js/select2.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static' , filename='Sources/assets/js/moment.min.js')}}"></script>
+	<script src="{{url_for('static' , filename='Sources/assets/js/moment-timezone.min.js')}}"></script>
+	<script src="{{url_for('static' , filename='Sources/assets/js/moment-timezone-with-data.min.js')}}"></script>
+	<script src="{{url_for('static' , filename='Sources/assets/js/countdowntime.js')}}"></script>
+	<script>
+		$('.cd100').countdown100({
+			/*Set Endtime here*/
+			/*Endtime must be > current time*/
+			endtimeYear: 0,
+			endtimeMonth: 0,
+			endtimeDate: 35,
+			endtimeHours: 19,
+			endtimeMinutes: 0,
+			endtimeSeconds: 0,
+			timeZone: "" 
+			// ex:  timeZone: "America/New_York"
+			//go to " http://momentjs.com/timezone/ " to get timezone
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js')}}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static' , filename='Sources/assets/js/main.js')}}"></script>
+
+</body>
+</html>

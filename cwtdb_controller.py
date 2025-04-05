@@ -509,6 +509,48 @@ def Render_Nft_By_Type(Bindings):
 
 
 
+###- Waitlist Charter Controlling Functions 
+## - Protocols for the Waitlist Opt 
+
+def Create_Wait_Slot(Property):
+    """
+    Create a new PropertyName into the PropertyNames table
+    :param conn:
+    :param PropertyName:
+    :return: PropertyName id
+    """
+    conn = create_connection(DatabaseURL)
+    with app.app_context():
+        
+        sql = '''INSERT INTO WaitlistCharter(CandidateID , MailAddress , UseCase , Referral , Dateline , Timeline )
+            VALUES(?,?,?,?,?,?) '''
+        cur = conn.cursor()
+        cur.execute(sql,Property)
+        conn.commit()
+        conn.close()
+        return "Success"
+    
+
+
+def Render_Slotted_Waitlist():
+    """
+    Create a new PropertyName into the PropertyNames table
+    :param conn:
+    :param PropertyName:
+    :return: PropertyName id
+    """
+    conn = create_connection(DatabaseURL)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM WaitlistCharter ")
+
+    DataItem = cur.fetchall()
+
+    for bit in DataItem:
+        print(bit)
+    return DataItem
+
+
+
 #Test_Story  =["#RITRRIIR" , "0xd48e84bda5351d516b9cd9361fea27b086a93188" , "Political" , "0" ,"Gradually kenya's economy is crumbling" , "0" , "3:14:pm " , "2025/27/02" , "0" , "0" , "0", "0"]
 #Create_Story(Test_Story)
 

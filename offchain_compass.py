@@ -134,7 +134,21 @@ def Unbox_Database_Scheme(DatabaseURL):
                                 Dislikes integer NOT NULL 
                     
                                 
-                            );"""                        
+                            );"""    
+
+
+    Waitlist_Schema = """CREATE TABLE IF NOT EXISTS WaitlistCharter(
+                                CandidateID text NOT NULL ,
+                                EmailAddress text NOT NULL , 
+                                UseCase text NOT NULL,
+                                Referall text NOT NULL , 
+                                Dateline text NOT NULL , 
+                                Timeline integer NOT NULL 
+                               
+                    
+                                
+                            );"""    
+                                            
 
 
     # create a database connection
@@ -159,6 +173,7 @@ def Unbox_Database_Scheme(DatabaseURL):
 
         create_table(conn , Commentative_Schema)
        
+        create_table(conn , Waitlist_Schema)
         
     else:
         print("Creation Of [RENTLORD] Database Has Failed .")

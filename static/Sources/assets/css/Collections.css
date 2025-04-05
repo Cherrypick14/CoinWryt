@@ -546,7 +546,7 @@ video {
 
 .bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color:#252954;
+  background-color:#0e0e23;
 }
 
 .bg-yellow-100 {
@@ -1043,9 +1043,12 @@ video {
 
 .ring-blue-500 {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgba(59, 130, 246, var(--tw-ring-opacity));
+  --tw-ring-color: darkgray;
 }
 
+.radial {
+  background-color:radial-gradient(circle, #1a2049 0%, #13162f 100%);
+}
 .text-left {
   text-align: left;
 }

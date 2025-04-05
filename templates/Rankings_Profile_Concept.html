@@ -5,24 +5,343 @@
   <title>CoinWryt</title>
 
 
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
-  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Leaderboard.css')}}">
-
-
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/nft-card.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 </head>
+<style> 
+
+
+.c-header {
+  padding: 1.6rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+.c-header:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 0.2rem;
+  background: var(--primary-trans);
+}
+
+.c-card {
+  border-radius: 0.8rem;
+  background:radial-gradient(circle, #1a2049 0%, #13162f 100%);
+  width: 100%;
+  margin-bottom: 1.6rem;
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.12);
+}
+.c-card__body, .c-card__header {
+  padding: 2.4rem;
+  background:radial-gradient(circle, #1a2049 0%, #13162f 100%);
+}
+@media screen and (max-width: 700px) {
+  .c-card__body, .c-card__header {
+    padding: 1.2rem;
+  }
+}
+.c-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+@media screen and (max-width: 700px) {
+  .c-card__header {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .c-place {
+    transform: translateY(4px);
+  }
+}
+
+.c-logo {
+  display: inline-block;
+  width: 100%;
+  max-width: 17.6rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.c-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  
+
+}
+.c-list__item {
+  padding: 1.6rem 0;
+  
+  
+}
+.c-list__item .c-flag {
+  margin-top: 0.8rem;
+  
+
+}
+@media screen and (max-width: 700px) {
+  .c-list__item .c-flag {
+    margin-top: 0.4rem;
+  }
+}
+.c-list__grid {
+  display: grid;
+  grid-template-columns: 4.8rem 3fr 1fr;
+  grid-column-gap: 2.4rem;
+  
+}
+@media screen and (max-width: 700px) {
+  .c-list__grid {
+    grid-template-columns: 3.2rem 3fr 1fr;
+    grid-column-gap: 0.8rem;
+  }
+}
+
+.c-media {
+  display: inline-flex;
+  align-items: center;
+}
+.c-media__content {
+  padding-left: 1.6rem;
+}
+@media screen and (max-width: 700px) {
+  .c-media__content {
+    padding-left: 0.8rem;
+  }
+}
+.c-media__title {
+  margin-bottom: 0.4rem;
+}
+@media screen and (max-width: 700px) {
+  .c-media__title {
+    font-size: 1.4rem;
+  }
+}
+
+.c-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  box-shadow: inset 0px 0px 0px 1px currentColor;
+  border-radius: 50%;
+  background: var(--lightest);
+  color: var(--dark);
+}
+@media screen and (max-width: 700px) {
+  .c-avatar {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+.c-avatar--lg {
+  width: 9.6rem;
+  height: 9.6rem;
+}
+
+.c-button {
+  display: inline-block;
+  background: var(--dark);
+  border: 0;
+  border-radius: 0.4rem;
+  padding: 1.2rem 2rem;
+  transition: all 120ms ease-out 0s;
+}
+.c-button--block {
+  display: block;
+  width: 100%;
+}
+.c-button:hover, .c-button:focus {
+  filter: brightness(0.9);
+}
+.c-button:focus {
+  box-shadow: 0px 0px 0px 0.4rem var(--primary-trans);
+}
+.c-button:active {
+  box-shadow: 0px 0px 0px 0.4rem var(--primary-trans), inset 0px 0px 0.8rem rgba(0, 0, 0, 0.2);
+  filter: brightness(0.8);
+}
+
+.c-select {
+  background: transparent;
+  padding: 1.2rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-size: 1.4rem;
+  border-color: rgba(255, 255, 255, 0.2);
+  transition: all 120ms ease-out 0s;
+}
+.c-select:hover {
+  background: var(--darkest);
+}
+
+.c-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: var(--lightest);
+  color: var(--dark);
+  border-radius: 0.4rem;
+}
+@media screen and (max-width: 700px) {
+  .c-flag {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+.c-button--light {
+  background: var(--lightest);
+}
+
+.c-button--primary {
+  background: var(--primary);
+}
+
+.c-button--dark {
+  background: var(--darkest);
+}
+
+.c-button--transparent {
+  background: transparent;
+}
+
+.c-button--medium {
+  background: var(--medium);
+}
+
+.c-button--yellow {
+  background: var(--yellow);
+}
+
+.c-button--orange {
+  background: var(--orange);
+}
+
+.c-button--teal {
+  background: var(--teal);
+}
+
+.c-button--light-gradient {
+  background: linear-gradient(to top, var(--light), var(--lightest));
+}
+
+.u-text--title {
+  font-family: "Oswald", system-ui;
+}
+
+.u-text--left {
+  text-align: left;
+}
+.u-text--center {
+  text-align: center;
+}
+.u-text--right {
+  text-align: right;
+}
+
+.u-bg--light {
+  background: var(--lightest) !important;
+}
+
+.u-text--light {
+  color: var(--lightest) !important;
+}
+
+.u-bg--primary {
+  background: var(--primary) !important;
+}
+
+.u-text--primary {
+  color: var(--primary) !important;
+}
+
+.u-bg--dark {
+  background: var(--darkest) !important;
+}
+
+.u-text--dark {
+  color: var(--darkest) !important;
+}
+
+.u-bg--transparent {
+  background: transparent !important;
+}
+
+.u-text--transparent {
+  color: transparent !important;
+}
+
+.u-bg--medium {
+  background: var(--medium) !important;
+}
+
+.u-text--medium {
+  color: var(--medium) !important;
+}
+
+.u-bg--yellow {
+  background: var(--yellow) !important;
+}
+
+.u-text--yellow {
+  color: var(--yellow) !important;
+}
+
+.u-bg--orange {
+  background: var(--orange) !important;
+}
+
+.u-text--orange {
+  color: var(--orange) !important;
+}
+
+.u-bg--teal {
+  background: var(--teal) !important;
+}
+
+.u-text--teal {
+  color: var(--teal) !important;
+}
+
+.u-bg--light-gradient {
+  background: linear-gradient(to top, var(--light), var(--lightest)) !important;
+}
+
+.u-text--light-gradient {
+  color: linear-gradient(to top, var(--light), var(--lightest)) !important;
+}
+
+</style>
 <body class="light-theme dark-theme">
+
   <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
    
     <div class="flex-grow overflow-hidden h-full flex flex-col">
       <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
-        <div class="flex h-full text-gray-600 dark:text-gray-400">
+        <div class="flex h-full text-gray-600 text-white">
           <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 text-white"> {{ CompanyID }} </a>
           <a href="{{url_for('Stories' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Storyboard </a>
-          <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Collections </a>
+          <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Collections </a>
           <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Market Place </a>
-          <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Creators </a>
-          <a href="{{url_for('Rankings',  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"> Rankings </a>
+          <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Creators </a>
+          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"> Rankings </a>
           <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> My Profile </a>
   
         </div>
@@ -41,278 +360,148 @@
           </button>
         </div>
       </div>
-      <div>
-     
-    
-        <div class="sm:p-7 p-4">
-          <div class="flex w-full items-center mb-7">
-            <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
-              <svg viewBox="0 0 24 24" class="w-4 mr-2 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              Last 30 days
-              <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-gray-700 dark:text-gray-400 dark:border-gray-800 border border-gray-200 leading-none py-0">
-              Filter by
-              <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-gray-400 dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
-              <span class="mr-3">Page 2 of 4</span>
-              <button class="inline-flex mr-2 items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
-                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-              </button>
-              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none py-0">
-                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
+      <div class="flex-grow flex overflow-x-hidden">
+        <div class="xl:w-72 w-48 flex-shrink-0 border-r border-gray-200 dark:border-gray-800 h-full overflow-y-auto lg:block flex-col u-display--flex p-5">
+          <div class="text-xs text-white tracking-wider"> Coin-Wryt Profile  </div>
+        
+          <div class="space-y-4 mt-3">
+            {% if Creator_Listings %}
+            <div class="">
+              <div class="c-card u-bg--light-gradient u-text--dark">
+                <div class="c-card__body">
+                  <div class="u-display--flex u-justify--space-between">
+                    <div class="u-text--left">
+                      <div class="u-text--small">My Rank</div>
+                      <h2>3rd Place</h2>
+                    </div>
+                    <div class="u-text--right">
+                      <div class="u-text--small"> Collections </div>
+                      <h2>24</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="c-card">
+                <div class="c-card__body">
+                  <div class="u-text--center" id="winner">
+          <div class="u-text-small u-text--medium u-mb--16 mb-2"> My Account </div>
+          <img class="c-avatar c-avatar--lg mb-2 mt-2 " src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}">
+          <h3 class="u-mt--16"> **** ****  **** {{AccountAddress[:4]}} </h3>
+          <span class="u-text--teal u-text--small"> {{ Get_User_Token(AccountAddress) }} </span>
+        </div>
+                </div>
+              </div>
             </div>
-          </div>
-         <!-- Split Deck -->
-         <!-- partial:index.partial.html -->
-<div class="" style="height:auto; overflow:none;">
-  <div class="c-header"><img class="c-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/813538/km-logo-color.svg" draggable="false"/>
-    <button class="c-button c-button--primary">Send Kudos</button>
-  </div>
-  <div class="l-grid">
-    <div class="l-grid__item l-grid__item--sticky">
-      <div class="c-card u-bg--light-gradient u-text--dark">
-        <div class="c-card__body">
-          <div class="u-display--flex u-justify--space-between">
-            <div class="u-text--left">
-              <div class="u-text--small">My Rank</div>
-              <h2>3rd Place</h2>
-            </div>
-            <div class="u-text--right">
-              <div class="u-text--small">My Score</div>
-              <h2>24</h2>
-            </div>
+          
+            {% endif %}
+        
           </div>
         </div>
-      </div>
-      <div class="c-card">
-        <div class="c-card__body">
-          <div class="u-text--center" id="winner">
-	<div class="u-text-small u-text--medium u-mb--16">Top Sender Last Week</div>
-	<img class="c-avatar c-avatar--lg" src="https://www.formula1.com/content/dam/fom-website/drivers/D/DANRIC01_Daniel_Ricciardo/danric01.png.transform/2col-retina/image.png">
-	<h3 class="u-mt--16">Daniel Ricciardo</h3>
-	<span class="u-text--teal u-text--small">Daniel Ricciardo</span>
-</div>
-        </div>
-      </div>
-    </div>
-    <div class="l-grid__item" style="height:fit; overflow:scroll;">
-      <div class="c-card">
-        <div class="c-card__header">
-          <h3>Received Kudos</h3>
-          <select class="c-select">
-            <option selected="selected">Sunday, Feb. 23 - Sunday, Feb. 30</option>
-          </select>
-        </div>
-        <div class="c-card__body">
-          <ul class="c-list" id="list">
-            <li class="c-list__item">
+        <div class="flex-grow  dark:bg-gray-900 overflow-y-auto mb-3">
+          
+          <div class="sm:p-7 p-4" id="StoriesDeck">
+            <div class="flex w-full items-center ">
+              <button class="inline-flex mr-3 items-center h-8 pl-2.5 pr-2 rounded-md shadow text-white text-white dark:border-gray-800 border border-gray-200 leading-none py-0">
+                <svg viewBox="0 0 24 24" class="w-4 mr-2 text-white dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                Refresh
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-white dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <button class="inline-flex items-center h-8 pl-2.5 pr-2 rounded-md shadow text-white text-white dark:border-gray-800 border border-gray-200 leading-none py-0 mr-3">
+                Sort & Filter 
+                <svg viewBox="0 0 24 24" class="w-4 ml-1.5 text-white dark:text-gray-600" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+             
+
+              <div class="ml-auto text-white text-xs sm:inline-flex hidden items-center">
+               
+                <div class="relative">
+                  <input type="text" class="pl-8 h-9 bg-transparent border border-gray-300 dark:border-gray-700 dark:text-white w-full rounded-md text-sm" placeholder="Search">
+                  <svg viewBox="0 0 24 24" class="w-4 absolute text-white top-1/2 transform translate-x-0.5 -translate-y-1/2 left-2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            {% if not Creator_Listings %}
+            <div class="card" style="text-align: center; margin-top:5%; padding:20px; border:2px solid #242424;">
+           
+             <img class="w-20 h-20 rounded-full " style="margin:0% 47%; margin-bottom:1%;" src="/static/Sources/assets/img/Avatars/androgynous-avatar-non-binary-queer-person_23-2151100228.avif" alt="profile">
+            
+           
+           <p style="text-align:center;"> Sorry No Collections Available At This Time . </p>
+           </div>
+           {% else %}
+       
+                
+                <li class="c-list__item">
+                  <div class="c-list__grid">
+                    <div class="u-text--left u-text--small  ">  Rank<sup>No</sup> </div>
+                    <div class="u-text--left u-text--small u-text--medium">  Consumer Details </div>
+  
+                    <div class="u-text--right u-text--small u-text--medium"> Points </div>
+                  </div>
+                </li>
+             {% for Record in Creator_Listings %}
+             <li class="c-list__item">
               <div class="c-list__grid">
-                <div class="u-text--left u-text--small u-text--medium">Rank</div>
-                <div class="u-text--left u-text--small u-text--medium">Team Member</div>
-                <div class="u-text--right u-text--small u-text--medium"># of Kudos</div>
+                <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--teal"> #</div>
+                <div class="c-media">
+                  <img class="c-avatar c-media__img" src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Record[2])}}">
+                  <div class="c-media__content">
+                    <div class="c-media__title"> {{Record[1]}}</div>
+                    <a class="c-media__link u-text--small" href="https://instagram.com/kimimatiasraikkonen" target="_blank">@{{Record[0]}} </a>
+                  </div>
+                </div>
+                <div class="u-text--right c-kudos u-text--teal">
+                  <div class="u-mt--8">
+                    <strong>31</strong> 🏆
+                  </div>
+                </div>
               </div>
             </li>
+               
+              {% endfor %}
+            {% endif %}
+
           
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="c-list__item">
-                <div class="c-list__grid">
-                  <div class="c-flag c-place u-bg--transparent u-text--dark u-bg--yellow">1</div>
-                  <div class="c-media">
-                    <img class="c-avatar c-media__img" src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png">
-                    <div class="c-media__content">
-                      <div class="c-media__title">Lewis Hamilton</div>
-                      <a class="c-media__link u-text--small" href="https://instagram.com/lewishamilton" target="_blank">@lewishamilton</a>
-                    </div>
-                  </div>
-                  <div class="u-text--right c-kudos u-text--yellow">
-                    <div class="u-mt--8">
-                      <strong>36</strong> 👏
-                    </div>
-                  </div>
-                </div>
-              </li>
-          
-          </ul>
+          </div>
+
+     
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- partial -->
-        </div>
- 
-   
-  </div>
-</body>
-<script src="{{url_for('static' , filename='Sources/assets/js/Leaderboard.js')}}"></script>
 
+  <script> 
+
+
+function unloadArticles(){
+     
+     columnView = document.getElementById('StoriesDeck')
+     tableView = document.getElementById('ArticleDeck')
+    
+    
+     if(tableView.style.display === 'none'){
+      tableView.style.display = 'block';
+      columnView.style.display = 'none';
+     }else{ 
+      tableView.style.display = 'none'
+     columnView.style.display = 'block' ; 
+      
+     }
+    }
+    
+
+  </script>
+</body>
 </html>

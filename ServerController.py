@@ -333,6 +333,10 @@ class Content_Collections_Concept(View):
 
 class Market_Place_Nft(View):
    methods = ['GET']  
+
+   def Translate_Consumer_Address(self , AccountID ):
+        return CWTInterface.Render_Consumer_Username(AccountID) 
+
    def dispatch_request(self , AccountAddress ) -> str :
         CompanyID = "CoinWryt"
         if request.method == 'GET':
@@ -357,13 +361,15 @@ class Market_Place_Nft(View):
                 Base_Nft_Index = int(0)
             # Check -2
             # Base_Transaction-Logs Check
+
             if(Base_Transaction_Logs):
                 Base_Trans_Index = len(Base_Transaction_Logs)
             else: 
                 Base_Trans_Index = int(0) 
 
- 
-            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar , Base_Nft_Assets = Base_Nft_Assets , Base_Nft_Index = Base_Nft_Index , Base_Transaction_Logs = Base_Transaction_Logs , Base_Trans_Index = Base_Trans_Index , Artist_Deck = Artist_Deck , Nft_Properties = Nft_Properties  )
+            # Universally fixing Translate_COnsumer_Address() To be Available globally  . 
+            Get_User_Token  = self.Translate_Consumer_Address
+            return render_template('MarketPlace-Nft.html'   , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar , Base_Nft_Assets = Base_Nft_Assets , Base_Nft_Index = Base_Nft_Index , Base_Transaction_Logs = Base_Transaction_Logs , Base_Trans_Index = Base_Trans_Index , Artist_Deck = Artist_Deck , Nft_Properties = Nft_Properties , Get_User_Token = Get_User_Token  )
         
         return render_template('MarketPlace-Nft.html' ,  AccountAddress = AccountAddress  )
 
@@ -384,6 +390,9 @@ class Creators_Content_Paradox(View):
             return render_template('Creators-Paradox-Concept.html'   , AccountAddress = AccountAddress  , Creator_Records  = Creator_Records , Profile_Avatar = Profile_Avatar  )
         
         return render_template('Creators-Paradox-Concept.html' ,  AccountAddress = AccountAddress  )
+
+
+
 
 
 
@@ -450,19 +459,39 @@ class Create_Nft_Technology(View):
 class Print_Billboard_Projections(View):
     # Avoiding the use of Account Address as this will hinder people who arent logged in from accessing the billboard 
     # We need a scenario thst works for everyone hence going pless 
+    def Translate_Consumer_Address(self , AccountAddress):
+        return CWTInterface.Render_Consumer_Username(AccountAddress)
+
     def dispatch_request(self , AccountAddress ) ->  list  :  
         if request.method == 'GET': 
+            Creator_Listings =  CWTInterface.Render_All_Consumers() 
             Date_String_Fmt = base.Space_Time_Generator('DateStr')
             Creation_Time = base.Space_Time_Generator("TimeInt")
             Custom_ID = CWTInterface.Render_Consumer_ID(AccountAddress)
             Profile_Avatar = CWTInterface.Render_Profile_Avatar(AccountAddress)
-            return render_template("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , AccountAddress = AccountAddress , Profile_Avatar = Profile_Avatar )
-        else: 
-            return render_template("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , AccountAddress = AccountAddress  , Profile_Avatar = Profile_Avatar ) 
-        return render_template ("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time  , AccountAddress = AccountAddress , Profile_Avatar = Profile_Avatar ) 
+            # Container Function For Retrieving Client Username 
+            Get_User_Token = self.Translate_Consumer_Address
+            return render_template("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time , AccountAddress = AccountAddress , Profile_Avatar = Profile_Avatar  , Creator_Listings = Creator_Listings  , Get_User_Token = Get_User_Token)
+       
+            
+        return render_template ("Rankings_Profile_Concept.html" ,  Date_String_Fmt = Date_String_Fmt , Creation_Time = Creation_Time  , AccountAddress = AccountAddress , Profile_Avatar = Profile_Avatar  , Creator_Listings = Creator_Listings , Get_User_Token = Get_User_Token ) 
 
           
 
+
+
+class Coming_Soon_Page(View):
+    # Avoiding the use of Account Address as this will hinder people who arent logged in from accessing the billboard 
+    # We need a scenario thst works for everyone hence going pless 
+    def dispatch_request(self ) ->  list  :  
+        if request.method == 'GET': 
+            
+            return render_template("Waitlist-Provider-Concept.html" )
+        else: 
+            return render_template("Waitlist-Provider-Concept.html"  ) 
+        return render_template ("Waitlist-Provider-Concept.html" ,   ) 
+
+          
 
 
 
@@ -476,6 +505,7 @@ app.add_url_rule('/Dashboard/Nft/MarketPlace/<string:AccountAddress>/' , view_fu
 app.add_url_rule('/Dashboard/Creators/<string:AccountAddress>/Listings/' , view_func = Creators_Content_Paradox.as_view('Creators'))
 app.add_url_rule('/Dashboard/NFT/<string:AccountAddress>/Create/' , view_func = Create_Nft_Technology.as_view('Create-Nft'))
 app.add_url_rule('/Dashboard/Rankings//<string:AccountAddress>/Billboard/' , view_func = Print_Billboard_Projections.as_view('Rankings'))
+app.add_url_rule('/Home/WaitList/' , view_func = Coming_Soon_Page.as_view('WaitList'))
 # Returns the listings of stories that the user has created summarised in a table with a unique textarea below each \
 # Row to show message content of the story mode in question  
 

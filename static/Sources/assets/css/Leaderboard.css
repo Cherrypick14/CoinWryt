@@ -584,3 +584,15 @@ button, select {
 .u-mt--32 {
   margin-top: 3.2rem;
 }
+
+.u-bg--yellow {
+  background: var(--yellow) !important;
+}
+
+.u-bg--teal {
+  background: var(--teal) !important;
+}
+
+.u-text--dark {
+  color: var(--darkest) !important;
+}

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CoinWryt</title>
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/dash.css')}}">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/buzzfeed.css')}}">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static' , filename='Sources/assets/css/Collections.css')}}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+<style>
+  * CONTACTS */
+
+.contacts h1 {
+  margin: 20px 0;
+}
+
+.contact-status {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 15px;
+}
+
+.contact-status:last-child {
+  border-bottom: unset;
+}
+
+.contact-activity {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.contact-activity img {
+  max-width: 45px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contact-activity p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding-right: 10px;
+}
+
+.contact-activity p span {
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.contact-activity p span:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color);
+  text-decoration-thickness: 1.5px;
+}
+
+.contact-status small {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  margin-left: auto;
+}
+
+</style>
+<body class="light-theme dark-theme">
+  <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+   
+    <div class="flex-grow overflow-hidden h-full flex flex-col">
+      <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
+        <div class="flex h-full text-gray-600 dark:text-gray-400">
+          <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 text-white"> {{ CompanyID }} </a>
+          <a href="{{url_for('Stories' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Storyboard </a>
+          <a href="{{url_for('Collections' , AccountAddress = AccountAddress , Type = 'All')}}" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center"> Collections </a>
+          <a href="{{url_for('NftMarket' , AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8"> Market Place </a>
+          <a href="{{url_for('Creators' ,  AccountAddress = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Creators </a>
+          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> Rankings </a>
+          <a href="{{url_for('Dash',  AccountAddr = AccountAddress )}}" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8 "> My Profile </a>
+  
+        </div>
+        <div class="ml-auto flex items-center space-x-7">
+          <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">Home</button>
+  
+          <button class="flex items-center">
+            <span class="relative flex-shrink-0">
+              <img class="w-7 h-7 rounded-full" src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}" alt="profile" />
+              <span class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
+            </span>
+            <span class="ml-2"> {{ Access_Username }} </span>
+            <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex-grow flex overflow-x-hidden">
+        <div class="flex-grow bg-white dark:bg-gray-900 overflow-y-auto">
+         
+          <div class="story-gallery">
+            <div class="story story-1">
+                <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/video.png?raw=true" alt="post-story">
+                <p>Post your story</p>
+            </div>
+       
+
+            <!-- Start OF Story Dispay Replication -->
+{% for Attrib in Account_Profiles %}
+            <div class="story story-2">
+                <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/member-4.png?raw=true" alt="post-story">
+                <p> {{ Attrib[3]}} </p>
+            </div>
+{% endfor %}
+
+            <!-- END OF Story Dispay Replication -->
+        </div>
+        
+
+          <div class="sm:p-7 p-4" >
+          <div class="flex flex-col w-full" >
+            <article class="mb-4 break-inside p-6 rounded-xl dark flex flex-col bg-clip-border mb-2 " style="border-bottom:1px solid orangered;"> 
+              <div class="flex pb-6 items-center justify-between">
+                <div class="flex">
+                  <a class="inline-block mr-4" href="#">
+                    <img class="rounded-full max-w-none w-14 h-14" src="{{url_for('static' , filename='Sources/assets/img/Avatars/' + Profile_Avatar )}}">
+                  </a>
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
+                      <a class="inline-block text-lg font-bold mr-2" href="#"> {{ Access_Username}} </a>
+                    </div>
+                    <div class="text-slate-500 dark:text-slate-300">
+                      {{ System_Timestamp }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h4 class="text-lg font-extrabold">
+                Whats on your mind ! 
+              </h4>
+              <div class="py-4" >
+                <p>
+                  Feel free to share what you have , by typing in the filed below and submiting yout response .
+                </p>
+              </div>
+           
+              <div class="relative">
+                <form action="{{url_for('Create_Story_Mode' , AccountAddr= AccountAddress )}}" enctype="multipart/form-data" method="POST">
+                <input class="flex pt-2 pb-2 pl-3 w-full h-11 bg-slate-100 dark:bg-slate-600 rounded-lg placeholder:text-slate-600 dark:placeholder:text-slate-300 font-medium pr-20 " style="text-wrap:wrap; overflow:none;" type="text" name="Subject" placeholder="Write a comment">
+              
+                <span class="flex absolute right-3 top-2/4 -mt-3 items-center">
+                 
+                  <input type="file" multiple name="MediaStories" > </input>
+              
+             <button type="submit"> Submit </button>
+                </span>
+                </form>
+              </div>
+             
+            </article>
+            <div class="sm:px-7 sm:pt-7 px-4 pt-4 flex flex-col w-full border-b border-gray-200 bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 sticky top-0 " style="margin-bottom:2%;">
+            
+              <div class="flex items-center space-x-3 sm:mt-7 mt-4">
+                <a href="#" class="px-3 border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white pb-1.5"> Stories </a>
+                <a href="#" class="px-3 border-b-2 border-transparent text-gray-600 dark:text-gray-400 pb-1.5"> My Stories </a>
+                <a href="#" class="px-3 border-b-2 border-transparent text-gray-600 dark:text-gray-400 pb-1.5 sm:block hidden"> Top Stories  </a>
+            
+              
+              </div>
+              
+            </div>
+            <div class="nft-store-content ">
+            
+    
+            <div class="main-content">
+                
+               <div class="col-12">
+                <div class="col-lg-8">
+                   <!-- Start OF Replication -->
+    
+                  <article class="mb-4 break-inside  rounded-xl  flex flex-col bg-clip-border" style="width:100%;">
+                    {% for Attribute in Article_Listings %}
+                    <div class="flex pb-6 items-center justify-between">
+                      <div class="flex">
+                        <a class="inline-block mr-4" href="#">
+                          <img class="rounded-full max-w-none w-12 h-12" src="https://randomuser.me/api/portraits/men/35.jpg" />
+                        </a>
+                        <div class="flex flex-col ">
+                          <div>
+                            <a class="inline-block text-lg font-bold dark:text-white" href="#">  {{Attribute[0] }}</a>
+                          </div>
+                          <div class="text-slate-500 dark:text-slate-300 dark:text-slate-400">
+                            {{Attribute[7] }} : {{ Attribute[6] }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   
+                    <div class="py-4 w-100" >
+                  {% if Return_StorySets(Attribute[0]) %}
+                      <div class="flex justify-between gap-1">
+                      
+                      {% for Picture in Return_StorySets(Attribute[0]) %}
+                        <a class="flex" href="#">
+                          <img class="max-w-full rounded-bl-lg" 
+                            src="{{url_for('static' , filename='/Sources/assets/img/Stories/' + Attribute[0] + '/' + Picture )}}"/>
+                        </a>
+                       {% endfor %}
+                      </div>
+                  {% endif %}
+
+                    </div>
+                    <p class="text-sm font-extrabold dark:text-white">
+                    {{ Attribute[3] }} 
+                     </p>
+                    <p class="dark:text-slate-200">
+                        {{ Attribute[5] }} | {{ Attribute[6]}}
+                    </p>
+                   
+                    <div class="py-4">
+                      <a class="inline-flex items-center" href="#">
+                        <span class="mr-2">
+                          <svg class="fill-rose-600 dark:fill-rose-400" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <path
+                              d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                            </path>
+                          </svg>
+                        </span>
+                        <span class="text-lg font-bold">    {{ Attribute[-2] }} </span>
+                      </a>
+                      <a class="inline-flex items-center" href="#">
+                        <span class="mr-2">
+                          <svg class="fill-rose-600 dark:fill-rose-400" style="width: 24px; height: 24px;" viewBox="0 0 24 24">
+                            <path
+                              d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                            </path>
+                          </svg>
+                        </span>
+                        <span class="text-lg font-bold">    {{ Attribute[-3] }}</span>
+                      </a>
+                    </div>
+                    <form action="{{url_for('Commentative_Post_Sections' , AcctAddress = AccountAddress  , ArticleID = Attribute[0] )}}"  method="POST">
+                    <div class="relative">
+                      <input
+                        class="pt-2 pb-2 pl-3 w-full h-11 bg-slate-100 dark:bg-slate-600 rounded-lg placeholder:text-slate-600 dark:placeholder:text-slate-300 font-medium pr-20"
+                        type="text" placeholder="Write a comment" name="SubjectLine"/>
+                      <span class="flex absolute right-3 top-2/4 -mt-3 items-center">
+                        <svg class="mr-2" style="width: 26px; height: 26px;" viewBox="0 0 24 24">
+                          <path fill="currentColor"
+                            d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z">
+                          </path>
+                        </svg>
+                      
+                       <button type="submit"> 
+                         Submit
+                        </button>
+                        </svg>
+                      </span>
+                    </div>
+                    </form>
+                    <!-- Comments content -->
+                    {% if Render_Article_Commentary(Attribute[0]) %}
+                   
+                    <div class="pt-6">
+                      {% for Comment in Render_Article_Commentary(Attribute[0]) %}
+                      <!-- Comment row -->
+                      <div class="media flex pb-4">
+                        <a class="mr-4" href="#">
+                          <img class="rounded-full max-w-none w-12 h-12" src="https://randomuser.me/api/portraits/men/82.jpg" />
+                        </a>
+                        <div class="media-body">
+                          <div>
+                            <a class="inline-block text-base font-bold mr-2" href="#"> {{Comment[0]}} </a>
+                            <span class="text-sm text-slate-500 dark:text-slate-300"> | {{Comment[4]}} | </span>
+                          </div>
+                          <p> {{Comment[2]}} </p>
+                          <div class="mt-2 flex items-center">
+                            <a class="inline-flex items-center py-2 mr-3" href="#">
+                              <span class="mr-2">
+                                <svg class="fill-rose-600 dark:fill-rose-400" style="width: 22px; height: 22px;"
+                                  viewBox="0 0 24 24">
+                                  <path
+                                    d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                  </path>
+                                </svg>
+                              </span>
+                              <span class="text-base font-bold">{{Comment[-2]}}</span>
+                            </a>
+                            <button class="py-2 px-4 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg">
+                              Repply
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                      <!-- End comments row -->
+                      <!-- comments row -->
+                 
+    
+                      <!-- End comments row -->
+                      <!-- More comments -->
+                      <div class="w-full">
+                        <a href="#"
+                          class="py-3 px-4 w-full block text-white text-center rounded-lg font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition ease-in-out delay-75">Show
+                          more comments</a>
+                      </div>
+                      <!-- End More comments -->
+                    </div>
+                    {% endif %}
+                    <!-- End Comments content -->
+                    {% endfor %} 
+                  </article>
+       
+                  <!-- EOF Replicaatino ZOne-->
+                </div>
+             
+               
+              </div>
+    
+        <!-- End Of Block -->
+            </div>
+          </div>
+          </div>
+            <div class="flex w-full mt-5 space-x-2 justify-end">
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">
+                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">1</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white leading-none">2</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">3</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-500 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">4</button>
+              <button class="inline-flex items-center h-8 w-8 justify-center text-gray-400 rounded-md shadow border border-gray-200 dark:border-gray-800 leading-none">
+                <svg class="w-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="xl:w-72 w-48 flex-shrink-0 border-r border-gray-200 dark:border-gray-800 h-full overflow-y-auto lg:block hidden p-5">
+          <div class="text-xs text-gray-400 tracking-wider"> {{ System_Timestamp }} </div>
+         
+          <div class="space-y-4 mt-3">
+        
+            <div class="col-lg-4 w-100 col-12 text-center">
+             
+              <div class="right-sidebar w-100">
+                <div class="sidebar-title">
+                    <p>
+                        Trending Collectives
+                    </p>
+                    <a href="#">
+                        See All
+                    </a>
+                </div>
+                <!-- Event Replication Zone -->
+                <div class="event">
+                    <div class="left-event">
+                        <h3>18</h3>
+                        <span>March</span>
+                    </div>
+                    <div class="right-event">
+                        <h4>Social Media</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Willson Teck Park</p>
+                        <a href="#"> See All </a>
+                    </div>
+                </div>
+                <!-- EOF : Replication -->
+                <div class="event">
+                    <div class="left-event">
+                        <h3>22</h3>
+                        <span>March</span>
+                    </div>
+                    <div class="right-event">
+                        <h4>Mobile Marketimg</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Willson Teck Park</p>
+                        <a href="#"> See All </a>
+                    </div>
+                </div>
+                <div class="sidebar-title">
+                    <h4 class="text-center">
+                        Advertisement
+                    </h4>
+                    <a href="#">
+                        Close
+                    </a>
+                </div>
+                
+<div class="concord">
+
+<div class="slideshow-container">
+
+  {% for Attribute in Render_Adverts %}
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="{{url_for('static' , filename='Sources/assets/img/Advertisements/' + Attribute )}}" style="width:100%">
+    <div class="text">Caption Text</div>
+  </div>
+  {% endfor %}
+  
+  
+  
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+  
+  </div>
+  <br>
+  
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+  </div>
+
+
+</div>
+  
+<div class="contacts">
+  <h1> Transaction Chart </h1>
+  <div class="contacts-container">
+    <div class="contact-status">
+      <div class="contact-activity">
+        <img class="w-7 h-7 rounded-full" src="/static/Sources/assets/img/Avatars/medium-shot-anime-style-man-portrait_23-2151067428.avif" alt="profile">
+        <p>Matt favored <span>Jazz Fusion Night</span></p>
+      </div>
+      <small>1 hour ago</small>
+    </div>
+
+    <div class="contact-status">
+      <div class="contact-activity">
+        <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/fac9f27b-c1ea-4bba-973f-88996322fa2d" alt="">
+        <p>
+          Bella bought a ticket for
+          <span>Acoustic Serenade Under the Stars</span>
+        </p>
+      </div>
+      <small>4 hours ago</small>
+    </div>
+
+    <div class="contact-status">
+      <div class="contact-activity">
+        <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1499d73c-ccc0-41a1-b530-1d629012aebd" alt="">
+        <p>
+          Lucas bought a ticket for
+          <span>Wimbledon Championships - 2024</span>
+        </p>
+      </div>
+      <small>1 day ago</small>
+    </div>
+
+    <div class="contact-status">
+      <div class="contact-activity">
+        <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/949768d4-0196-486c-b386-edb47ddd54c2" alt="">
+        <p>
+          Sophia favored
+          <span>Clay Sculpting Class</span>
+        </p>
+      </div>
+      <small>1 day ago</small>
+    </div>
+
+    <div class="contact-status">
+      <div class="contact-activity">
+        <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/8a470b8b-b5cf-4189-b36e-f22551997ff4" alt="">
+        <p>
+          Kate bought a ticket for
+          <span>Latin Rhythms Fusion</span>
+        </p>
+      </div>
+      <small>3 day ago</small>
+    </div>
+
+    <div class="contact-status">
+      <div class="contact-activity">
+        <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/7740acc0-3f86-4c28-8a8c-5ae67c343edb" alt="">
+        <p>
+          Ben favored
+          <span>Harry Potter Film Concert Series</span>
+        </p>
+      </div>
+      <small>6 day ago</small>
+    </div>
+  </div>
+</div>
+              
+            </div>
+            </div>
+        
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+  </script>
+
+
+
+
+</html>
