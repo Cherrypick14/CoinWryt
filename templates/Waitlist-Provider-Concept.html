@@ -55,13 +55,13 @@
 					Cant wait to get onboarded ? Get a slot on our waitlist programme !
 				</p>
 
-				<form class="contact100-form validate-form p-t-55 w-full spawned ">
+				<form class="contact100-form validate-form p-t-55 w-full spawned " action="{{url_for('Waitlist_Provider')}}" method="POST">
 					
-						<input class="s2-txt1 placeholder0 input100  mb-2" type="text" name="Mail" placeholder="Example : clydenso@gmail.com ">
+						<input class="s2-txt1 placeholder0 input100  mb-2" type="text" name="EmailAddr" placeholder="Example : clydenso@gmail.com " required>
 						
-						<textarea class="textarea placeholder0 input100  mb-2" type="text" name="UseCase" >  e.g : Im planning to use coinwryt for financial fraud reporting    </textarea>
+						<textarea class="textarea placeholder0 input100  mb-2" type="text" name="UseCases"  required>  e.g : Im planning to use coinwryt for financial fraud reporting    </textarea>
 						
-							<select class="input100 mb-4" > 
+							<select class="input100 mb-4" name="Publications" required > 
 								<option default selected>  Where Did You Get To Know About Us ? </option>
 								<option value="Facebook"> Facebook </option>
 								<option value="Twitter"> Twitter </option>

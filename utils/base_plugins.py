@@ -2,6 +2,12 @@ from datetime import datetime
 import time , string , random , asyncio
 from flask import *
 import uuid , os
+import os
+import resend
+
+# Needs To be Exported To Fit Environment Sec Rules  
+resend.api_key = "re_C9UKrcbL_73NxSUTM8YuhEgQi5qQ14ngw"
+
 
 app=Flask(__name__)
 
@@ -69,3 +75,38 @@ def ColorSort():
     " A Color mixer developed for profiling different elements by returning colorschemes in list based indexes  "
     Index = random.randrange(0,5)
     return Index
+
+
+
+
+### Resend Emial Dispatsh Zone , 
+### Section : Email * Superbase intergaration   
+
+
+# Func : Initiates a dispatch email response  
+# Dynamic & General Use Case with required parameters 
+def Create_Email(Recipient , Subject , Body):
+    print(Recipient , Subject , Body )
+    if Body : 
+        print(Recipient , Subject , Body )
+        params: resend.Emails.SendParams = {
+        "from": " Godark@coinwryt <onboarding@resend.dev>",
+        "to": [Recipient],
+        "subject": Subject ,
+        "html": Body ,
+        }
+
+        email = resend.Emails.send(params)
+        print("SID ;" , Email )
+
+    else: 
+        return "Unable to create email : Reason : Empty Parameters supplied ! "
+ 
+
+
+ ### HTML Based Emails Sections 
+ ### Sending Graphical Emails Using Html 
+
+
+
+

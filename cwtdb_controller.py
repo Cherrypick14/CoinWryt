@@ -559,5 +559,5 @@ def Render_Slotted_Waitlist():
 #Test_Account  = ["#RITRRIIR" , "0xd48e84bda5351d516b9cd9361fea27b086a93188" , "ramp.png" ,  "DeathRawl"  , "2025/27/02" , "3:14:pm" ]
 #Create_Account(Test_Account)
 
-#Print_All_Stories()
+Print_All_Stories()
 #Print_Aggragate_Profiles()
